@@ -4,15 +4,18 @@ O DivulgaHub será um site criado para reunir e facilitar o acesso a todos os ev
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+ - Arthur Argemiro Júlio
+ - Arthur Chaves Viana Leão
+ - Joao Heleno
+ - João Vitor Tolentino
+ - Jonas Lopes Ferreira Pedrosa (Líder)
+ - Mateus de Moura Armani
+ - Pedro Rocha Resende
 
 ## Professores responsáveis
 
-Diego Augusto de Faria Barros
-Michelle Hanne Soares de Andrade
+- Diego Augusto de Faria Barros
+- Michelle Hanne Soares de Andrade
 
 
 
