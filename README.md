@@ -11,8 +11,10 @@ O DivulgaHub será um site criado para reunir e facilitar o acesso a todos os ev
  - Joao Heleno
  - João Vitor Tolentino
  - Jonas Lopes Ferreira Pedrosa (Líder)
+ - Lucas Eduardo Almeida dos Santos
  - Mateus de Moura Armani
  - Pedro Rocha Resende
+ - William Augusto Lobo Freire
 
 ## Professores responsáveis
 
