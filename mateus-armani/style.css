@@ -35,3 +35,67 @@ h2 {
     margin-bottom: 30px;
    
 }
+
+.botoes-middle{
+    display: flex;
+    justify-content: center;
+}
+
+button,
+input[type="text"] {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.back-button {
+    background-color: #ab1717;
+    color: rgb(255, 255, 255);
+}
+
+
+.nav-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+
+.nav-button.eventos {
+    background-color: #3183c6;
+    
+}
+
+.nav-button.cadastrar-evento {
+    background-color: #3183c6;
+    
+}
+
+.nav-button.cadastrar-usuario {
+    background-color: #3183c6;
+    
+}
+
+.nav-button.comunidade {
+    background-color: #3183c6;
+   
+}
+
+.nav-button.meu-perfil {
+    background-color: #3183c6;
+    
+}
+
+
+.nav-button:hover {
+    opacity: 1.56;
+}
