@@ -1,0 +1,48 @@
+{
+  "consumidores": [
+    {
+      "id": 201,
+      "senha": "123456",
+      "nome": "Lucas",
+      "email": "lucas@gmail.com"
+    },
+    {
+      "id": 202,
+      "senha": "123456",
+      "nome": "Roberto",
+      "email": "roberto@gmail.com"
+    }
+  ],
+  "artistas": [
+    {
+      "id": 1,
+      "senha": "123456",
+      "nome": "Olivia Rodrigo",
+      "email": "oliviarodrigo@gmail.com",
+      "descricao": "Descrição/biografia do artista",
+      "foto_perfil": "foto_perfil_1.png",
+      "eventos": [1, 2],
+      "GrupoMusical": "none",
+      "redesSociais": {
+        "instagram": "https://www.instagram.com/@oliviarodrigo",
+        "facebook": "https://www.facebook.com/@oliviarodrigo",
+        "twitter": "https://twitter.com/@oliviarodrigo"
+      }
+    },
+    {
+      "id": 2,
+      "senha": "123456",
+      "nome": "Ana Beatriz",
+      "email": "anabeatriz@gmail.com",
+      "descricao": "Descrição do artista",
+      "foto_perfil": "foto_perfil_2.png",
+      "eventos": [3, 4],
+      "GrupoMusical": "none",
+      "redesSociais": {
+        "instagram": "https://www.instagram.com/@anabeatriz",
+        "facebook": "https://www.facebook.com/@anabeatriz",
+        "twitter": "https://twitter.com/@anabeatriz"
+      }
+    }
+  ]
+}

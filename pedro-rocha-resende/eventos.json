@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1001,
+    "tipo": "musical",
+    "titulo": "Samba sob as Estrelas",
+    "descricao": "Apresentação ao vivo de samba em espaço aberto.",
+    "imagens": ["imagem1.png", "imagem2.png"],
+    "data": "2025-06-15T20:00:00",
+    "local": {
+      "pais": "Brasil",
+      "estado": "Rio de Janeiro",
+      "cidade": "Rio de Janeiro",
+      "endereco": "Praça Floriano, Centro"
+    },
+    "preco": "100",
+    "ids_artistas": [1, 2]
+  },
+  {
+    "id": 1002,
+    "tipo": "esportivo",
+    "titulo": "Semifinal 1 da copa SP Stars",
+    "descricao": "Jogo que vale para a semifinal da copa SP Stars, entre Guarulhos FC e Operários FC.",
+    "imagens": ["imagem3.png", "imagem4.png"],
+    "data": "2025-07-08T16:30:00",
+    "local": {
+      "pais": "Brasil",
+      "estado": "São Paulo",
+      "cidade": "São Paulo",
+      "endereco": "Estádio Patrick de Morais, Morrinhos"
+    },
+    "preco": "60",
+    "ids_artistas": [3]
+  }
+]
