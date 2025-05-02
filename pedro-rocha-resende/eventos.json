@@ -13,7 +13,7 @@
       "endereco": "Praça Floriano, Centro"
     },
     "preco": "100",
-    "ids_artistas": [1, 2]
+    "idsArtistas": [1, 2]
   },
   {
     "id": 1002,
@@ -29,6 +29,6 @@
       "endereco": "Estádio Patrick de Morais, Morrinhos"
     },
     "preco": "60",
-    "ids_artistas": [3]
+    "idsArtistas": [3]
   }
 ]
