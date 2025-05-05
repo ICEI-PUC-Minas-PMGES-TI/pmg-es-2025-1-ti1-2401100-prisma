@@ -1,0 +1,34 @@
+{
+  "comites_cadastro": [
+    {
+      "nome": "Comitê de Admissão e Documentação",
+      "responsabilidades": [
+        "Definir os critérios de elegibilidade para o cadastro de artistas (por exemplo, comprovação de atividade artística, tipo de arte, etc.).",
+        "Estabelecer a lista de documentos e informações que os artistas devem fornecer para iniciar o processo de cadastro.",
+        "Desenvolver um sistema para o recebimento, organização e análise da documentação enviada pelos artistas.",
+        "Verificar a autenticidade e a validade dos documentos apresentados.",
+        "Comunicar aos artistas sobre o status da sua solicitação de cadastro (aprovação para a próxima etapa ou necessidade de complementação/correção de informações)."
+      ]
+    },
+    {
+      "nome": "Comitê de Avaliação Artística",
+      "responsabilidades": [
+        "Definir os critérios específicos de avaliação artística (qualidade técnica, originalidade, relevância cultural, potencial de público, etc.).",
+        "Desenvolver um processo de avaliação que pode incluir a análise de portfólios, amostras de trabalho (música, vídeos, textos, etc.), histórico de apresentações e outras informações relevantes.",
+        "Garantir a imparcialidade e a consistência nas avaliações.",
+        "Fornecer feedback aos artistas (quando apropriado e definido pela política do aplicativo).",
+        "Tomar a decisão final sobre a aprovação do cadastro do artista na plataforma."
+      ]
+    },
+    {
+      "nome": "Comitê de Boas-Vindas e Integração",
+      "responsabilidades": [
+        "Desenvolver um guia de boas-vindas para novos artistas, explicando o funcionamento da plataforma, as funcionalidades disponíveis e as melhores práticas para criar um perfil atraente.",
+        "Oferecer suporte técnico e orientação durante o processo de criação do perfil (upload de fotos, vídeos, preenchimento de informações, etc.).",
+        "Garantir que o perfil do artista esteja visualmente agradável e em conformidade com as diretrizes de design do aplicativo.",
+        "Apresentar ao artista as ferramentas de engajamento e divulgação disponíveis na plataforma.",
+        "Coletar feedback dos novos artistas sobre o processo de integração para identificar áreas de melhoria."
+      ]
+    }
+  ]
+}
