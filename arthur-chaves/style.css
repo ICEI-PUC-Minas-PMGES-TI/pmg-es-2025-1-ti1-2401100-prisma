@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #410445;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 2px solid rgb(136, 48, 120);
+  }
+  
+  h1,
+  h2 {
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  
+  .botoes-middle {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+  }
+  
+  button,
+  input[type="text"] {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .back-button {
+    background-color: #ab1717;
+    color: rgb(255, 255, 255);
+  }
+  
+  .nav-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin: 5px;
+  }
+  
+  .nav-button.eventos {
+    background-color: #3183c6;
+  }
+  
+  .nav-button.cadastrar-evento {
+    background-color: #3183c6;
+  }
+  
+  .nav-button.cadastrar-usuario {
+    background-color: #3183c6;
+  }
+
+  .nav-button.cadastrar-promotor {
+    background-color: #3183c6;
+  }
+  
+  .nav-button.comunidade {
+    background-color: #3183c6;
+  }
+  
+  .nav-button.meu-perfil {
+    background-color: #3183c6;
+  }
+  
+  .nav-button:hover {
+    opacity: 1.56;
+  }
+  
+  input[type="text"] {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .submit-button {
+    width: 50%;
+  
+    background-color: #1d6e25c1;
+    color: white;
+  }
+  
+  .submit-button:hover {
+    background-color: #388e3c;
+  }
+  
+  .subtitulo-pagina1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+  }
+  
+  .conj-campos {
+    display: flexbox;
+  }
+  
+  main {
+    background-color: #673ab7;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tipo-promotor {
+    width: 81.9%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;   
+  }

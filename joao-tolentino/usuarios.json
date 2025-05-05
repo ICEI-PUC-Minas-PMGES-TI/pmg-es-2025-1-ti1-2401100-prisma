@@ -1,0 +1,29 @@
+{
+    "pagina": "DivulgaHub - Cadastrar Novo Usuário",
+    "cabecalho": {
+      "titulo": "DivulgaHub",
+      "botaoVoltar": true
+    },
+    "navegacao": [
+      { "texto": "Eventos", "link": "eventos.html" },
+      { "texto": "Cadastro de Eventos", "link": "cad_eventos.html" },
+      { "texto": "Cadastrar Usuário", "link": "cad_usuario.html" },
+      { "texto": "Cadastrar Artista", "link": "cad_artistas.html" },
+      { "texto": "Meu Perfil", "link": "meu-perfil.html" }
+    ],
+    "formularioCadastroUsuario": {
+      "titulo": "Cadastrar Novo Usuário",
+      "campos": [
+        { "tipo": "texto", "placeholder": "Nome", "obrigatorio": true },
+        { "tipo": "texto", "placeholder": "Cidade", "obrigatorio": true },
+        { "tipo": "texto", "placeholder": "Email", "obrigatorio": true },
+        { "tipo": "texto", "placeholder": "Gênero", "obrigatorio": true },
+        { "tipo": "texto", "placeholder": "É Produtor de Eventos?", "obrigatorio": true }
+      ],
+      "botao": {
+        "texto": "Cadastrar",
+        "tipo": "submit"
+      }
+    }
+  }
+  

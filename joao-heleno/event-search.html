@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <link rel="stylesheet" href="style.css" />
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DivulgaHub - Eventos</title>
+    <link rel="stylesheet" href="event-search.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>DivulgaHub</h1>
+        <button class="back-button">Voltar</button>
+      </header>
+      <nav class="botoes-middle">
+        <a href="../mateus-armani/cad_eventos.html" class="nav-button eventos"
+          >Cadastro de Eventos</a
+        >
+        <a href="cad_eventos.html" class="nav-button cadastrar-evento"
+          >Cadastro de Eventos</a
+        >
+        <a href="cad_usuario.html" class="nav-button cadastrar-usuario"
+          >Cadastrar Usuário</a
+        >
+        <a href="cad_artistas.html" class="nav-button comunidade"
+          >Cadastrar Artista</a
+        >
+        <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+      </nav>
+
+      <h2 class="subtitulo-pagina1">Pesquisar Eventos</h2>
+      <form class="conj-campos" id="form-busca-eventos">
+        <select name="localizacao" class="localizacao-select">
+          <option value="">Selecionar Localização</option>
+          <option value="sao-paulo">São Paulo</option>
+          <option value="rio-de-janeiro">Rio de Janeiro</option>
+          <option value="belo-horizonte">Belo Horizonte</option>
+          <option value="porto-alegre">Porto Alegre</option>
+          ]
+        </select>
+        <select name="hour" class="hour-select">
+          <option value="">Selecionar Horário</option>
+          <option value="madrugada">00:00 - 05:59</option>
+          <option value="dia">06:00 - 11:59</option>
+          <option value="tarde">12:00 - 17:59</option>
+          <option value="noite">18:00 - 23-59</option>
+        </select>
+        <select name="price" class="price-select">
+          <option value="">Preço</option>
+          <option value="menorcem">Menor que 100</option>
+          <option value="entre-cem-dozentos">R$ 100 a 200</option>
+          <option value="entre-dozentos-trezentos">R$ 201 a 350</option>
+          <option value="maior-que-trezentos">Maior que 350</option>
+        </select>
+        <label for="data-inicio" class="form-label">Data de Início</label>
+        <input
+          type="date"
+          id="data-inicio"
+          class="data-input"
+          name="data-evento"
+        />
+
+        <label for="data-fim" class="form-label">Data de Fim</label>
+        <input
+          type="date"
+          id="data-fim"
+          class="end-date"
+          name="data-evento-fim"
+        />
+        <button type="submit" class="submit-button">Pesquisar</button>
+      </form>
+    </div>
+  </body>
+  <script src="event-search.js"></script>
+</html>
