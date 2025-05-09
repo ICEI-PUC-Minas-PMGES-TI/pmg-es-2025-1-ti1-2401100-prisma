@@ -27,7 +27,7 @@
             <input type="text" placeholder="Nome" required>
             <input type="text" id="telefone" placeholder="Telefone" required>
             <input type="text" placeholder="Cidade" required>
-            <input type="text" placeholder="Email" required>
+            <input type="email" placeholder="Email" required>
             <input type="text" placeholder="Gênero" required>
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
@@ -37,12 +37,18 @@
 
     <script>
         const telefoneInput = document.getElementById('telefone');
-
+    
         telefoneInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/\D/g, '');
-
+    
+            
+            if (value.length === 0) {
+                e.target.value = '';
+                return;
+            }
+    
             if (value.length > 11) value = value.slice(0, 11);
-
+    
             if (value.length > 6) {
                 value = value.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
             } else if (value.length > 2) {
@@ -50,9 +56,29 @@
             } else {
                 value = value.replace(/^(\d*)/, '($1');
             }
-
+    
             e.target.value = value;
         });
     </script>
+    
+
+<! -- Script para validar o e-mail, o script vai verificar se o e-mail é válido, caso não seja, ele irá impedir o envio do formulário e exibir um alerta -->
+
+<script>
+    const form = document.querySelector('.conj-campos');
+    const emailInput = form.querySelector('input[placeholder="Email"]');
+
+    form.addEventListener('submit', function (e) {
+        const email = emailInput.value.trim();
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!emailValido) {
+            e.preventDefault();
+            alert('Por favor, insira um e-mail válido.');
+            emailInput.focus();
+        }
+    });
+</script>
+
 </body>
 </html>
