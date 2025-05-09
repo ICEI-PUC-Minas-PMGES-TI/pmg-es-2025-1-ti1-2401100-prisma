@@ -1,4 +1,6 @@
 # Esta é a pasta de Lucas Eduardo.
+Projeto DivulgaHub
+
 Sprint 1
 
 Sprint Individual – Definição e detalhamento dos artefatos designados a mim (Detalhes de Eventos e Perfil do Usuário);
