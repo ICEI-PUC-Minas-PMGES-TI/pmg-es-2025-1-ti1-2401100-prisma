@@ -1,0 +1,140 @@
+/* Estilo geral da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #410445;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #673ab7;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  text-align: left;
+}
+
+.perfil {
+  text-align: center;
+}
+
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 2px solid rgb(136, 48, 120);
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 15px 0;
+  font-size: 1.2em;
+}
+
+span {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Foto de perfil */
+.foto-perfil {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* Botões de navegação */
+.voltar-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #ab1717;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.voltar-button:hover {
+  background-color: #c62828;
+}
+
+.nav-button {
+  background-color: #3183c6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px 5px;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  opacity: 1.56;
+}
+
+/* Redes Sociais */
+.redes-sociais {
+  margin-top: 20px;
+}
+
+.rede-social-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #3183c6;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.rede-social-button:hover {
+  background-color: #1a6fb1;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .foto-perfil {
+    width: 120px;
+    height: 120px;
+  }
+}
