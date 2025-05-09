@@ -25,14 +25,34 @@
         <h2 class="subtitulo-pagina1">Cadastrar Novo Usuário</h2>
         <form class="conj-campos">
             <input type="text" placeholder="Nome" required>
+            <input type="text" id="telefone" placeholder="Telefone" required>
             <input type="text" placeholder="Cidade" required>
             <input type="text" placeholder="Email" required>
             <input type="text" placeholder="Gênero" required>
-            <input type="text" placeholder="É Produtor de Eventos?" required>
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
-    
-</div>
-</body>
+    </div>
 
+    <! -- Script para a mascara de telefone, o script vai remover tudo que não seja números, além de limitar a 11 dígitos, aplicará a máscara conforme a digitação do usuário e impedirá a inserção de letras -->
+
+    <script>
+        const telefoneInput = document.getElementById('telefone');
+
+        telefoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 6) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else {
+                value = value.replace(/^(\d*)/, '($1');
+            }
+
+            e.target.value = value;
+        });
+    </script>
+</body>
 </html>
