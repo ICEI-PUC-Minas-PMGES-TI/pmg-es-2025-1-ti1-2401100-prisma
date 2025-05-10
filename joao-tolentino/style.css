@@ -147,3 +147,12 @@ form {
     box-sizing: border-box;
     font-size: 16px;
 }
+
+/* Faz com que os campos select fiquem uniformes, do mesmo tamanho dos outros*/
+.conj-campos select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
