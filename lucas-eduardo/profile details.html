@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detalhes do Perfil</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -13,35 +13,38 @@
     <a href="index.html" class="voltar-button">Voltar</a>
   </header>
 
-  <div class="container">
-    <div class="perfil">
-      <img id="foto-perfil" alt="Foto de Perfil" class="foto-perfil">
-      <h2 id="nome"></h2>
-      <p><span>Email:</span> <span id="email"></span></p>
-      <p><span>Descrição:</span> <span id="descricao"></span></p>
+  <main class="container" role="main" aria-labelledby="nome">
+    <section class="perfil">
+      <img id="foto-perfil" alt="Foto de perfil do usuário" class="foto-perfil" />
+
+      <h2 id="nome">Carregando...</h2>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Descrição:</strong> <span id="descricao"></span></p>
       
       <div id="grupo-musical" style="display: none;">
-        <p><span>Grupo Musical:</span> <span id="grupo"></span></p>
+        <p><strong>Grupo Musical:</strong> <span id="grupo"></span></p>
       </div>
 
-      <div id="eventos" style="display: none;">
+      <section id="eventos" style="display: none;">
         <h3>Eventos Organizados</h3>
         <ul id="lista-eventos"></ul>
-      </div>
+      </section>
 
-      <div class="redes-sociais">
+      <section class="redes-sociais" aria-label="Redes sociais">
         <h3>Redes Sociais</h3>
-        <a id="instagram" class="rede-social-button instagram" target="_blank">Instagram</a>
-        <a id="facebook" class="rede-social-button facebook" target="_blank">Facebook</a>
-        <a id="twitter" class="rede-social-button twitter" target="_blank">Twitter</a>
-      </div>
-      
-      <div class="botoes-middle">
+        <ul>
+          <li><a id="instagram" class="rede-social-button instagram" target="_blank">Instagram</a></li>
+          <li><a id="facebook" class="rede-social-button facebook" target="_blank">Facebook</a></li>
+          <li><a id="twitter" class="rede-social-button twitter" target="_blank">Twitter</a></li>
+        </ul>
+      </section>
+
+      <nav class="botoes-middle" aria-label="Ações do perfil">
         <a href="editar-perfil.html" class="nav-button">Editar Perfil</a>
         <a href="configuracoes.html" class="nav-button">Configurações</a>
-      </div>
-    </div>
-  </div>
+      </nav>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
