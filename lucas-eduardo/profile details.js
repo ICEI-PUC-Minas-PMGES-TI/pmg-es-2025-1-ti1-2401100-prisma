@@ -1,5 +1,3 @@
-// Script feito por aluno para carregar dados do perfil de um usuário via JSON
-
 // URL do arquivo JSON hospedado no GitHub
 const url = 'https://raw.githubusercontent.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2401100-prisma/refs/heads/master/pedro-rocha-resende/usuarios.json';
 
