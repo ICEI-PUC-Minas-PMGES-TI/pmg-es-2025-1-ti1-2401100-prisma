@@ -1,7 +1,8 @@
+// url JSON de eventos.
 fetch("https://raw.githubusercontent.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2401100-prisma/refs/heads/master/mateus-armani/eventos.json")
   .then(response => response.json())
   .then(data => {
-    // Pega o primeiro evento do array
+    // Pega o primeiro evento do array.
     const evento = data[0];
 
     document.getElementById("titulo-evento").textContent = evento.nome;
