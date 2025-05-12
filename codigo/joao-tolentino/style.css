@@ -132,3 +132,16 @@ form {
         width: 100%;
     }
 }
+/*------------------- Validação de Formulário -------------------*/
+input:invalid,
+select:invalid {
+    border: 2px solid #ff4d4d;
+    background-color: #fff0f0;
+}
+
+input:valid,
+select:valid {
+    border: 2px solid #4CAF50;
+    background-color: #f0fff0;
+}
+
