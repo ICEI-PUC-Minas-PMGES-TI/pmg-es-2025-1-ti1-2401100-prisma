@@ -1,7 +1,8 @@
 {
-    "titulo-do-evento":"Planeta Brasil",
-    "local-do-evento":"Minerão",
-    "preco-do-evento":"180.00",
-    "genero-do-evento":"trap/rap",
-    "artistas-presentes-no-evento":"Froid, Djonga, 50cent"
+    "titulo":"Planeta Brasil",
+    "local":"Minerão",
+    "preco":"180.00",
+    "tipo":"trap/rap",
+    "artistas":"Froid, Djonga, 50cent",
+    "promotor":"Marcos Junior"
 }
