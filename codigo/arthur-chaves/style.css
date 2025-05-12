@@ -1,3 +1,4 @@
+/* ------------------- Reset e Base ------------------- */
 body {
     font-family: Arial, sans-serif;
     background-color: #410445;
@@ -12,7 +13,9 @@ body {
     margin: 0 auto;
     padding: 20px;
   }
+
   
+/* ------------------- Header e Navegação ------------------- */
   header {
     display: flex;
     justify-content: space-between;
@@ -95,7 +98,8 @@ body {
   .nav-button:hover {
     opacity: 1.56;
   }
-  
+
+  /* ------------------- Formulários ------------------- */
   input[type="text"] {
     width: 80%;
     margin-bottom: 10px;
@@ -143,3 +147,74 @@ body {
     border: none;
     border-radius: 5px;   
   }
+ /* ------------------- Responsividade ------------------- */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.9em;
+    margin-left: 10px;
+  }
+
+  h2 {
+    font-size: 1.1em;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .botoes-middle {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    gap: 10px;
+  }
+
+  .nav-button {
+    width: 90%;
+    font-size: 0.9em;
+    padding: 8px 12px;
+    margin: 6px 5%;
+  }
+
+  .back-button {
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1em;
+    text-align: center;
+    display: inline-block; 
+  }
+
+  input[type="text"],
+  .tipo-promotor {
+    width: 90%;
+    font-size: 0.9em;
+    padding: 8px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .submit-button {
+    width: 90%;
+    font-size: 0.95em;
+    padding: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  main {
+    padding: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+

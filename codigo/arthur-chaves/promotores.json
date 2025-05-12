@@ -2,12 +2,14 @@
     "nome":"Lucas Braga",
     "email":"lucasbraga@gmail.com",
     "nacionalidade":"Brasil",
-    "tipo":"Individuo"
+    "tipo":"Individuo",
+    "telefone": "(31) 12345-6789"
 }, 
 {
     "nome":"Ambev",
     "email":"ambev@gmail.com",
     "nacionalidade":"Brasil",
-    "tipo":"Empresa"
+    "tipo":"Empresa",
+    "telefone": "(31) 99981-0223"
 }]
 
