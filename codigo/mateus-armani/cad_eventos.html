@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DivulgaHub - Cadastrar Novo Evento</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Borda vermelha para campos inválidos */
-        .erro {
-            border: 2px solid red !important;
-            outline: none;
-        }
-    </style>
 </head>
 
 <body>
     <div class="container">
+        <!-- ------------------- Header e Navegação ------------------- -->
         <header>
             <h1>DivulgaHub</h1>
             <button class="back-button" onclick="history.back()">Voltar</button>
@@ -24,24 +19,38 @@
         <nav class="botoes-middle">
             <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
             <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
-             <a href="../joao-tolentino/cad_usuarios.html" class="nav-button mapa-eventos">Cadastro de Usúario</a>
+            <a href="../joao-tolentino/cad_usuarios.html" class="nav-button mapa-eventos">Cadastro de Usuário</a>
             <a href="cad_artistas.html" class="nav-button comunidade">Comunidade</a>
             <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
         </nav>
 
+        <!-- ------------------- Formulário de Cadastro ------------------- -->
         <h2 class="subtitulo-pagina1">Cadastrar Novo Evento</h2>
         <form class="conj-campos" id="evento-form">
             <input type="text" id="titulo" name="titulo" placeholder="Título do evento" required>
             <input type="text" id="local" name="local" placeholder="Local" required>
             <input type="text" id="preco" name="preco" placeholder="Preço" required>
-            <input type="text" id="tipo" name="tipo" placeholder="Tipo de Evento" required>
             <input type="text" id="artistas" name="artistas" placeholder="Artistas" required>
-            <input type="text" id="promotor" name="promotor" placeholder="Promotor Do Evento" required>
+            <input type="text" id="promotor" name="promotor" placeholder="Promotor do evento" required>
+            
+            <!-- Select para escolher o tipo do evento -->
+            <select name="tipo" id="tipo" class="gênero" required>
+                <option value="disabled" selected disabled>Selecione o Tipo de Evento</option>
+                <option value="Trap">Trap</option>
+                <option value="Funk">Funk</option>
+                <option value="Gospel">Gospel</option>
+                <option value="Pagode">Pagode</option>
+                <option value="MPB">MPB</option>
+                <option value="Outro">Outro</option>
+            </select>
+
+            <!-- Botão para submeter o formulário -->
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
     </div>
 
     <script>
+        // Seleciona o formulário e os campos
         const form = document.getElementById('evento-form');
         const campos = {
             titulo: document.getElementById('titulo'),
@@ -73,6 +82,7 @@
                 campos[campo].classList.remove('erro');
             }
 
+            // Valida os campos
             if (campos.titulo.value.trim().length < 3) {
                 campos.titulo.classList.add('erro');
                 campos.titulo.focus();
@@ -124,4 +134,5 @@
         }
     </script>
 </body>
+
 </html>

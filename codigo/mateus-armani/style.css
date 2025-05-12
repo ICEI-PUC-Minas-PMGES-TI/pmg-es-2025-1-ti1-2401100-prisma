@@ -1,126 +1,141 @@
+/* ------------------- Reset e Base ------------------- */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #410445;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #410445;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+/* ------------------- Header e Navegação ------------------- */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-  border-bottom: 2px solid rgb(136, 48, 120);
-}
-
-h1, h2 {
-  margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 2px solid rgb(136, 48, 120);
 }
 
 h1 {
-  font-size: 2em;
+    font-size: 2em;
+    margin: 0;
 }
 
 h2 {
-  font-size: 1.5em;
-  margin: 30px 0;
-  text-align: center;
-}
-
-.botoes-middle {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  gap: 10px;
-}
-
-.nav-button {
-  text-decoration: none;
-  color: white;
-  background-color: #3183c6;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  text-align: center;
-}
-
-.nav-button:hover {
-  background-color: #256aa2;
-}
-
-.back-button {
-  background-color: #ab1717;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-input[type="text"] {
-  width: 80%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 1em;
-}
-
-/* Estilo para inputs inválidos */
-input.erro {
-  border: 2px solid red !important;
-  outline: none;
-}
-
-.submit-button {
-  width: 50%;
-  background-color: #1d6e25c1;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.submit-button:hover {
-  background-color: #388e3c;
+    font-size: 1.5em;
+    margin: 30px 0;
+    text-align: center;
 }
 
 .subtitulo-pagina1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
 }
 
-/* Responsividade opcional */
-@media (max-width: 600px) {
-  input[type="text"],
-  .submit-button {
-    width: 100%;
-  }
+.botoes-middle {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px;
+}
 
-  header {
+.nav-button {
+    background-color: #3183c6;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.nav-button:hover {
+    background-color: #256aa2;
+}
+
+.back-button {
+    background-color: #ab1717;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ------------------- Formulários ------------------- */
+form {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-  }
+    align-items: center;
+    margin-top: 20px;
+}
+
+input[type="text"],
+select {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+/* ------------------- Validação de Formulário ------------------- */
+input.erro,
+select.erro {
+    border: 2px solid red !important;
+    outline: none;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #3183c6;
+}
+
+/* Botão de envio */
+.submit-button {
+    width: 50%;
+    background-color: #1d6e25;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #388e3c;
+}
+
+/* ------------------- Responsividade ------------------- */
+@media (max-width: 600px) {
+    input[type="text"],
+    select,
+    .submit-button {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
 }
