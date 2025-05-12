@@ -71,22 +71,63 @@
     });
 </script>
 
-<!-- ------------------- Script: Validação de Email ------------------- -->
+<!-- ------------------- Script: Validação mais precisa ------------------- -->
 <script>
     const form = document.querySelector('.conj-campos');
-    const emailInput = form.querySelector('input[placeholder="Email"]');
+    const nome = document.getElementById('nome');
+    const telefone = document.getElementById('telefone');
+    const email = form.querySelector('input[placeholder="Email"]');
+    const cidade = form.querySelector('input[placeholder="Cidade"]');
+    const genero = form.querySelector('select');
 
     form.addEventListener('submit', function (e) {
-    const email = emailInput.value.trim();
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        let valid = true;
 
-    if (!emailValido) {
-        e.preventDefault();
-        alert('Por favor, insira um e-mail válido.');
-        emailInput.focus();
-    }
+        // Nome: pelo menos 3 letras
+        if (nome.value.trim().length < 3) {
+            alert('O nome deve ter pelo menos 3 caracteres.');
+            nome.focus();
+            valid = false;
+        }
+
+        // Telefone: deve ter 11 dígitos
+        const telLimpo = telefone.value.replace(/\D/g, '');
+        if (telLimpo.length !== 11) {
+            alert('O telefone deve conter 11 dígitos (DDD + número).');
+            telefone.focus();
+            valid = false;
+        }
+
+        // Cidade: apenas letras
+        const cidadeValida = /^[A-Za-zÀ-ú\s]+$/.test(cidade.value.trim());
+        if (!cidadeValida) {
+            alert('A cidade deve conter apenas letras.');
+            cidade.focus();
+            valid = false;
+        }
+
+        // Email: estrutura correta
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+        if (!emailValido) {
+            alert('Por favor, insira um e-mail válido.');
+            email.focus();
+            valid = false;
+        }
+
+        // Gênero: precisa estar selecionado (diferente de "disabled")
+        if (genero.value === "disabled") {
+            alert('Por favor, selecione um gênero.');
+            genero.focus();
+            valid = false;
+        }
+
+        // Impede o envio se algo for inválido
+        if (!valid) {
+            e.preventDefault();
+        }
     });
 </script>
+
 </body>
 
 </html>
