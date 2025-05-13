@@ -1,133 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DivulgaHub - Cadastrar Novo Usuário</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DivulgaHub - Cadastrar Novo Usuário</title>
-<link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <div class="container">
+      <!-- ------------------- Cabeçalho ------------------- -->
+      <header>
+        <h1>DivulgaHub</h1>
+        <button class="back-button">Voltar</button>
+      </header>
 
-<body>
-<div class="container">
-<!-- ------------------- Cabeçalho ------------------- -->
-    <header>
-<h1>DivulgaHub</h1>
-<button class="back-button">Voltar</button>
-    </header>
+      <!-- ------------------- Navegação ------------------- -->
+      <nav class="botoes-middle">
+        <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+        <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
+        <a href="cad_artistas.html" class="nav-button comunidade">Cadastrar Artista</a>
+        <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+        </nav>
 
-<!-- ------------------- Navegação ------------------- -->
-    <nav class="botoes-middle">
-    <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-    <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
-    <a href="cad_artistas.html" class="nav-button comunidade">Cadastrar Artista</a>
-    <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-    </nav>
+      <!-- ------------------- Título ------------------- -->
+      <h2 class="subtitulo-pagina1">Cadastrar Novo Usuário</h2>
 
-<!-- ------------------- Título ------------------- -->
-    <h2 class="subtitulo-pagina1">Cadastrar Novo Usuário</h2>
+      <!-- ------------------- Formulário ------------------- -->
+      <form class="conj-campos">
+        <input type="text" id="nome" placeholder="Nome" required autocomplete="name" />
+        <input type="text" id="telefone" placeholder="Telefone" required autocomplete="tel" />
+        <input type="text" placeholder="Cidade" required autocomplete="address-level2" />
+        <input type="email" placeholder="Email" required autocomplete="email" />
 
-<!-- ------------------- Formulário ------------------- -->
-    <form class="conj-campos">
-    <input type="text" id="nome" placeholder="Nome" required autocomplete="name" />
-    <input type="text" id="telefone" placeholder="Telefone" required autocomplete="tel" />
-    <input type="text" placeholder="Cidade" required autocomplete="address-level2" />
-    <input type="email" placeholder="Email" required autocomplete="email" />
+        <select name="Gênero" class="gênero" required>
+          <option value="disabled" selected disabled>Selecione o Gênero</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Prefiro não informar">Prefiro não informar</option>
+        </select>
 
-    <select name="Gênero" class="gênero" required>
-        <option value="disabled" selected disabled>Selecione o Gênero</option>
-        <option value="Masculino">Masculino</option>
-        <option value="Feminino">Feminino</option>
-        <option value="Prefiro não informar">Prefiro não informar</option>
-    </select>
+        <button type="submit" class="submit-button">Cadastrar</button>
+      </form>
+    </div>
 
-    <button type="submit" class="submit-button">Cadastrar</button>
-    </form>
-</div>
-
-<!-- ------------------- Script: Máscara de Telefone ------------------- -->
-<script>
-    const telefoneInput = document.getElementById('telefone');
-
-    telefoneInput.addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, '');
-
-    if (value.length === 0) {
-        e.target.value = '';
-        return;
-    }
-
-    if (value.length > 11) value = value.slice(0, 11);
-
-    if (value.length > 6) {
-        value = value.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
-    } else if (value.length > 2) {
-        value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-    } else {
-        value = value.replace(/^(\d*)/, '($1');
-}
-
-    e.target.value = value;
-    });
-</script>
-
-<!-- ------------------- Script: Validação mais precisa ------------------- -->
-<script>
-    const form = document.querySelector('.conj-campos');
-    const nome = document.getElementById('nome');
-    const telefone = document.getElementById('telefone');
-    const email = form.querySelector('input[placeholder="Email"]');
-    const cidade = form.querySelector('input[placeholder="Cidade"]');
-    const genero = form.querySelector('select');
-
-    form.addEventListener('submit', function (e) {
-        let valid = true;
-
-        // Nome: pelo menos 3 letras
-        if (nome.value.trim().length < 3) {
-            alert('O nome deve ter pelo menos 3 caracteres.');
-            nome.focus();
-            valid = false;
-        }
-
-        // Telefone: deve ter 11 dígitos
-        const telLimpo = telefone.value.replace(/\D/g, '');
-        if (telLimpo.length !== 11) {
-            alert('O telefone deve conter 11 dígitos (DDD + número).');
-            telefone.focus();
-            valid = false;
-        }
-
-        // Cidade: apenas letras
-        const cidadeValida = /^[A-Za-zÀ-ú\s]+$/.test(cidade.value.trim());
-        if (!cidadeValida) {
-            alert('A cidade deve conter apenas letras.');
-            cidade.focus();
-            valid = false;
-        }
-
-        // Email: estrutura correta
-        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
-        if (!emailValido) {
-            alert('Por favor, insira um e-mail válido.');
-            email.focus();
-            valid = false;
-        }
-
-        // Gênero: precisa estar selecionado (diferente de "disabled")
-        if (genero.value === "disabled") {
-            alert('Por favor, selecione um gênero.');
-            genero.focus();
-            valid = false;
-        }
-
-        // Impede o envio se algo for inválido
-        if (!valid) {
-            e.preventDefault();
-        }
-    });
-</script>
-
-</body>
-
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+  </body>
 </html>
