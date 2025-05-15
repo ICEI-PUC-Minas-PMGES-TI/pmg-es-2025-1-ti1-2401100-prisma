@@ -2,15 +2,19 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DivulgaHub - Cadastrar Novo Evento</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .erro {
+            border: 2px solid red;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <!-- ------------------- Header e Navegação ------------------- -->
         <header>
             <h1>DivulgaHub</h1>
             <button class="back-button" onclick="history.back()">Voltar</button>
@@ -24,18 +28,21 @@
             <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
         </nav>
 
-        <!-- ------------------- Formulário de Cadastro ------------------- -->
         <h2 class="subtitulo-pagina1">Cadastrar Novo Evento</h2>
         <form class="conj-campos" id="evento-form">
-            <input type="text" id="titulo" name="titulo" placeholder="Título do evento" required>
-            <input type="text" id="local" name="local" placeholder="Local" required>
-            <input type="text" id="preco" name="preco" placeholder="Preço" required>
-            <input type="text" id="artistas" name="artistas" placeholder="Artistas" required>
-            <input type="text" id="promotor" name="promotor" placeholder="Promotor do evento" required>
-            
-            <!-- Select para escolher o tipo do evento -->
+            <input type="text" id="titulo" name="titulo" placeholder="Título do evento" required />
+            <input type="text" id="local" name="local" placeholder="Local" required />
+            <input type="text" id="endereco" name="endereco" placeholder="Endereço" required />
+            <input type="text" id="preco" name="preco" placeholder="Preço" required />
+
+            <select name="artistas" id="artistas" multiple required>
+                <option value="" disabled>Selecione os Artistas</option>
+            </select>
+
+            <input type="text" id="promotor" name="promotor" placeholder="Promotor do evento" required />
+
             <select name="tipo" id="tipo" class="gênero" required>
-                <option value="disabled" selected disabled>Selecione o Tipo de Evento</option>
+                <option value="" selected disabled>Selecione o Tipo de Evento</option>
                 <option value="Trap">Trap</option>
                 <option value="Funk">Funk</option>
                 <option value="Gospel">Gospel</option>
@@ -44,94 +51,50 @@
                 <option value="Outro">Outro</option>
             </select>
 
-            <!-- Botão para submeter o formulário -->
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
     </div>
 
     <script>
-        // Seleciona o formulário e os campos
-        const form = document.getElementById('evento-form');
-        const campos = {
-            titulo: document.getElementById('titulo'),
-            local: document.getElementById('local'),
-            preco: document.getElementById('preco'),
-            tipo: document.getElementById('tipo'),
-            artistas: document.getElementById('artistas'),
-            promotor: document.getElementById('promotor'),
-        };
+        document.addEventListener("DOMContentLoaded", function() {
+            const artistasSelect = document.getElementById("artistas");
+            let artistasSalvos = localStorage.getItem("artistas");
 
-        // Máscara para o campo de Preço (R$ 0,00)
-        campos.preco.addEventListener('input', function (e) {
-            let valor = e.target.value.replace(/\D/g, '');
-            if (valor.length < 3) {
-                valor = valor.padStart(3, '0');
-            }
-            valor = (parseInt(valor, 10) / 100).toFixed(2);
-            valor = valor.replace('.', ',');
-            valor = 'R$ ' + valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-            e.target.value = valor;
-        });
-
-        // Validação e estilo de erro
-        form.addEventListener('submit', function (e) {
-            let valid = true;
-
-            // Limpa estilos antigos
-            for (const campo in campos) {
-                campos[campo].classList.remove('erro');
-            }
-
-            // Valida os campos
-            if (campos.titulo.value.trim().length < 3) {
-                campos.titulo.classList.add('erro');
-                campos.titulo.focus();
-                valid = false;
-            }
-
-            if (campos.local.value.trim() === '') {
-                campos.local.classList.add('erro');
-                if (valid) campos.local.focus();
-                valid = false;
-            }
-
-            if (campos.preco.value.trim() === '') {
-                campos.preco.classList.add('erro');
-                if (valid) campos.preco.focus();
-                valid = false;
-            }
-
-            if (campos.tipo.value.trim() === '') {
-                campos.tipo.classList.add('erro');
-                if (valid) campos.tipo.focus();
-                valid = false;
-            }
-
-            if (campos.artistas.value.trim() === '') {
-                campos.artistas.classList.add('erro');
-                if (valid) campos.artistas.focus();
-                valid = false;
-            }
-
-            if (campos.promotor.value.trim() === '') {
-                campos.promotor.classList.add('erro');
-                if (valid) campos.promotor.focus();
-                valid = false;
-            }
-
-            if (!valid) {
-                e.preventDefault();
+            if (artistasSalvos) {
+                const artistasArray = JSON.parse(artistasSalvos);
+                artistasArray.forEach(artista => {
+                    const option = document.createElement("option");
+                    option.value = artista;
+                    option.textContent = artista;
+                    artistasSelect.appendChild(option);
+                });
             }
         });
 
-        // Remove borda vermelha ao digitar
-        for (const campo in campos) {
-            campos[campo].addEventListener('input', function () {
-                if (this.value.trim() !== '') {
-                    this.classList.remove('erro');
-                }
-            });
-        }
+        document.getElementById("evento-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const titulo = document.getElementById("titulo").value;
+            const local = document.getElementById("local").value;
+            const endereco = document.getElementById("endereco").value;
+            const preco = document.getElementById("preco").value;
+            const artistasSelecionados = Array.from(document.getElementById("artistas").selectedOptions).map(option => option.value);
+            const promotor = document.getElementById("promotor").value;
+            const tipo = document.getElementById("tipo").value;
+
+            const novoEvento = {
+                titulo: titulo,
+                local: local,
+                endereco: endereco,
+                preco: preco,
+                artistas: artistasSelecionados,
+                promotor: promotor,
+                tipo: tipo
+            };
+
+            console.log("Dados do novo evento:", novoEvento);
+            alert("Evento cadastrado com sucesso! (Dados no console)");
+            document.getElementById("evento-form").reset();
+        });
     </script>
 </body>
 
