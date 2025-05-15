@@ -30,72 +30,49 @@
 
         <h2 class="subtitulo-pagina1">Cadastrar Novo Evento</h2>
         <form class="conj-campos" id="evento-form">
-            <input type="text" id="titulo" name="titulo" placeholder="Título do evento" required />
-            <input type="text" id="local" name="local" placeholder="Local" required />
-            <input type="text" id="endereco" name="endereco" placeholder="Endereço" required />
-            <input type="text" id="preco" name="preco" placeholder="Preço" required />
-
-            <select name="artistas" id="artistas" multiple required>
-                <option value="" disabled>Selecione os Artistas</option>
-            </select>
-
-            <input type="text" id="promotor" name="promotor" placeholder="Promotor do evento" required />
-
-            <select name="tipo" id="tipo" class="gênero" required>
-                <option value="" selected disabled>Selecione o Tipo de Evento</option>
-                <option value="Trap">Trap</option>
-                <option value="Funk">Funk</option>
-                <option value="Gospel">Gospel</option>
-                <option value="Pagode">Pagode</option>
-                <option value="MPB">MPB</option>
-                <option value="Outro">Outro</option>
-            </select>
-
+            <div class="form-group">
+                <label for="titulo">Título do evento:</label>
+                <input type="text" id="titulo" name="titulo" required />
+            </div>
+            <div class="form-group">
+                <label for="local">Local:</label>
+                <input type="text" id="local" name="local" required />
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required />
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="text" id="preco" name="preco" required />
+            </div>
+            <div class="form-group" id="artistas-group">
+                <label for="artistas">Selecione os Artistas:</label>
+                <select name="artistas" id="artistas" multiple required>
+                    <option value="" disabled>Selecione os Artistas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="promotor">Promotor do evento:</label>
+                <input type="text" id="promotor" name="promotor" required />
+            </div>
+            <div class="form-group" id="tipo-group">
+                <label for="tipo">Selecione o Tipo de Evento:</label>
+                <select name="tipo" id="tipo" class="gênero" required>
+                    <option value="" selected disabled>Selecione o Tipo de Evento</option>
+                    <option value="Trap">Trap</option>
+                    <option value="Funk">Funk</option>
+                    <option value="Gospel">Gospel</option>
+                    <option value="Pagode">Pagode</option>
+                    <option value="MPB">MPB</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const artistasSelect = document.getElementById("artistas");
-            let artistasSalvos = localStorage.getItem("artistas");
-
-            if (artistasSalvos) {
-                const artistasArray = JSON.parse(artistasSalvos);
-                artistasArray.forEach(artista => {
-                    const option = document.createElement("option");
-                    option.value = artista;
-                    option.textContent = artista;
-                    artistasSelect.appendChild(option);
-                });
-            }
-        });
-
-        document.getElementById("evento-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const titulo = document.getElementById("titulo").value;
-            const local = document.getElementById("local").value;
-            const endereco = document.getElementById("endereco").value;
-            const preco = document.getElementById("preco").value;
-            const artistasSelecionados = Array.from(document.getElementById("artistas").selectedOptions).map(option => option.value);
-            const promotor = document.getElementById("promotor").value;
-            const tipo = document.getElementById("tipo").value;
-
-            const novoEvento = {
-                titulo: titulo,
-                local: local,
-                endereco: endereco,
-                preco: preco,
-                artistas: artistasSelecionados,
-                promotor: promotor,
-                tipo: tipo
-            };
-
-            console.log("Dados do novo evento:", novoEvento);
-            alert("Evento cadastrado com sucesso! (Dados no console)");
-            document.getElementById("evento-form").reset();
-        });
-    </script>
+    <script src="eventos.js"></script>
 </body>
 
 </html>

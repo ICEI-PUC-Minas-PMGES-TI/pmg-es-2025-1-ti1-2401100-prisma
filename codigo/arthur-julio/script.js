@@ -1,29 +1,31 @@
-// cadastroValidation.js
+// cad_artistas.js
 
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
+  const form = document.querySelector("#form-artista");
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const nome = document.querySelector("#nome");
-    const email = document.querySelector("#email");
-    const telefone = document.querySelector("#telefone");
-    const estilo = document.querySelector("#estilo");
-    const localizacao = document.querySelector("#localizacao");
+    const nomePessoa = document.querySelector("#nomePessoa");
+    const nomeArtistico = document.querySelector("#nomeArtistico");
 
-    if (
-      !nome.value.trim() ||
-      !email.value.trim() ||
-      !telefone.value.trim() ||
-      !estilo.value.trim() ||
-      !localizacao.value.trim()
-    ) {
-      alert("Por favor, preencha todos os campos obrigatórios.");
+    if (!nomePessoa.value.trim() || !nomeArtistico.value.trim()) {
+      alert("Por favor, preencha o nome completo e o nome artístico.");
       return;
     }
 
-    alert("Cadastro realizado com sucesso! 🎉");
+    const nomeArtisticoValue = nomeArtistico.value.trim();
+    let artistasSalvos = localStorage.getItem("artistas");
+    artistasSalvos = artistasSalvos ? JSON.parse(artistasSalvos) : [];
+
+    if (!artistasSalvos.includes(nomeArtisticoValue)) {
+      artistasSalvos.push(nomeArtisticoValue);
+      localStorage.setItem("artistas", JSON.stringify(artistasSalvos));
+      alert(`Artista "${nomeArtisticoValue}" cadastrado com sucesso! 🎉`);
+    } else {
+      alert(`O artista "${nomeArtisticoValue}" já está cadastrado.`);
+    }
+
     form.reset();
   });
 });

@@ -9,6 +9,7 @@
 <body>
   <div class="container">
     <header>
+      <button class="back-button" onclick="history.back()">Voltar</button>
       <h1>DivulgaHub</h1>
       <nav>
         <a href="index.html" class="nav-button eventos">Eventos</a>
@@ -22,7 +23,6 @@
     <main>
       <h2>Cadastro de Artista</h2>
       <form id="form-artista">
-        <!-- Dados Pessoais -->
         <label for="nomePessoa" class="form-label">Nome completo:</label>
         <input type="text" id="nomePessoa" name="nomePessoa" required>
 
@@ -38,7 +38,6 @@
         <label for="dataNascimento" class="form-label">Data de nascimento:</label>
         <input type="date" id="dataNascimento" name="dataNascimento" class="data-input" required>
 
-        <!-- Informações Artísticas -->
         <label for="nomeArtistico" class="form-label">Nome artístico:</label>
         <input type="text" id="nomeArtistico" name="nomeArtistico" required>
 
@@ -65,11 +64,7 @@
         <button type="submit" class="submit-button">Cadastrar Artista</button>
       </form>
     </main>
-
-    <div class="botoes-middle">
-      <a href="index.html" class="back-button">Voltar</a>
-    </div>
   </div>
+  <script src="cad_artistas.js"></script>
 </body>
 </html>
-<script src="cadastroValidation.js"></script>

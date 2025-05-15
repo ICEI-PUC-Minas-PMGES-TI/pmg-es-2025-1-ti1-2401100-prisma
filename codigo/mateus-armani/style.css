@@ -52,16 +52,19 @@ h2 {
     background-color: #3183c6;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1em;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.9em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
     text-align: center;
+    min-width: 100px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .nav-button:hover {
     background-color: #256aa2;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
 }
 
 .back-button {
@@ -75,21 +78,46 @@ h2 {
 
 /* ------------------- Formulários ------------------- */
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; /* Habilita o Flexbox para o formulário */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: flex-start; /* Alinha os itens no topo */
     margin-top: 20px;
 }
 
-input[type="text"],
-select {
-    width: 80%;
-    margin-bottom: 10px;
-    padding: 10px;
+.form-group {
+    display: flex; /* Habilita o Flexbox para agrupar label e input/select */
+    flex-direction: column; /* Organiza label e input/select em coluna */
+    margin-bottom: 8px;
+    width: calc(50% - 10px); /* Define a largura para ocupar metade da linha com um pequeno espaçamento */
+}
+
+.form-group label {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    text-align: left; /* Alinha o texto da label à esquerda */
+    display: block; /* Garante que a label ocupe a largura total do grupo */
+}
+
+.form-group input[type="text"],
+.form-group select {
+    padding: 8px;
     border-radius: 5px;
     border: 2px solid #ddd;
-    font-size: 1em;
+    font-size: 0.9em;
     transition: border-color 0.3s;
+    width: 100%; /* Faz o input/select ocupar a largura do grupo */
+    box-sizing: border-box; /* Inclui padding e border na largura */
+}
+
+/* Estilo específico para o select de artistas */
+.form-group#artistas-group {
+    /* Manter a largura padrão de 50% ou ajustar conforme necessário */
+}
+
+/* Estilo específico para o select de tipo de evento */
+.form-group#tipo-group {
+    /* Manter a largura padrão de 50% ou ajustar conforme necessário */
 }
 
 /* ------------------- Validação de Formulário ------------------- */
@@ -106,27 +134,53 @@ select:focus {
 
 /* Botão de envio */
 .submit-button {
-    width: 50%;
+    width: 60%; /* Ajuste a largura conforme necessário */
     background-color: #1d6e25;
     color: white;
-    padding: 12px;
+    padding: 10px;
     border: none;
-    border-radius: 5px;
-    font-size: 1em;
+    border-radius: 8px;
+    font-size: 0.9em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+    order: 100; /* Garante que o botão apareça por último */
+    width: 100%; /* Ocupa a largura total para ficar abaixo das colunas */
 }
 
 .submit-button:hover {
     background-color: #388e3c;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
 }
 
 /* ------------------- Responsividade ------------------- */
 @media (max-width: 600px) {
-    input[type="text"],
-    select,
+    form {
+        flex-direction: column; /* Volta a ser coluna em telas pequenas */
+        align-items: stretch; /* Ocupa toda a largura */
+    }
+
+    .form-group {
+        width: 100%; /* Ocupa toda a largura em telas pequenas */
+    }
+
+    .form-group label {
+        text-align: left;
+    }
+
+    .form-group input[type="text"],
+    .form-group select {
+        font-size: 0.8em;
+        padding: 8px;
+        margin-bottom: 6px;
+    }
+
     .submit-button {
         width: 100%;
+        font-size: 0.8em;
+        padding: 10px;
+        margin-top: 10px;
     }
 
     header {
@@ -135,7 +189,15 @@ select:focus {
     }
 
     .nav-button {
-        font-size: 0.9em;
-        padding: 8px 16px;
+        font-size: 0.8em;
+        padding: 8px 12px;
+        min-width: auto;
+        flex-grow: 1;
+        margin-bottom: 5px;
+    }
+
+    .botoes-middle {
+        flex-direction: column;
+        align-items: stretch;
     }
 }
