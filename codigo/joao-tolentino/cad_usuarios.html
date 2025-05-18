@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DivulgaHub - Cadastrar Novo Usuário</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 
 <body>
   <div class="container">
     <!-- ------------------- Cabeçalho ------------------- -->
-    <header>
+    <header data-aos="fade-down">
       <h1>DivulgaHub</h1>
-      <button class="back-button">Voltar</button>
+      <button class="back-button" onclick="history.back()">Voltar</button>
     </header>
 
     <!-- ------------------- Navegação ------------------- -->
-    <nav class="botoes-middle">
+    <nav class="botoes-middle" data-aos="fade-up">
       <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
       <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
       <a href="cad_artistas.html" class="nav-button comunidade">Cadastrar Artista</a>
       <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
     </nav>
 
-    <!-- ------------------- Navegação ------------------- -->
-    <nav class="botoes-middle">
-      <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-      <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
-      <a href="../arthur-julio/cadastro-artista.html" class="nav-button comunidade">Cadastrar Artista</a>
-      <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-    </nav>
-    =======
     <!-- ------------------- Título ------------------- -->
-    <h2 class="subtitulo-pagina1">Cadastrar Novo Usuário</h2>
-    >>>>>>> b4e30f4295829239465942f35faec6be5fe3ccff
+    <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Usuário</h2>
 
     <!-- ------------------- Formulário ------------------- -->
-    <form class="conj-campos">
-      <input type="text" id="nome" placeholder="Nome" required autocomplete="name" />
-      <input type="text" id="telefone" placeholder="Telefone" required autocomplete="tel" />
-      <input type="text" placeholder="Cidade" required autocomplete="address-level2" />
-      <input type="email" placeholder="Email" required autocomplete="email" />
+    <form class="conj-campos" data-aos="fade-up" novalidate>
+      <label for="nome">Nome <span class="required">*</span></label>
+      <input type="text" id="nome" name="nome" required autocomplete="name" />
 
-      <select name="Gênero" class="gênero" required>
+      <label for="telefone">Telefone <span class="required">*</span></label>
+      <input type="text" id="telefone" name="telefone" required autocomplete="tel" />
+
+      <label for="cidade">Cidade <span class="required">*</span></label>
+      <input type="text" id="cidade" name="cidade" required autocomplete="address-level2" />
+
+      <label for="email">Email <span class="required">*</span></label>
+      <input type="email" id="email" name="email" required autocomplete="email" />
+
+      <label for="genero">Gênero <span class="required">*</span></label>
+      <select id="genero" name="genero" class="gênero" required>
         <option value="disabled" selected disabled>Selecione o Gênero</option>
         <option value="Masculino">Masculino</option>
         <option value="Feminino">Feminino</option>
@@ -56,6 +55,7 @@
 
   <!-- Scripts -->
   <script src="scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
-
 </html>
