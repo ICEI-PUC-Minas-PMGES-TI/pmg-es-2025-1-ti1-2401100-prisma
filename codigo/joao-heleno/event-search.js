@@ -11,19 +11,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const preco = document.querySelector('select[name="price"]').value;
     const dataInicio = document.getElementById("data-inicio").value;
     const dataFim = document.getElementById("data-fim").value;
-
-    console.log("Localização:", localizacao);
-    console.log("Horário:", horario);
-    console.log("Preço:", preco);
-    console.log("Data de Início:", dataInicio);
-    console.log("Data de Fim:", dataFim);
   });
 
-  const inicio = new Date(dataInicio);
-  const fim = new Date(dataFim);
-
-  if (inicio > fim) {
-    console.error("A data de início não pode ser maior que a data de fim.");
-    return false;
+  if (dataInicio && dataFim && new Date(dataInicio) > new Date(dataFim)) {
+    alert("A data de início não pode ser maior que a data de fim.");
+    return;
   }
+
+  const filtrosSelecionados = {
+    localizacao,
+    horario,
+    preco,
+    dataInicio,
+    dataFim,
+    geradoEm: new Date().toISOString(),
+  };
+
+  const jsonStr = JSON.stringify(filtrosSelecionados, null, 2);
+
+  const blob = new Blob([jsonStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "search-eventos.json";
+  document.body.appendChild(a);
+  a.click();
+
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  console.log("JSON gerado:", jsonStr);
 });
