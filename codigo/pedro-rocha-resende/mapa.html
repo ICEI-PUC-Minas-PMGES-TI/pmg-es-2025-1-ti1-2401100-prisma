@@ -11,10 +11,92 @@
 </head>
 
 <body>
-    <h1>Encontre eventos perto de você!</h1>
-    <div id="map"></div>
+    <header class="navbar">
+        <div class="brand">
+            <img src="assets/placeholder.svg" alt="placeholder icon">
+            <span class="project-name">DivulgaHub</span>
+        </div>
+        <nav class="nav-links">
+            <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+            <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+            <!-- <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a> -->
+            <!-- Retirados porque o usuário já estaria logado -->
+            <!-- <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a> -->
+            <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+            <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+        </nav>
+    </header>
+
+    <main class="content">
+
+        <!-- Filtragem e procura de eventos -->
+        <section class="search-bar">
+            <input type="text" placeholder="Buscar eventos próximos…">
+            <select title="categoria" name="categoria" id="selecao-categoria">
+                <option disabled selected>categoria</option>
+                <option disabled>categoria1</option>
+            </select>
+            <select title="data" name="data" id="selecao-data">
+                <option disabled selected>data</option>
+                <option disabled>data1</option>
+            </select>
+            <select title="localizacao" name="localizacao" id="selecao-localizacao">
+                <option disabled selected>localizacao</option>
+                <!-- TODO - definir melhor isso; pode ser bairro, ou o usuário pode ter a opção de aumentar o raio de distância para os eventos -->
+                <option disabled>localizacao1</option>
+            </select>
+        </section>
+
+        <!-- Mapa -->
+        <section class="map-container">
+            <div id="map"></div>
+        </section>
+
+        <!-- Cards de eventos -->
+        <h1 id="titulo-secao-resultados">Resultados</h1>
+        <section class="event-cards">
+            <div class="event-card">
+                <img src="https://placehold.co/200x200" alt="Evento">
+                <div class="event-info">
+                    <h3>Evento 1</h3>
+                    <p>Data: 14/06/2025</p>
+                    <p>Localização: Praça Sete</p>
+                    <p>Preço: R$ 100,00</p>
+                    <p class="description">Descrição breve do evento...</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://placehold.co/200x200" alt="Evento">
+                <div class="event-info">
+                    <h3>Evento 2</h3>
+                    <p>Data: 05/09/2025</p>
+                    <p>Localização: Mineirão</p>
+                    <p>Preço: R$ 50,00</p>
+                    <p class="description">Descrição breve do evento...</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://placehold.co/200x200" alt="Evento">
+                <div class="event-info">
+                    <h3>Evento 3</h3>
+                    <p>Data: 25/12/2025</p>
+                    <p>Localização: Casa dos Artistas, 187</p>
+                    <p>Preço: R$ 70,00</p>
+                    <p class="description">Descrição breve do evento...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        2025 - DivulgaHub - Todos os direitos reservados
+    </footer>
 
     <script src="mapa.js"></script>
 </body>
 
 </html>
+<!-- <img style="align-self: center; width: 50%; height: auto;" src="assets/image.png" alt="testage temp image"> -->
+<!-- <h1>Encontre eventos perto de você!</h1>
+<div id="map"></div> -->
