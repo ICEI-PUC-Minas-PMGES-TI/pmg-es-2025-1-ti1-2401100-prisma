@@ -84,11 +84,35 @@ async function carregarEventosProximos(userLat, userLon) {
       if (distancia <= 10) {
         new mapboxgl.Marker({ color: "#ff5e5e" })
           .setLngLat([lon, lat])
-          .setPopup(new mapboxgl.Popup().setText(evento.titulo))
+          .setPopup(new mapboxgl.Popup().setHTML(gerarPopupCardMapa(evento)))
           .addTo(map);
       }
     }
   }
+}
+
+// Função que gera o pop-up card de um evento ao clicar no respectivo pin no mapa
+
+function gerarPopupCardMapa(evento) {
+  const data = new Date(evento.data);
+  const dataFormatada = data.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const endereco = `${evento.local.endereco}, ${evento.local.cidade} - ${evento.local.estado}`;
+
+  return `
+    <div class="popup-card">
+      <h3>${evento.titulo}</h3>
+      <p><strong>Data:</strong> ${dataFormatada}</p>
+      <p><strong>Endereço:</strong> ${endereco}</p>
+      <p><strong>Preço:</strong> ${evento.preco}</p>
+    </div>
+  `;
 }
 
 // Obtendo a posição atual do usuário com Geolocation API (https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) (requer permissão do usuário para acessar sua geolocalização)
@@ -121,7 +145,7 @@ async function initializeMap() {
     console.log("User position:", latitude, longitude);
 
     map.setCenter([longitude, latitude]);
-    map.setZoom(13);
+    map.setZoom(12.5);
     new mapboxgl.Marker()
       .setLngLat([longitude, latitude])
       .setPopup(new mapboxgl.Popup().setText("Você está aqui"))
