@@ -30,7 +30,6 @@ const eventos = [
   const filtro = document.getElementById("filtro-genero");
   const container = document.getElementById("eventos-container");
   
-  // Preencher filtro de gêneros
   const generos = [...new Set(eventos.map(e => e.genero))];
   generos.forEach(genero => {
     const option = document.createElement("option");
@@ -68,13 +67,6 @@ const eventos = [
         <button class="favorito-btn">${isFavorito ? "❤️ Desfavoritar" : "🤍 Favoritar"}</button> 
       `;
   
-      const btnDetalhes = card.querySelector(".detalhes-btn");
-      btnDetalhes.addEventListener("click", () => {
-        alert(
-          `🎉 ${evento.titulo}\n📍 Local: ${evento.local}\n📅 Data: ${evento.data}\n🎵 Gênero: ${evento.genero}\n💰 Preço: R$ ${evento.preco.toFixed(2)}`
-        );
-      });
-  
       const btnFavorito = card.querySelector(".favorito-btn");
       btnFavorito.addEventListener("click", () => {
         if (favoritos.includes(evento.id)) {
@@ -82,10 +74,14 @@ const eventos = [
         } else {
           favoritos.push(evento.id);
         }
-        renderizarEventos(filtro.value); // Re-renderizar para atualizar o botão
+        renderizarEventos(filtro.value); 
       });
   
       container.appendChild(card);
     });
   }
-  
+      document.body.insertBefore(btnCriar, container);
+      
+      btnCriar.addEventListener("click", () => {
+  alert("Funcionalidade de criação ainda não implementada.");
+});

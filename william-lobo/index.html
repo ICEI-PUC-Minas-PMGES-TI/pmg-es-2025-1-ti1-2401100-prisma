@@ -8,17 +8,21 @@
 </head>
 <body>
   <header>
-    <div class="filtro-container">
-      <label for="filtro-genero">Filtrar por gênero</label>
-      <select id="filtro-genero">
-        <option value="Todos">Todos</option>
-      </select>
+    <h1 class="logo">DivulgaHub</h1>
+    <div class="filtro-criar-container">
+      <div class="filtro-label-select">
+        <label for="filtro-genero">Filtrar por gênero</label>
+        <select id="filtro-genero">
+          <option value="Todos">Todos</option>
+        </select>
+      </div>
+      <button class="criar-btn">+ Criar Evento</button>
     </div>
-    <h1>DivulgaHub</h1>
   </header>
-
-  <main id="eventos-container"></main>
-
+  <hr class="linha-divisoria" />
+  <div style="padding-left: 20px;">
+    <main id="eventos-container"></main>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
