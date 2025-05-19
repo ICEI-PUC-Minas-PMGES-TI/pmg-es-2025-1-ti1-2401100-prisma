@@ -1,83 +1,146 @@
-// Getting current user position with JS vanilla (requires geolocation permission from user)
-const successCallback = (position) => {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-  console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-  // Mapbox API map
-  mapboxgl.accessToken =
-    "pk.eyJ1IjoicGVkcm9yZXNlbmRlLXB1Y21pbmFzIiwiYSI6ImNtYWJqN3p5ZjJjMG8ybXE5aTE4dnM4eWkifQ.2c_APoZ5J8IMH2ZWQy-zpw";
-  const map = new mapboxgl.Map({
-    container: "map",
-    style: "mapbox://styles/mapbox/streets-v9",
-    projection: "globe", // Display the map as a globe, since satellite-v9 defaults to Mercator
-    zoom: 14,
-    center: [longitude, latitude],
-  });
-};
+let latitude;
+let longitude;
 
-const errorCallback = (error) => {
-  console.error(`Error getting location: ${error.message}`);
-};
+// Adicionando API key e inicializando o mapa com valores padrão
+mapboxgl.accessToken =
+  "pk.eyJ1IjoicGVkcm9yZXNlbmRlLXB1Y21pbmFzIiwiYSI6ImNtYWJqN3p5ZjJjMG8ybXE5aTE4dnM4eWkifQ.2c_APoZ5J8IMH2ZWQy-zpw";
 
-const options = {
-  enableHighAccuracy: true,
-  timeout: 10000,
-  maximumAge: 0,
-};
-
-navigator.geolocation.getCurrentPosition(
-  successCallback,
-  errorCallback,
-  options
-);
-
-map.addControl(new mapboxgl.NavigationControl());
-map.scrollZoom.disable();
-
-map.on("style.load", () => {
-  map.setFog({}); // Set the default atmosphere style
+const map = new mapboxgl.Map({
+  container: "map",
+  style: "mapbox://styles/mapbox/dark-v11", // streets-v9
+  zoom: 2,
+  center: [0, 0],
 });
 
-// The following values can be changed to control rotation speed:
+map.addControl(new mapboxgl.NavigationControl()); // Opcional
 
-// At low zooms, complete a revolution every two minutes.
-// const secondsPerRevolution = 240;
-// Above zoom level 5, do not rotate.
-// const maxSpinZoom = 5;
-// Rotate at intermediate speeds between zoom levels 3 and 5.
-// const slowSpinZoom = 3;
+// Declarando a fórmula de Haversine, usada para calcular a distância entre dois pontos na superficie da Terra
 
-let userInteracting = false;
-const spinEnabled = true;
+function haversineDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // km
+  const toRad = (deg) => (deg * Math.PI) / 180;
 
-function spinGlobe() {
-  const zoom = map.getZoom();
-  if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
-    let distancePerSecond = 360 / secondsPerRevolution;
-    if (zoom > slowSpinZoom) {
-      // Slow spinning at higher zooms
-      const zoomDif = (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
-      distancePerSecond *= zoomDif;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Funcionalidade de busca de endereço no Mapbox Geocoding API
+
+async function geocodeEndereco(endereco) {
+  const query = encodeURIComponent(endereco);
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapboxgl.accessToken}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data.features.length > 0) {
+    return data.features[0].center; // [longitude, latitude]
+  }
+
+  return null;
+}
+
+// Função para obter a geolocalização de um endereço
+
+async function geocodeEndereco(endereco) {
+  const query = encodeURIComponent(endereco);
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapboxgl.accessToken}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data.features.length > 0) {
+    return data.features[0].center; // [longitude, latitude]
+  }
+
+  return null;
+}
+
+// Função que carrega os eventos do JSON e bota no mapa
+
+async function carregarEventosProximos(userLat, userLon) {
+  const response = await fetch("data/eventos.json");
+  const eventos = await response.json();
+
+  for (const evento of eventos) {
+    let coords = evento.geolocalizacao;
+
+    // Se não tem coordenadas, usa o endereço e a API de geocodificação, para obter as coordenadas
+    if (!coords || coords.length !== 2) {
+      const enderecoCompleto = `${evento.local.endereco}, ${evento.local.cidade}, ${evento.local.estado}`;
+      coords = await geocodeEndereco(enderecoCompleto);
     }
-    const center = map.getCenter();
-    center.lng -= distancePerSecond;
-    // Smoothly animate the map over one second.
-    // When this animation is complete, it calls a 'moveend' event.
-    map.easeTo({ center, duration: 1000, easing: (n) => n });
+
+    if (coords) {
+      const [lon, lat] = coords;
+      const distancia = haversineDistance(userLat, userLon, lat, lon);
+
+      if (distancia <= 10) {
+        new mapboxgl.Marker({ color: "#ff5e5e" })
+          .setLngLat([lon, lat])
+          .setPopup(new mapboxgl.Popup().setText(evento.titulo))
+          .addTo(map);
+      }
+    }
   }
 }
 
-// Pause spinning on interaction
-map.on("mousedown", () => {
-  userInteracting = true;
-});
-map.on("dragstart", () => {
-  userInteracting = true;
-});
+// Obtendo a posição atual do usuário com Geolocation API (https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) (requer permissão do usuário para acessar sua geolocalização)
 
-// When animation is complete, start spinning if there is no ongoing interaction
-map.on("moveend", () => {
-  spinGlobe();
-});
+function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => {
+        reject(error);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      }
+    );
+  });
+}
 
-spinGlobe();
+// Usando a geolocalização do usuário para marcar no mapa sua localizacao e para centralizar o mapa
+async function initializeMap() {
+  try {
+    const { latitude, longitude } = await getUserLocation();
+    console.log("User position:", latitude, longitude);
+
+    map.setCenter([longitude, latitude]);
+    map.setZoom(13);
+    new mapboxgl.Marker()
+      .setLngLat([longitude, latitude])
+      .setPopup(new mapboxgl.Popup().setText("Você está aqui"))
+      .addTo(map);
+
+    await carregarEventosProximos(latitude, longitude);
+    // return { latitude, longitude };
+  } catch (error) {
+    console.error("Erro ao obter a localização do usuário", error.message);
+  }
+}
+initializeMap();
+
+// TODO - Pegar localização a partir do endereço IP, caso o usuário não dê permissão para acessar sua geolocalização: https://youtu.be/g5tNE7-vkGk
+// fetch('https://ipapi.co/json/')
+//   .then(response => response.json())
+//   .then(data => {
+//     const latitude = data.latitude;
+//     const longitude = data.longitude;
+//     map.setCenter([longitude, latitude]);
+//     map.setZoom(13);
+//   });
