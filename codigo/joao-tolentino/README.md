@@ -10,3 +10,4 @@ Sprint Individual - Definição e detalhamento dos artefatos designados (Cadastr
 
 Sprint Individual - Feita a página de Cadastro de Usuários em HTML;
                   - Estilização da página feita com CSS;
+

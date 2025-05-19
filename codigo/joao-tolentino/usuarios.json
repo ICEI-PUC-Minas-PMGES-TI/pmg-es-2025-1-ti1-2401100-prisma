@@ -1,0 +1,17 @@
+[
+    {
+      "nome": "João Silva",
+      "telefone": "(11) 91234-5678",
+      "cidade": "São Paulo",
+      "email": "joao.silva@email.com",
+      "genero": "Masculino"
+    },
+    {
+      "nome": "Maria Oliveira",
+      "telefone": "(21) 99876-5432",
+      "cidade": "Rio de Janeiro",
+      "email": "maria.oliveira@email.com",
+      "genero": "Feminino"
+    }
+  ]
+  

@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #410445;
+  color: white;
+  padding: 20px;
+}
+
+.container {
+  background-color: #673ab7;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 15px 0 10px;
+  color: #ffd700;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.voltar-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #ab1717;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.voltar-button:hover {
+  background-color: #c62828;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DivulgaHub - Cadastrar Novo Evento</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .erro {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>DivulgaHub</h1>
+            <button class="back-button" onclick="history.back()">Voltar</button>
+        </header>
+
+        <nav class="botoes-middle">
+            <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+            <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+            <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
+            <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
+            <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+            <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+        </nav>
+
+        <h2 class="subtitulo-pagina1">Cadastrar Novo Evento</h2>
+        <form class="conj-campos" id="evento-form">
+            <div class="form-group">
+                <label for="titulo">Título do evento:</label>
+                <input type="text" id="titulo" name="titulo" required />
+            </div>
+            <div class="form-group">
+                <label for="local">Local:</label>
+                <input type="text" id="local" name="local" required />
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required />
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="text" id="preco" name="preco" required />
+            </div>
+            <div class="form-group" id="artistas-group">
+                <label for="artistas">Selecione os Artistas:</label>
+                <select name="artistas" id="artistas" multiple required>
+                    <option value="" disabled>Selecione os Artistas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="artistas">Selecione os Promotores:</label>
+                <select name="promotores" id="promotores" multiple required>
+                    <option value="" disabled>Selecione o Promotor</option>
+                </select>
+            </div>
+            <div class="form-group" id="tipo-group">
+                <label for="tipo">Selecione o Tipo de Evento:</label>
+                <select name="tipo" id="tipo" class="gênero" required>
+                    <option value="" selected disabled>Selecione o Tipo de Evento</option>
+                    <option value="Trap">Trap</option>
+                    <option value="Funk">Funk</option>
+                    <option value="Gospel">Gospel</option>
+                    <option value="Pagode">Pagode</option>
+                    <option value="MPB">MPB</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-button">Cadastrar</button>
+        </form>
+    </div>
+
+    <script src="eventos.js"></script>
+</body>
+
+</html>

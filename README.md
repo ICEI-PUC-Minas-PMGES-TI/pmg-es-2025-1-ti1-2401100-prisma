@@ -15,7 +15,6 @@ O DivulgaHub será um site criado para reunir e facilitar o acesso a todos os ev
  - Mateus de Moura Armani
  - Pedro Rocha Resende
  - William Augusto Lobo Freire
-
 ## Professores responsáveis
 
 - Diego Augusto de Faria Barros
