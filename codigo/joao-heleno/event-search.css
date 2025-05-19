@@ -170,3 +170,30 @@ form {
     color: #ffffff;
     text-align: left;
   }
+
+.cards-wrapper{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-top:1.5rem;
+}
+
+.card{
+  border:1px solid #ddd;
+  border-radius:8px;
+  padding:0.75rem 1rem;
+  box-shadow:0 2px 4px rgba(0,0,0,.1);
+  width:180px;
+  font-family:inherit;
+}
+
+.card h3{
+  font-size:1rem;
+  margin:0 0 .5rem 0;
+}
+
+.card p{
+  margin:0;
+  font-weight:600;
+}
+
