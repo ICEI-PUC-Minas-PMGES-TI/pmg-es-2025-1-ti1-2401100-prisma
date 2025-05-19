@@ -38,7 +38,10 @@ h2 {
 .botoes-middle {
   display: flex;
   justify-content: center;
-  margin-top: 3%;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 button,
@@ -55,17 +58,19 @@ input[type="text"] {
 }
 
 .nav-button {
-  display: inline-block;
-  text-decoration: none;
+  background-color: #3183c6;
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 8px;
   font-size: 1em;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s;
-  margin: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: #2567a5;
+  transform: scale(1.05);
 }
 
 .nav-button.eventos {
@@ -132,7 +137,9 @@ form {
   align-items: center;
 }
 
-.localizacao-select, .hour-select, .price-select {
+.localizacao-select,
+.hour-select,
+.price-select {
   width: 80%;
   margin-bottom: 10px;
   padding: 10px;
@@ -163,10 +170,36 @@ form {
 }
 
 .form-label {
-    width: 80%;
-    font-size: 1em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #ffffff;
-    text-align: left;
-  }
+  width: 80%;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffffff;
+  text-align: left;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  font-family: inherit;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.card p {
+  margin: 0;
+  font-weight: 600;
+}

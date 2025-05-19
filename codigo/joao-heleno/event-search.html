@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DivulgaHub - Eventos</title>
     <link rel="stylesheet" href="event-search.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
 
   <body>
     <div class="container">
-      <header>
+      <header data-aos="fade-down">
         <h1>DivulgaHub</h1>
         <button class="back-button">Voltar</button>
       </header>
-      <nav class="botoes-middle">
+      <nav class="botoes-middle" data-aos="fade-up">
         <a href="../mateus-armani/cad_eventos.html" class="nav-button eventos"
           >Cadastro de Eventos</a
         >
@@ -69,7 +70,14 @@
         />
         <button type="submit" class="submit-button">Pesquisar</button>
       </form>
+
+      <section id="cards-wrapper" class="cards-wrapper"></section>
+      
     </div>
   </body>
   <script src="event-search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </html>
