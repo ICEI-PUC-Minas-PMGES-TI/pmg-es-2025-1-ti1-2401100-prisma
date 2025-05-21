@@ -1,196 +1,100 @@
+/* Seu CSS existente do projeto DivulgaHub... */
+
+/* Exemplo de CSS que você já deve ter no style.css */
 body {
-    font-family: sans-serif;
-    background: linear-gradient(180deg, #6A1B9A 0%, #4A148C 100%);
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    padding: 0;
 }
 
 .container {
-    max-width: 800px;
-    width: 100%;
-}
-
-.artista-detalhe-card {
+    max-width: 960px;
+    margin: 20px auto;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-.artista-header {
+header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
-.artista-foto {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-.artista-nome {
-    font-size: 2.5em;
+h1 {
     color: #333;
     margin: 0;
-    flex-grow: 1;
 }
 
-.favoritar-button {
-    background-color: #fff;
-    color: #e91e63;
-    border: 2px solid #e91e63;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-.favoritar-button.active {
-    background-color: #e91e63;
-    color: #fff;
-}
-
-.favoritar-button i {
-    margin-right: 5px;
-}
-
-.artista-info {
-    margin-bottom: 30px;
-}
-
-.info-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
-
-.info-item i {
-    color: #6A1B9A;
-    font-size: 1.2em;
-    margin-right: 15px;
-    width: 20px;
-    text-align: center;
-}
-
-.info-item span {
-    font-weight: bold;
-    margin-right: 5px;
-    color: #555;
-}
-
-.info-item p, .info-item ul {
-    margin-top: 0;
-    color: #777;
-    line-height: 1.6;
-}
-
-.albuns-lista {
-    padding-left: 20px;
-}
-
-.links-lista {
-    padding-left: 0;
-    list-style: none;
-}
-
-.links-lista li {
-    margin-bottom: 5px;
-}
-
-.links-lista a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.links-lista a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-.artista-eventos h2 {
-    color: #333;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.eventos-lista {
-    list-style: none;
-    padding-left: 0;
-}
-
-.evento-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.evento-item span {
-    margin-right: 10px;
-    color: #666;
-}
-
-.evento-item .evento-nome {
-    font-weight: bold;
-    color: #333;
-    flex-grow: 1;
-}
-
-.evento-item .fa-calendar-alt, .evento-item .fa-map-marker-alt {
-    margin-right: 5px;
-}
-
-.ver-detalhes-evento {
+nav .nav-button {
     background-color: #007bff;
-    color: #fff;
+    color: white;
+    padding: 8px 15px;
     border: none;
-    padding: 8px 12px;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 14px;
 }
 
-.ver-detalhes-evento:hover {
-    background-color: #0056b3;
+/* ...e assim por diante com o CSS do seu formulário de cadastro */
+
+
+/* --- Estilos específicos para a lista de artistas (ADICIONE ISSO NO SEU style.css) --- */
+.artist-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
 }
 
-.voltar-button {
-    background-color: #555;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin-top: 20px;
-    width: 100%;
+.artist-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+}
+
+.artist-card h3 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.artist-card p {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.artist-card p strong {
+    color: #333;
+}
+
+.no-artists-message {
     text-align: center;
-}
-
-.voltar-button i {
-    margin-right: 5px;
-}
-
-.voltar-button:hover {
-    background-color: #333;
+    color: #777;
+    margin-top: 50px;
+    font-size: 1.1em;
 }
