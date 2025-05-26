@@ -1,84 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Artista</title>
-    <link rel="stylesheet" href="detalhes_artista.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Artistas Cadastrados - DivulgaHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="artista-detalhe-card">
-            <div class="artista-header">
-                <img src="artista_exemplo.jpg" alt="Foto do Artista" class="artista-foto">
-                <h1 class="artista-nome">Nome do Artista</h1>
-                <button class="favoritar-button active">
-                    <i class="fas fa-heart"></i> Favoritado
-                </button>
-            </div>
+  <div class="container">
+    <header>
+      <button class="back-button" onclick="history.back()">Voltar</button>
+      <h1>DivulgaHub</h1>
+      <nav>
+        <a href="index.html" class="nav-button eventos">Eventos</a>
+        <a href="cadastro-evento.html" class="nav-button cadastrar-evento">Cadastrar Evento</a>
+        <a href="cadastro-usuario.html" class="nav-button cadastrar-usuario">Cadastrar Usuário</a>
+        <a href="comunidade.html" class="nav-button comunidade">Comunidade</a>
+        <a href="perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+      </nav>
+    </header>
 
-            <div class="artista-info">
-                <div class="info-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Data de Nascimento:</span>
-                    <p>DD/MM/AAAA</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Local de Origem:</span>
-                    <p>Cidade, Estado</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-music"></i>
-                    <span>Gênero(s):</span>
-                    <p>Gênero Musical 1, Gênero Musical 2</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-compact-disc"></i>
-                    <span>Álbuns Principais:</span>
-                    <ul class="albuns-lista">
-                        <li>Álbum 1</li>
-                        <li>Álbum 2</li>
-                        <li>Álbum 3</li>
-                    </ul>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Biografia:</span>
-                    <p class="artista-biografia">Breve biografia do artista, contando sua trajetória, influências e principais conquistas.</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-link"></i>
-                    <span>Links:</span>
-                    <ul class="links-lista">
-                        <li><a href="#">Website Oficial</a></li>
-                        <li><a href="#">Spotify</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="artista-eventos">
-                <h2>Próximos Eventos</h2>
-                <ul class="eventos-lista">
-                    <li class="evento-item">
-                        <span class="evento-nome">Nome do Evento 1</span>
-                        <span class="evento-data"><i class="fas fa-calendar-alt"></i> DD/MM/AAAA</span>
-                        <span class="evento-local"><i class="fas fa-map-marker-alt"></i> Local do Evento</span>
-                        <button class="ver-detalhes-evento">Ver Detalhes</button>
-                    </li>
-                    <li class="evento-item">
-                        <span class="evento-nome">Nome do Evento 2</span>
-                        <span class="evento-data"><i class="fas fa-calendar-alt"></i> DD/MM/AAAA</span>
-                        <span class="evento-local"><i class="fas fa-map-marker-alt"></i> Local do Evento</span>
-                        <button class="ver-detalhes-evento">Ver Detalhes</button>
-                    </li>
-                    </ul>
-            </div>
-
-            <button class="voltar-button"><i class="fas fa-arrow-left"></i> Voltar</button>
+    <main>
+      <h2>Artistas Cadastrados</h2>
+      <div id="artist-list-container" class="artist-list">
         </div>
-    </div>
+      <p id="no-artists-message" class="no-artists-message" style="display: none;">Nenhum artista cadastrado ainda.</p>
+    </main>
+  </div>
+  <script src="lista_artistas.js"></script>
 </body>
 </html>

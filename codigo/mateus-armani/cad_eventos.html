@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DivulgaHub - Cadastrar Novo Evento</title>
     <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
     <style>
         .erro {
             border: 2px solid red;
@@ -15,12 +17,12 @@
 
 <body>
     <div class="container">
-        <header>
+        <header data-aos="fade-down">
             <h1>DivulgaHub</h1>
             <button class="back-button" onclick="history.back()">Voltar</button>
         </header>
 
-        <nav class="botoes-middle">
+        <nav class="botoes-middle" data-aos="fade-up">
             <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
             <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
             <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
@@ -29,8 +31,8 @@
             <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
         </nav>
 
-        <h2 class="subtitulo-pagina1">Cadastrar Novo Evento</h2>
-        <form class="conj-campos" id="evento-form">
+        <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Evento</h2>
+        <form class="conj-campos" data-aos="fade-up" novalidate>
             <div class="form-group">
                 <label for="titulo">Título do evento:</label>
                 <input type="text" id="titulo" name="titulo" required />
@@ -76,6 +78,8 @@
     </div>
 
     <script src="eventos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init();</script>
 </body>
 
 </html>

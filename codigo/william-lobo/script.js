@@ -44,6 +44,11 @@ const eventos = [
   
   renderizarEventos("Todos");
   
+  function redirecionarDetalhes(){
+    window.location.href = "../lucas-eduardo/event details.html";
+  }
+
+
   function renderizarEventos(generoSelecionado) {
     container.innerHTML = "";
   
@@ -63,7 +68,7 @@ const eventos = [
         <p>📅 ${evento.data}</p>
         <p>🎵 ${evento.genero}</p>
         <p>Preço R$ ${evento.preco.toFixed(2)}</p>
-        <button class="detalhes-btn">Ver Detalhes</button>
+        <button onclick="redirecionarDetalhes()"class="detalhes-btn">Ver Detalhes</button>
         <button class="favorito-btn">${isFavorito ? "❤️ Desfavoritar" : "🤍 Favoritar"}</button> 
       `;
   
