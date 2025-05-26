@@ -12,7 +12,7 @@
       "cidade": "Belo Horizonte",
       "endereco": "Av. Amazonas, 6200 - Gameleira"
     },
-    "preco": "100",
+    "preco": 100,
     "idsArtistas": [1, 2]
   },
   {
@@ -28,7 +28,7 @@
       "cidade": "Belo Horizonte",
       "endereco": "R. Humaitá, 1167 - Padre Eustáquio"
     },
-    "preco": "20",
+    "preco": 20,
     "idsArtistas": [3]
   },
   {
@@ -44,7 +44,7 @@
       "cidade": "Belo Horizonte",
       "endereco": "Av. Amazonas, 6825 - Gameleira"
     },
-    "preco": "Gratuito",
+    "preco": 0,
     "idsArtistas": []
   }
 ]
