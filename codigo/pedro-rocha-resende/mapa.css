@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: blueviolet;
+  background-color: #410445; /* blueviolet */
   /* color: #f0f0f0;
   line-height: 1.6; */
 }
@@ -17,7 +17,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #2f6e51;
+  background-color: #6dae71; /* #2f6e51 */
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -46,7 +46,7 @@ body {
 }
 
 .nav-links a {
-  background-color: #9378cd;
+  background-color: #3183c6; /* #9378cd */
   color: white;
   text-decoration: none;
   padding: 5px 12px;

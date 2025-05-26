@@ -10,7 +10,7 @@
     "local": {
       "estado": "Minas Gerais",
       "cidade": "Belo Horizonte",
-      "endereco": "Rua Doresópolis, 480 - Fernão Dias"
+      "endereco": "Av. Amazonas, 6200 - Gameleira"
     },
     "preco": "100",
     "idsArtistas": [1, 2]
@@ -26,7 +26,7 @@
     "local": {
       "estado": "Minas Gerais",
       "cidade": "Belo Horizonte",
-      "endereco": "Rua Nicolina Pachêco, 449 - Palmares"
+      "endereco": "R. Humaitá, 1167 - Padre Eustáquio"
     },
     "preco": "20",
     "idsArtistas": [3]
@@ -42,7 +42,7 @@
     "local": {
       "estado": "Minas Gerais",
       "cidade": "Belo Horizonte",
-      "endereco": "Av. Cristiano Machado, 4000 - União"
+      "endereco": "Av. Amazonas, 6825 - Gameleira"
     },
     "preco": "Gratuito",
     "idsArtistas": []
