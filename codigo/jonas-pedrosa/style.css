@@ -1,0 +1,204 @@
+:root {
+    --roxo-principal: #6A0DAD; /* Um roxo vibrante */
+    --roxo-escuro-fundo: #3A015C; /* Um roxo mais escuro para o fundo */
+    --roxo-claro-card: #8A2BE2; /* Um roxo um pouco mais claro para o card */
+    --branco: #FFFFFF;
+    --cinza-claro: #F0F0F0;
+    --sombra-leve: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--roxo-escuro-fundo);
+    color: var(--branco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: var(--roxo-claro-card);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px var(--sombra-leve);
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+h1 {
+    color: var(--branco);
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px var(--sombra-leve);
+}
+
+.artist-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.artist-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--branco);
+    box-shadow: 0 4px 10px var(--sombra-leve);
+    margin-bottom: 20px;
+}
+
+.artist-name {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0;
+}
+
+.artist-genre {
+    font-size: 1.3em;
+    color: var(--cinza-claro);
+    margin-top: 5px;
+}
+
+.artist-bio {
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.social-media {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-media a {
+    display: inline-block;
+    color: var(--branco);
+    background-color: var(--roxo-principal);
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px var(--sombra-leve);
+}
+
+.social-media a:hover {
+    background-color: #9333EA; /* Um roxo um pouco mais claro no hover */
+    transform: translateY(-3px);
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: var(--branco);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--roxo-principal);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.recent-works {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.work-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+}
+
+.work-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.work-item-info {
+    padding: 15px;
+    text-align: left;
+}
+
+.work-item-info h3 {
+    font-size: 1.3em;
+    margin: 0 0 8px 0;
+    color: var(--branco);
+}
+
+.work-item-info p {
+    font-size: 0.9em;
+    color: var(--cinza-claro);
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .artist-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .artist-name {
+        font-size: 1.8em;
+    }
+
+    .artist-genre {
+        font-size: 1em;
+    }
+
+    .artist-bio {
+        font-size: 0.9em;
+        padding: 0 10px;
+    }
+
+    .social-media a {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+}
