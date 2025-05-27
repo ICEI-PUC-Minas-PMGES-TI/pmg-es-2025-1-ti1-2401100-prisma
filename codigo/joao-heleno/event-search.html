@@ -38,12 +38,17 @@
         <aside class="aside">
           <h2 class="subtitulo-pagina1">Pesquisar Eventos</h2>
           <form class="conj-campos" id="form-busca-eventos">
-            <select name="localizacao" class="localizacao-select" id="localizacao-select">
+            
+            <select id="estado-select" class="estado-select">
+              <option value="">Selecionar Estado</option>
+            </select>
+
+            <select
+              name="localizacao"
+              class="localizacao-select"
+              id="localizacao-select"
+            >
               <option value="">Selecionar Localização</option>
-              <option value="sao-paulo">São Paulo</option>
-              <option value="rio-de-janeiro">Rio de Janeiro</option>
-              <option value="belo-horizonte">Belo Horizonte</option>
-              <option value="porto-alegre">Porto Alegre</option>
             </select>
 
             <select name="hour" class="hour-select" id="hour-select">
@@ -84,8 +89,7 @@
           </form>
         </aside>
 
-        <section id="cards-wrapper" class="cards-wrapper">
-        </section>
+        <section id="cards-wrapper" class="cards-wrapper"></section>
       </div>
     </div>
 
