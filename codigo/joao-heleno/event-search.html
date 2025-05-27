@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <link rel="stylesheet" href="style.css" />
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DivulgaHub - Eventos</title>
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="event-search.css" />
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -16,11 +18,14 @@
         <h1>DivulgaHub</h1>
         <button class="back-button">Voltar</button>
       </header>
+
       <nav class="botoes-middle" data-aos="fade-up">
         <a href="../mateus-armani/cad_eventos.html" class="nav-button eventos"
           >Cadastro de Eventos</a
         >
-        <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cadastrar-usuario"
+        <a
+          href="../joao-tolentino/cad_usuarios.html"
+          class="nav-button cadastrar-usuario"
           >Cadastrar Usuário</a
         >
         <a href="../jonas-pedrosa/index.html" class="nav-button comunidade"
@@ -29,55 +34,65 @@
         <a href="../" class="nav-button meu-perfil">Meu Perfil</a>
       </nav>
 
-      <h2 class="subtitulo-pagina1">Pesquisar Eventos</h2>
-      <form class="conj-campos" id="form-busca-eventos">
-        <select name="localizacao" class="localizacao-select">
-          <option value="">Selecionar Localização</option>
-          <option value="sao-paulo">São Paulo</option>
-          <option value="rio-de-janeiro">Rio de Janeiro</option>
-          <option value="belo-horizonte">Belo Horizonte</option>
-          <option value="porto-alegre">Porto Alegre</option>
-          ]
-        </select>
-        <select name="hour" class="hour-select">
-          <option value="">Selecionar Horário</option>
-          <option value="madrugada">00:00 - 05:59</option>
-          <option value="dia">06:00 - 11:59</option>
-          <option value="tarde">12:00 - 17:59</option>
-          <option value="noite">18:00 - 23-59</option>
-        </select>
-        <select name="price" class="price-select">
-          <option value="">Preço</option>
-          <option value="menorcem">Menor que 100</option>
-          <option value="entre-cem-dozentos">R$ 100 a 200</option>
-          <option value="entre-dozentos-trezentos">R$ 201 a 350</option>
-          <option value="maior-que-trezentos">Maior que 350</option>
-        </select>
-        <label for="data-inicio" class="form-label">Data de Início</label>
-        <input
-          type="date"
-          id="data-inicio"
-          class="data-input"
-          name="data-evento"
-        />
+      <div class="div-main">
+        <aside class="aside">
+          <h2 class="subtitulo-pagina1">Pesquisar Eventos</h2>
+          <form class="conj-campos" id="form-busca-eventos">
+            <select name="localizacao" class="localizacao-select" id="localizacao-select">
+              <option value="">Selecionar Localização</option>
+              <option value="sao-paulo">São Paulo</option>
+              <option value="rio-de-janeiro">Rio de Janeiro</option>
+              <option value="belo-horizonte">Belo Horizonte</option>
+              <option value="porto-alegre">Porto Alegre</option>
+            </select>
 
-        <label for="data-fim" class="form-label">Data de Fim</label>
-        <input
-          type="date"
-          id="data-fim"
-          class="end-date"
-          name="data-evento-fim"
-        />
-        <button type="submit" class="submit-button">Pesquisar</button>
-      </form>
+            <select name="hour" class="hour-select" id="hour-select">
+              <option value="">Selecionar Horário</option>
+              <option value="madrugada">00:00 - 05:59</option>
+              <option value="dia">06:00 - 11:59</option>
+              <option value="tarde">12:00 - 17:59</option>
+              <option value="noite">18:00 - 23-59</option>
+            </select>
 
-      <section id="cards-wrapper" class="cards-wrapper"></section>
-      
+            <select name="price" class="price-select" id="price-select">
+              <option value="">Preço</option>
+              <option value="menorcem">Menor que 100</option>
+              <option value="entre-cem-dozentos">R$ 100 a 200</option>
+              <option value="entre-dozentos-trezentos">R$ 201 a 350</option>
+              <option value="maior-que-trezentos">Maior que 350</option>
+            </select>
+
+            <label for="data-inicio" class="form-label">Data de Início</label>
+            <input
+              type="date"
+              id="data-inicio"
+              class="data-input"
+              name="data-evento"
+            />
+
+            <label for="data-fim" class="form-label">Data de Fim</label>
+            <input
+              type="date"
+              id="data-fim"
+              class="end-date"
+              name="data-evento-fim"
+            />
+
+            <button type="submit" class="submit-button" id="submit-button">
+              Pesquisar
+            </button>
+          </form>
+        </aside>
+
+        <section id="cards-wrapper" class="cards-wrapper">
+        </section>
+      </div>
     </div>
+
+    <script src="event-search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
-  <script src="event-search.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 </html>

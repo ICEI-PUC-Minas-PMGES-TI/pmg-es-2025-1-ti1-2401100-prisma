@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardsWrapper = document.getElementById("cards-wrapper");
 
   let eventos = [];
-  fetch("eventos.json")
+  fetch("mateus-armani/eventos.json")
     .then((r) => r.json())
     .then((data) => {
       eventos = data;

@@ -1,13 +1,13 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #410445;
-  color: rgb(255, 255, 255);
+  color: #fff;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -18,11 +18,10 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
-  border-bottom: 2px solid rgb(136, 48, 120);
+  border-bottom: 2px solid #883078;
 }
 
-h1,
-h2 {
+h1, h2 {
   margin: 0;
 }
 
@@ -30,31 +29,12 @@ h1 {
   font-size: 2em;
 }
 
-h2 {
-  font-size: 1.5em;
-  margin-bottom: 30px;
-}
-
 .botoes-middle {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 30px;
-  margin-top: 10px;
-}
-
-button,
-input[type="text"] {
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.back-button {
-  background-color: #ab1717;
-  color: rgb(255, 255, 255);
+  margin: 20px 0;
 }
 
 .nav-button {
@@ -73,94 +53,41 @@ input[type="text"] {
   transform: scale(1.05);
 }
 
-.nav-button.eventos {
-  background-color: #3183c6;
-}
-
-.nav-button.cadastrar-evento {
-  background-color: #3183c6;
-}
-
-.nav-button.cadastrar-usuario {
-  background-color: #3183c6;
-}
-
-.nav-button.comunidade {
-  background-color: #3183c6;
-}
-
-.nav-button.meu-perfil {
-  background-color: #3183c6;
-}
-
-.nav-button:hover {
-  opacity: 1.56;
-}
-
-input[type="text"] {
-  width: 80%;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.submit-button {
-  width: 50%;
-
-  background-color: #1d6e25c1;
+.back-button {
+  background-color: #ab1717;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.submit-button:hover {
-  background-color: #388e3c;
-}
-
-.subtitulo-pagina1 {
+.div-main {
   display: flex;
-  justify-content: center;
-  margin-top: 3%;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.conj-campos {
-  display: flexbox;
-}
-
-main {
+/* Formulário à esquerda */
+.aside {
+  width: 25%;
   background-color: #673ab7;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .localizacao-select,
 .hour-select,
-.price-select {
-  width: 80%;
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 1em;
-  border: none;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.data-input {
-  width: 80%;
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 1em;
-  border: none;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
+.price-select,
+.data-input,
 .end-date {
-  width: 80%;
+  width: 100%;
   margin-bottom: 10px;
   padding: 10px;
   font-size: 1em;
@@ -170,18 +97,32 @@ form {
 }
 
 .form-label {
-  width: 80%;
   font-size: 1em;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #ffffff;
   text-align: left;
 }
 
+.submit-button {
+  width: 100%;
+  background-color: #1d6e25c1;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #388e3c;
+}
+
 .cards-wrapper {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.5rem;
   margin-top: 1.5rem;
 }
 
@@ -191,7 +132,8 @@ form {
   padding: 0.75rem 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 180px;
-  font-family: inherit;
+  background-color: white;
+  color: #000;
 }
 
 .card h3 {
@@ -202,4 +144,10 @@ form {
 .card p {
   margin: 0;
   font-weight: 600;
+}
+
+.subtitulo-pagina1 {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  text-align: center;
 }
