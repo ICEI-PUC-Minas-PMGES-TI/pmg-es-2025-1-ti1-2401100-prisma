@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DivulgaHub - Cadastrar Novo Evento</title>
     <link rel="stylesheet" href="style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
     <style>
         .erro {
@@ -21,6 +21,7 @@
             <h1>DivulgaHub</h1>
             <button class="back-button" onclick="history.back()">Voltar</button>
         </header>
+        <!-- Botões - Link outras Páginas-->
 
         <nav class="botoes-middle" data-aos="fade-up">
             <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
@@ -31,6 +32,7 @@
             <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
         </nav>
 
+        <!-- Campos -->
         <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Evento</h2>
         <form class="conj-campos" data-aos="fade-up" novalidate>
             <div class="form-group">
@@ -45,20 +47,34 @@
                 <label for="endereco">Endereço:</label>
                 <input type="text" id="endereco" name="endereco" required />
             </div>
+
             <div class="form-group">
-                <label for="preco">Preço:</label>
-                <input type="text" id="preco" name="preco" required />
+                <label for="data">Data do Evento:</label>
+                <input type="text" id="data" name="data" required />
             </div>
+
             <div class="form-group" id="artistas-group">
                 <label for="artistas">Selecione os Artistas:</label>
-                <select name="artistas" id="artistas" multiple required>
-                    <option value="" disabled>Selecione os Artistas</option>
+                <select name="tipo" id="tipo" class="gênero" required>
+                    <option value="" selected disabled>Artistas</option>
+                    <option value="Caetano Veloso">Caetano Veloso</option>
+                    <option value="Miltom Nascimento">Miltom Nascimento</option>
+                    <option value="Ws da Igrejinha">Ws da Igrejinha</option>
+                    <option value="Lulu Santos">Lulu Santos</option>
+                    <option value="Péricles">Péricles</option>
+                    <option value="Outro">Outro</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="artistas">Selecione os Promotores:</label>
-                <select name="promotores" id="promotores" multiple required>
-                    <option value="" disabled>Selecione o Promotor</option>
+                <select name="tipo" id="tipo" class="gênero" required>
+                    <option value="" selected disabled>Lista de Promotores</option>
+                    <option value="Carlos">Carlos</option>
+                    <option value="Larissa">Larissa</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Miguel">Miguel</option>
+                    <option value="Armando">Armando</option>
+                    <option value="Outro">Outro</option>
                 </select>
             </div>
             <div class="form-group" id="tipo-group">
@@ -72,6 +88,10 @@
                     <option value="MPB">MPB</option>
                     <option value="Outro">Outro</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="text" id="preco" name="preco" required />
             </div>
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
