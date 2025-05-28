@@ -1,8 +1,6 @@
 :root {
-    --roxo-principal: #580B94;    /* Roxo vibrante, agora mais escuro */
-    --roxo-escuro-fundo: #2C0145;  /* Roxo bem escuro para o fundo */
-    /* --roxo-claro-card: #7722C2; / * Esta variável não será mais usada para o fundo do .container */
-                                  /* Você pode removê-la ou mantê-la para uso futuro. */
+    --roxo-principal: #580B94;    
+    --roxo-escuro-fundo: #2C0145;  
     --branco: #FFFFFF;
     --preto: #000000;
     --cinza-claro: #F0F0F0;
@@ -24,27 +22,14 @@ body {
 .container {
     width: 90%;
     max-width: 800px;
-    /* background-color: var(--roxo-escuro-fundo);  Pode remover esta linha ou definir como transparent */
-    background-color: transparent; /* Garante que não haja cor de fundo própria */
-    /* border-radius: 15px;                      Remova esta linha */
-    /* box-shadow: 0 8px 16px var(--sombra-leve); Remova esta linha */
-    padding: 40px;                            /* Manter para espaçamento interno */
+    padding: 40px;                            
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
 .container::before {
-    display: none; /* Adicione esta linha para desativar o pseudo-elemento */
-    /* content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%);
-    border-radius: 15px;
-    pointer-events: none; */
+    display: none; 
 }
 
 h1 {
