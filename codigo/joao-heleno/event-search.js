@@ -1,52 +1,76 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("form-busca-eventos");
-  const cardsWrapper = document.getElementById("cards-wrapper");
+const localizacaoSelect = document.querySelector("#localizacao-select");
+const hourSelect = document.querySelector("#hour-select");
+const priceSelect = document.querySelector("#price-select");
+const startDate = document.querySelector("#data-inicio");
+const endDate = document.querySelector("#data-fim");
+const submitButton = document.querySelector("#submit-button");
+const estadoSelect = document.querySelector("#estado-select");
 
-  let eventos = [];
-  fetch("eventos.json")
-    .then((r) => r.json())
-    .then((data) => {
-      eventos = data;
-      renderCards(eventos);
-    });
+const form = document.querySelector("#form-busca-eventos");
 
-  function renderCards(lista) {
-    cardsWrapper.innerHTML = "";
-    lista.forEach((ev) => {
-      const div = document.createElement("div");
-      div.className = "card";
-      div.innerHTML = `<h3>${ev.titulo}</h3><p>R$ ${ev.preco}</p>`;
-      cardsWrapper.appendChild(div);
-    });
-    if (!lista.length) {
-      cardsWrapper.innerHTML = "<p>Nenhum evento encontrado.</p>";
-    }
+async function carregarEstados() {
+  const response = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
+  const estados = await response.json();
+
+  estados.sort((a, b) => a.nome.localeCompare(b.nome));
+
+  estados.forEach(estado => {
+    const option = document.createElement("option");
+    option.value = estado.id;
+    option.textContent = `${estado.nome} (${estado.sigla})`;
+    estadoSelect.appendChild(option);
+  });
+}
+
+estadoSelect.addEventListener("change", async function () {
+  const estadoId = this.value;
+  localizacaoSelect.innerHTML = '<option value="">Carregando cidades...</option>';
+
+  const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`);
+  const cidades = await response.json();
+
+  localizacaoSelect.innerHTML = '<option value="">Selecionar Cidade</option>';
+  cidades.forEach(cidade => {
+    const option = document.createElement("option");
+    option.value = cidade.nome;
+    option.textContent = cidade.nome;
+    localizacaoSelect.appendChild(option);
+  });
+});
+
+carregarEstados();
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const dataInicio = startDate.value;
+  const dataFim = endDate.value;
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  const dataHoje = `${yyyy}-${mm}-${dd}`;
+
+  if (!estadoSelect.value) {
+    alert("Por favor, selecione um estado.");
+    return;
   }
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  if (!localizacaoSelect.value) {
+    alert("Por favor, selecione uma cidade.");
+    return;
+  }
 
-    const priceSel = form.price.value;
+  if (
+    (dataInicio && dataFim && dataInicio > dataFim) ||
+    dataInicio < dataHoje
+  ) {
+    alert("A data de início não pode ser maior que a data de fim.");
+    return;
+  }
 
-    const filtrados = eventos.filter((ev) => {
-      if (!priceSel) return true;
-
-      const precoNum = ev.preco === "Gratuito" ? 0 : parseFloat(ev.preco);
-
-      switch (priceSel) {
-        case "menorcem":
-          return precoNum < 100;
-        case "entre-cem-dozentos":
-          return precoNum >= 100 && precoNum <= 200;
-        case "entre-dozentos-trezentos":
-          return precoNum >= 201 && precoNum <= 350;
-        case "maior-que-trezentos":
-          return precoNum > 350;
-        default:
-          return true;
-      }
-    });
-
-    renderCards(filtrados);
-  });
+  if (!dataInicio || !dataFim) {
+    alert("Por favor, preencha as datas de início e fim.");
+    return;
+  }
 });

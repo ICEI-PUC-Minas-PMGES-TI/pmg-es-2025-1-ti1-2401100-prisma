@@ -46,22 +46,6 @@ async function geocodeEndereco(endereco) {
   return null;
 }
 
-// Função para obter a geolocalização de um endereço
-
-async function geocodeEndereco(endereco) {
-  const query = encodeURIComponent(endereco);
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapboxgl.accessToken}`;
-
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.features.length > 0) {
-    return data.features[0].center; // [longitude, latitude]
-  }
-
-  return null;
-}
-
 // Função que carrega os eventos do JSON e bota no mapa
 
 async function carregarEventosProximos(userLat, userLon) {
@@ -111,6 +95,7 @@ function gerarPopupCardMapa(evento) {
       <p><strong>Data:</strong> ${dataFormatada}</p>
       <p><strong>Endereço:</strong> ${endereco}</p>
       <p><strong>Preço:</strong> ${evento.preco}</p>
+      <p><a href="#">Detalhes</a></p>
     </div>
   `;
 }
@@ -138,33 +123,53 @@ function getUserLocation() {
   });
 }
 
-// Usando a geolocalização do usuário para marcar no mapa sua localizacao e para centralizar o mapa
+// Obtendo a geolocalização do usuário por meio da geolocation API e, caso ela seja recusada, determinando a geolocalização aproximada por meio do endereço IP. Com a geolacalização obtida, inicializa-se o mapa e se marca a localização do usuário.
 async function initializeMap() {
+  let coords;
+
   try {
-    const { latitude, longitude } = await getUserLocation();
-    console.log("User position:", latitude, longitude);
-
-    map.setCenter([longitude, latitude]);
-    map.setZoom(12.5);
-    new mapboxgl.Marker()
-      .setLngLat([longitude, latitude])
-      .setPopup(new mapboxgl.Popup().setText("Você está aqui"))
-      .addTo(map);
-
-    await carregarEventosProximos(latitude, longitude);
-    // return { latitude, longitude };
+    coords = await getUserLocation();
+    console.log("Localização por geolocalização do usuário: ", coords);
   } catch (error) {
-    console.error("Erro ao obter a localização do usuário", error.message);
+    console.warn(
+      "Geolocalização foi recusada, tentando obtê-la pelo endereço IP…"
+    );
+    coords = await getLocationByIP();
+    if (!coords) {
+      console.error("Não foi possível determinar a geolocalização do usuário.");
+      return;
+    }
+    console.log("Geolocalização obtida pelo endereço IP: ", coords);
   }
+
+  const { latitude, longitude } = coords;
+
+  map.setCenter([longitude, latitude]);
+  map.setZoom(12.5);
+  new mapboxgl.Marker()
+    .setLngLat([longitude, latitude])
+    .setPopup(new mapboxgl.Popup().setText("Voce esta aqui!"))
+    .addTo(map);
+
+  await carregarEventosProximos(latitude, longitude);
 }
 initializeMap();
 
-// TODO - Pegar localização a partir do endereço IP, caso o usuário não dê permissão para acessar sua geolocalização: https://youtu.be/g5tNE7-vkGk
-// fetch('https://ipapi.co/json/')
-//   .then(response => response.json())
-//   .then(data => {
-//     const latitude = data.latitude;
-//     const longitude = data.longitude;
-//     map.setCenter([longitude, latitude]);
-//     map.setZoom(13);
-//   });
+async function getLocationByIP() {
+  try {
+    const response = await fetch("https://ipapi.co/json/");
+    const data = await response.json();
+
+    if (data && data.latitude && data.longitude) {
+      return {
+        latitude: parseFloat(data.latitude),
+        longitude: parseFloat(data.longitude),
+      };
+    } else {
+      throw new Error("IP location not available");
+    }
+  } catch (error) {
+    console.error("Erro ao obter localização por IP:", err);
+    return null;
+  }
+}

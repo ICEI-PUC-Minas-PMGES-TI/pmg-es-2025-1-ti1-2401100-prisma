@@ -100,6 +100,16 @@ select {
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
+} 
+
+.card a {
+  margin-top: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .detalhes-btn {

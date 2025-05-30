@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <style>
+        /* A classe 'erro' aqui será complementada no style.css para o Select2 */
         .erro {
             border: 2px solid red;
         }
@@ -21,7 +24,6 @@
             <h1>DivulgaHub</h1>
             <button class="back-button" onclick="history.back()">Voltar</button>
         </header>
-        <!-- Botões - Link outras Páginas-->
 
         <nav class="botoes-middle" data-aos="fade-up">
             <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
@@ -32,17 +34,19 @@
             <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
         </nav>
 
-        <!-- Campos -->
         <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Evento</h2>
-        <form class="conj-campos" data-aos="fade-up" novalidate>
+
+        <form id="evento-form" class="conj-campos" data-aos="fade-up" novalidate>
             <div class="form-group">
                 <label for="titulo">Título do evento:</label>
                 <input type="text" id="titulo" name="titulo" required />
             </div>
+
             <div class="form-group">
                 <label for="local">Local:</label>
                 <input type="text" id="local" name="local" required />
             </div>
+
             <div class="form-group">
                 <label for="endereco">Endereço:</label>
                 <input type="text" id="endereco" name="endereco" required />
@@ -50,56 +54,54 @@
 
             <div class="form-group">
                 <label for="data">Data do Evento:</label>
-                <input type="text" id="data" name="data" required />
+                <input type="text" id="data" name="data" placeholder="DD/MM/AAAA" required />
             </div>
 
             <div class="form-group" id="artistas-group">
                 <label for="artistas">Selecione os Artistas:</label>
-                <select name="tipo" id="tipo" class="gênero" required>
-                    <option value="" selected disabled>Artistas</option>
-                    <option value="Caetano Veloso">Caetano Veloso</option>
-                    <option value="Miltom Nascimento">Miltom Nascimento</option>
-                    <option value="Ws da Igrejinha">Ws da Igrejinha</option>
-                    <option value="Lulu Santos">Lulu Santos</option>
-                    <option value="Péricles">Péricles</option>
-                    <option value="Outro">Outro</option>
-                </select>
+                <select name="artistas" id="artistas" class="genero" multiple required>
+                    </select>
             </div>
+
             <div class="form-group">
-                <label for="artistas">Selecione os Promotores:</label>
-                <select name="tipo" id="tipo" class="gênero" required>
-                    <option value="" selected disabled>Lista de Promotores</option>
+                <label for="promotor">Selecione os Promotores:</label>
+                <select name="promotor" id="promotor" class="genero" multiple required>
                     <option value="Carlos">Carlos</option>
                     <option value="Larissa">Larissa</option>
                     <option value="Julio">Julio</option>
                     <option value="Miguel">Miguel</option>
                     <option value="Armando">Armando</option>
-                    <option value="Outro">Outro</option>
                 </select>
             </div>
+
             <div class="form-group" id="tipo-group">
                 <label for="tipo">Selecione o Tipo de Evento:</label>
-                <select name="tipo" id="tipo" class="gênero" required>
-                    <option value="" selected disabled>Selecione o Tipo de Evento</option>
+                <select name="tipo" id="tipo" class="genero" multiple required>
                     <option value="Trap">Trap</option>
                     <option value="Funk">Funk</option>
                     <option value="Gospel">Gospel</option>
                     <option value="Pagode">Pagode</option>
                     <option value="MPB">MPB</option>
-                    <option value="Outro">Outro</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="preco">Preço:</label>
-                <input type="text" id="preco" name="preco" required />
+                <input type="text" id="preco" name="preco" placeholder="R$ 0,00" required />
             </div>
+
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script src="eventos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
