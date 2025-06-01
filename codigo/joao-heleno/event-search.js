@@ -6,7 +6,6 @@ const endDate = document.querySelector("#data-fim");
 const submitButton = document.querySelector("#submit-button");
 const estadoSelect = document.querySelector("#estado-select");
 const cardsWrapper = document.querySelector("#cards-wrapper");
-
 const form = document.querySelector("#form-busca-eventos");
 
 async function carregarEstados() {
@@ -14,9 +13,7 @@ async function carregarEstados() {
     "https://servicodados.ibge.gov.br/api/v1/localidades/estados"
   );
   const estados = await response.json();
-
   estados.sort((a, b) => a.nome.localeCompare(b.nome));
-
   estados.forEach((estado) => {
     const option = document.createElement("option");
     option.value = estado.id;
@@ -29,12 +26,10 @@ estadoSelect.addEventListener("change", async function () {
   const estadoId = this.value;
   localizacaoSelect.innerHTML =
     '<option value="">Carregando cidades...</option>';
-
   const response = await fetch(
     `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`
   );
   const cidades = await response.json();
-
   localizacaoSelect.innerHTML = '<option value="">Selecionar Cidade</option>';
   cidades.forEach((cidade) => {
     const option = document.createElement("option");
@@ -80,13 +75,14 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  gerarEventosMockados(); // Chama a função que exibe os eventos mockados
+  gerarEventosMockados(dataHoje);
 });
 
-function gerarEventosMockados() {
+function gerarEventosMockados(dataHoje) {
   const precoSelecionado = priceSelect.value;
+  const dataInicioSelecionada = startDate.value;
+  const dataFimSelecionada = endDate.value;
 
-  // Lista de eventos mockados com valor real
   const eventosMock = [
     {
       nome: "Festival de Música",
@@ -125,20 +121,29 @@ function gerarEventosMockados() {
     },
   ];
 
-  // Filtrar eventos com base no filtro de preço
   const eventosFiltrados = eventosMock.filter((evento) => {
+    let condicaoPreco = true;
     switch (precoSelecionado) {
       case "menorcem":
-        return evento.preco < 100;
+        condicaoPreco = evento.preco < 100;
+        break;
       case "entre-cem-dozentos":
-        return evento.preco >= 100 && evento.preco <= 200;
+        condicaoPreco = evento.preco >= 100 && evento.preco <= 200;
+        break;
       case "entre-dozentos-trezentos":
-        return evento.preco > 200 && evento.preco <= 350;
+        condicaoPreco = evento.preco > 200 && evento.preco <= 350;
+        break;
       case "maior-que-trezentos":
-        return evento.preco > 350;
-      default:
-        return true; // Nenhum filtro de preço aplicado
+        condicaoPreco = evento.preco > 350;
+        break;
     }
+
+    const dentroDoIntervalo =
+      evento.data >= dataInicioSelecionada &&
+      evento.data <= dataFimSelecionada &&
+      evento.data >= dataHoje;
+
+    return condicaoPreco && dentroDoIntervalo;
   });
 
   cardsWrapper.innerHTML = "";
@@ -152,15 +157,13 @@ function gerarEventosMockados() {
   eventosFiltrados.forEach((evento) => {
     const card = document.createElement("div");
     card.classList.add("card");
-
     card.innerHTML = `
-      <h3>${evento.nome}</h3>
-      <p><strong>Cidade:</strong> ${evento.cidade}</p>
-      <p><strong>Data:</strong> ${evento.data}</p>
-      <p><strong>Horário:</strong> ${evento.horario}</p>
-      <p><strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}</p>
-    `;
-
+          <h3>${evento.nome}</h3>
+          <p><strong>Cidade:</strong> ${evento.cidade}</p>
+          <p><strong>Data:</strong> ${evento.data}</p>
+          <p><strong>Horário:</strong> ${evento.horario}</p>
+          <p><strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}</p>
+        `;
     cardsWrapper.appendChild(card);
   });
 }
