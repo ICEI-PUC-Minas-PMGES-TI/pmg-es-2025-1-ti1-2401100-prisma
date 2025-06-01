@@ -49,7 +49,7 @@ body {
   }
   
   .nav-button {
-    background-color: #3183c6;
+    background-color: #b51fc9;
     color: white;
     text-decoration: none;
     padding: 10px 25px;
@@ -60,7 +60,7 @@ body {
   }
   
   .nav-button:hover {
-    background-color: #2567a5;
+    background-color: #6a0c86;
     transform: scale(1.05);
   }
   
