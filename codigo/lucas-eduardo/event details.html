@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalhes do Evento</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <main class="card">
-    <h1 id="titulo-evento">Carregando evento...</h1>
-    <p><strong>📍 Local:</strong> <span id="local-evento"></span></p>
-    <p><strong>📅 Data:</strong> <span id="data-evento"></span></p>
-    <p><strong>⏰ Horário:</strong> <span id="horario-evento"></span></p>
-    <h2>Descrição</h2>
-    <p id="descricao-evento"></p>
-    <a href="index.html" class="btn voltar">⬅ Voltar</a>
-    <script src="eventos.js"></script>
+  <header>
+    <h1>Detalhes do Evento</h1>
+  </header>
+
+  <main>
+    <section id="evento">
+      <h2 id="titulo-evento">Título do Evento</h2>
+      <p id="descricao-evento">Descrição do evento aqui...</p>
+      <p><strong>Data:</strong> <span id="data-evento">00/00/0000</span></p>
+      <p><strong>Local:</strong> <span id="local-evento">Local do evento</span></p>
+    </section>
   </main>
 </body>
 </html>
