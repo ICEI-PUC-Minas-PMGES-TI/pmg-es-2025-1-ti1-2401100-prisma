@@ -131,14 +131,60 @@
 
       <button type="submit" class="submit-button">Cadastrar Artista</button>
     </form>
+
+    <button id="btn-ver-artistas" style="margin-top: 20px;">Ver / Editar Artistas Cadastrados</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="cad_artistas.js"></script>
   <script>
     AOS.init();
+
+    const form = document.getElementById('form-artista');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Pega os dados do formulário
+      const artista = {
+        id: Date.now(), // id único simples
+        nomePessoa: form.nomePessoa.value,
+        generoPessoa: form.generoPessoa.value,
+        dataNascimento: form.dataNascimento.value,
+        nomeArtistico: form.nomeArtistico.value,
+        descricao: form.descricao.value,
+        genero: form.genero.value,
+        foto: form.foto.value,
+        tipoEspetaculo: form.tipoEspetaculo.value,
+        anoFundacao: form.anoFundacao.value,
+        qtdIntegrantes: form.qtdIntegrantes.value,
+        cidade: form.cidade.value,
+        generoArtistico: form.generoArtistico.value,
+        spotify: form.spotify.value,
+        instagram: form.instagram.value,
+        youtube: form.youtube.value,
+        facebook: form.facebook.value,
+      };
+
+      // Pega lista atual do localStorage ou cria nova
+      let artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+
+      // Adiciona novo artista
+      artistas.push(artista);
+
+      // Salva no localStorage
+      localStorage.setItem('artistas', JSON.stringify(artistas));
+
+      alert('Artista cadastrado com sucesso!');
+
+      form.reset();
+    });
+
+    // Botão para ir para a página de edição
+    document.getElementById('btn-ver-artistas').addEventListener('click', () => {
+      window.location.href = 'editar.html';
+    });
   </script>
 </body>
 

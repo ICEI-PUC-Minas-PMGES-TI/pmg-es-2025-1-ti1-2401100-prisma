@@ -1,103 +1,110 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("#form-artista");
-  const listaContainer = document.createElement("div");
-  form.parentElement.appendChild(listaContainer);
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("form-artista");
 
-  function getArtistas() {
-    return JSON.parse(localStorage.getItem("artistas")) || [];
+  function validaURL(url) {
+    if (!url) return true;
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
   }
 
-  function salvarArtistas(artistas) {
-    localStorage.setItem("artistas", JSON.stringify(artistas));
+  function validaTelefone(tel) {
+    // Regex para telefone brasileiro com DDD, aceita formatos como (xx) xxxx-xxxx ou (xx) xxxxx-xxxx
+    const regex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+    return regex.test(tel);
   }
 
-  function renderizarLista() {
-    const artistas = getArtistas();
-    listaContainer.innerHTML = "<h3>Artistas Cadastrados</h3>";
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    if (artistas.length === 0) {
-      listaContainer.innerHTML += "<p>Nenhum artista cadastrado.</p>";
+    const campos = form.querySelectorAll("input, select, textarea");
+    campos.forEach(campo => campo.classList.remove("erro"));
+
+    let valido = true;
+
+    if (!form.nomePessoa.value.trim()) {
+      valido = false;
+      form.nomePessoa.classList.add("erro");
+    }
+
+    if (!form.generoPessoa.value) {
+      valido = false;
+      form.generoPessoa.classList.add("erro");
+    }
+
+    if (!form.dataNascimento.value) {
+      valido = false;
+      form.dataNascimento.classList.add("erro");
+    }
+
+    if (!form.nomeArtistico.value.trim()) {
+      valido = false;
+      form.nomeArtistico.classList.add("erro");
+    }
+
+    if (!form.descricao.value.trim()) {
+      valido = false;
+      form.descricao.classList.add("erro");
+    }
+
+    if (!form.genero.value.trim()) {
+      valido = false;
+      form.genero.classList.add("erro");
+    }
+
+    if (!form.foto.value.trim() || !validaURL(form.foto.value)) {
+      valido = false;
+      form.foto.classList.add("erro");
+    }
+
+    if (!form.tipoEspetaculo.value) {
+      valido = false;
+      form.tipoEspetaculo.classList.add("erro");
+    }
+
+    if (!form.anoFundacao.value || form.anoFundacao.value < 1900 || form.anoFundacao.value > 2025) {
+      valido = false;
+      form.anoFundacao.classList.add("erro");
+    }
+
+    if (!form.qtdIntegrantes.value || form.qtdIntegrantes.value < 1) {
+      valido = false;
+      form.qtdIntegrantes.classList.add("erro");
+    }
+
+    if (!form.cidade.value.trim()) {
+      valido = false;
+      form.cidade.classList.add("erro");
+    }
+
+    if (!form.telefone.value.trim() || !validaTelefone(form.telefone.value.trim())) {
+      valido = false;
+      form.telefone.classList.add("erro");
+    }
+
+    if (!form.generoArtistico.value.trim()) {
+      valido = false;
+      form.generoArtistico.classList.add("erro");
+    }
+
+    const camposURL = ["spotify", "instagram", "youtube", "facebook"];
+    camposURL.forEach(campoNome => {
+      const campo = form[campoNome];
+      if (campo.value.trim() && !validaURL(campo.value)) {
+        valido = false;
+        campo.classList.add("erro");
+      }
+    });
+
+    if (!valido) {
+      alert("Por favor, preencha os campos obrigatórios corretamente.");
       return;
     }
 
-    const table = document.createElement("table");
-    table.innerHTML = `
-      <thead>
-        <tr>
-          <th>Nome Artístico</th>
-          <th>Tipo de Espetáculo</th>
-          <th>Cidade</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${artistas
-          .map(
-            (artista, index) => `
-          <tr>
-            <td>${artista.nomeArtistico}</td>
-            <td>${artista.tipoEspetaculo}</td>
-            <td>${artista.cidade}</td>
-            <td>
-              <button onclick="editarArtista(${index})">Editar</button>
-              <button onclick="excluirArtista(${index})">Excluir</button>
-            </td>
-          </tr>
-        `
-          )
-          .join("")}
-      </tbody>
-    `;
-    listaContainer.appendChild(table);
-  }
-
-  // Função para novo cadastro
-  function cadastrarNovo(e) {
-    e.preventDefault();
-
-    const novoArtista = Object.fromEntries(new FormData(form));
-    const artistas = getArtistas();
-    artistas.push(novoArtista);
-    salvarArtistas(artistas);
-    renderizarLista();
+    alert("Artista cadastrado com sucesso!");
     form.reset();
-  }
-
-  form.addEventListener("submit", cadastrarNovo);
-
-  // Funções globais
-  window.editarArtista = function (index) {
-    const artistas = getArtistas();
-    const artista = artistas[index];
-
-    for (let campo in artista) {
-      if (form.elements[campo]) {
-        form.elements[campo].value = artista[campo];
-      }
-    }
-
-    form.removeEventListener("submit", cadastrarNovo);
-
-    form.onsubmit = function (e) {
-      e.preventDefault();
-      const dadosAtualizados = Object.fromEntries(new FormData(form));
-      artistas[index] = dadosAtualizados;
-      salvarArtistas(artistas);
-      renderizarLista();
-      form.reset();
-      form.onsubmit = null;
-      form.addEventListener("submit", cadastrarNovo);
-    };
-  };
-
-  window.excluirArtista = function (index) {
-    if (confirm("Deseja realmente excluir este artista?")) {
-      const artistas = getArtistas();
-      artistas.splice(index, 1);
-      salvarArtistas(artistas);
-      renderizarLista();
-    }
-  };
-
-  renderizarLista();
+  });
 });

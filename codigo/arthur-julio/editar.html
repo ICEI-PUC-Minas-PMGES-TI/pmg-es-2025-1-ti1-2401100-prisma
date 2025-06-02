@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DivulgaHub - Editar Artistas</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eee;
+    }
+
+    .btn-editar {
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .form-edit {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      max-width: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Editar Artistas Cadastrados</h1>
+      <button onclick="window.location.href='cadastro.html'">Voltar ao Cadastro</button>
+    </header>
+
+    <table id="tabela-artistas">
+      <thead>
+        <tr>
+          <th>Nome Artístico</th>
+          <th>Gênero Musical</th>
+          <th>Cidade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Será preenchido por JS -->
+      </tbody>
+    </table>
+
+    <form id="form-editar" class="form-edit" style="display:none;" novalidate>
+      <h2>Editar Artista</h2>
+
+      <input type="hidden" id="edit-id" />
+
+      <div>
+        <label for="edit-nomePessoa">Nome completo:</label>
+        <input type="text" id="edit-nomePessoa" required />
+      </div>
+
+      <div>
+        <label for="edit-generoPessoa">Gênero:</label>
+        <select id="edit-generoPessoa" required>
+          <option value="">Selecione</option>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="nao-binario">Não-binário</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="edit-dataNascimento">Data de nascimento:</label>
+        <input type="date" id="edit-dataNascimento" required />
+      </div>
+
+      <div>
+        <label for="edit-nomeArtistico">Nome da Banda/Artista:</label>
+        <input type="text" id="edit-nomeArtistico" required />
+      </div>
+
+      <div>
+        <label for="edit-descricao">Descrição:</label>
+        <textarea id="edit-descricao" required></textarea>
+      </div>
+
+      <div>
+        <label for="edit-genero">Gênero musical:</label>
+        <input type="text" id="edit-genero" required />
+      </div>
+
+      <div>
+        <label for="edit-foto">Foto da Banda/Artista (URL):</label>
+        <input type="url" id="edit-foto" required />
+      </div>
+
+      <div>
+        <label for="edit-tipoEspetaculo">Tipo de espetáculo:</label>
+        <select id="edit-tipoEspetaculo" required>
+          <option value="">Selecione</option>
+          <option value="musica">Música</option>
+          <option value="danca">Dança</option>
+          <option value="teatro">Teatro</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="edit-anoFundacao">Ano de fundação:</label>
+        <input type="number" id="edit-anoFundacao" min="1900" max="2025" required />
+      </div>
+
+      <div>
+        <label for="edit-qtdIntegrantes">Quantidade de integrantes:</label>
+        <input type="number" id="edit-qtdIntegrantes" min="1" required />
+      </div>
+
+      <div>
+        <label for="edit-cidade">Cidade:</label>
+        <input type="text" id="edit-cidade" required />
+      </div>
+
+      <div>
+        <label for="edit-generoArtistico">Gênero artístico:</label>
+        <input type="text" id="edit-generoArtistico
