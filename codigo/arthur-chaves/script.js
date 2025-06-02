@@ -7,6 +7,21 @@ const loc = document.getElementById("form-loc");
 const email = document.getElementById("form-email");  
 const form = document.getElementById("formulario");
 
+function validarConta(promotores){
+    return promotores.some(
+        (user) => user.email.toLowerCase() === promotor.email.toLowerCase()
+      );
+}
+
+function listaPromotoresDel(){
+    const promotores = JSON.parse(localStorage.getItem("promotores")) || [];
+    console.log(promotores)
+    let lista = document.getElementById("select-promotor")
+    for(let i = 0; i < promotores.length; i++){
+        lista.insertAdjacentHTML("beforeend", `<option value="${promotores[i]["email"]}">${promotores[i]["nome"]} - ${promotores[i]["email"]}</option>`);
+    }
+}
+
 function cadastrarPromotor(){
     
     form.addEventListener("submit", function (cadastro) {

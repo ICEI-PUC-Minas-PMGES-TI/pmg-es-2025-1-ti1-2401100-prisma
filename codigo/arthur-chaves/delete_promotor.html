@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DivulgaHub - Deletar um Promotor de Eventos</title>
+        <title>DivulgaHub - Deletar um cPromotor de Eventos</title>
         <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     </head>
@@ -31,7 +31,7 @@
                 <select name="tipoPromotor" class="tipo-promotor" id="select-promotor" required>
                     <option value="" disabled selected>Selecione o promotor que voce deseja deletar</option>
                   </select>
-                <button type="submit" class="submit-button">Deletar</button>
+                <button type="submit" id="delete-button" class="submit-button">Deletar</button>
             </form>
         
     </div>
@@ -39,6 +39,7 @@
     <script>AOS.init();</script>
     <script src="script.js"></script>
     <script>
+        listaPromotoresDel()
     </script>
     </body>
 
