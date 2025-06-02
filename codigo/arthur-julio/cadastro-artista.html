@@ -1,70 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastro de Artista - DivulgaHub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DivulgaHub - Cadastrar Artista</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <style>
+    .erro {
+      border: 2px solid red;
+    }
+  </style>
 </head>
+
 <body>
   <div class="container">
-    <header>
-      <button class="back-button" onclick="history.back()">Voltar</button>
+    <header data-aos="fade-down">
       <h1>DivulgaHub</h1>
-      <nav>
-        <a href="index.html" class="nav-button eventos">Eventos</a>
-        <a href="cadastro-evento.html" class="nav-button cadastrar-evento">Cadastrar Evento</a>
-        <a href="cadastro-usuario.html" class="nav-button cadastrar-usuario">Cadastrar Usuário</a>
-        <a href="comunidade.html" class="nav-button comunidade">Comunidade</a>
-        <a href="perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-      </nav>
+      <button class="back-button" onclick="history.back()">Voltar</button>
     </header>
 
-    <main>
-      <h2>Cadastro de Artista</h2>
-      <form id="form-artista">
-        <label for="nomePessoa" class="form-label">Nome completo:</label>
-        <input type="text" id="nomePessoa" name="nomePessoa" required>
+    <nav class="botoes-middle" data-aos="fade-up">
+      <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+      <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+      <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
+      <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
+      <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+      <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+    </nav>
 
-        <label for="generoPessoa" class="form-label">Gênero:</label>
-        <select id="generoPessoa" name="generoPessoa" class="localizacao-select" required>
+    <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Artista</h2>
+
+    <form id="form-artista" class="conj-campos" data-aos="fade-up" novalidate>
+      <div class="form-group">
+        <label for="nomePessoa">Nome completo:</label>
+        <input type="text" id="nomePessoa" name="nomePessoa" required />
+      </div>
+
+      <div class="form-group">
+        <label for="generoPessoa">Gênero:</label>
+        <select id="generoPessoa" name="generoPessoa" required>
           <option value="">Selecione</option>
           <option value="masculino">Masculino</option>
           <option value="feminino">Feminino</option>
           <option value="nao-binario">Não-binário</option>
           <option value="outro">Outro</option>
         </select>
+      </div>
 
-        <label for="dataNascimento" class="form-label">Data de nascimento:</label>
-        <input type="date" id="dataNascimento" name="dataNascimento" class="data-input" required>
+      <div class="form-group">
+        <label for="dataNascimento">Data de nascimento:</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" required />
+      </div>
 
-        <label for="nomeArtistico" class="form-label">Nome artístico:</label>
-        <input type="text" id="nomeArtistico" name="nomeArtistico" required>
+      <div class="form-group">
+        <label for="nomeArtistico">Nome da Banda/Artista:</label>
+        <input type="text" id="nomeArtistico" name="nomeArtistico" required />
+      </div>
 
-        <label for="tipoEspetaculo" class="form-label">Tipo de espetáculo:</label>
-        <select id="tipoEspetaculo" name="tipoEspetaculo" class="localizacao-select" required>
+      <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="genero">Gênero musical:</label>
+        <input type="text" id="genero" name="genero" required />
+      </div>
+
+      <div class="form-group">
+        <label for="foto">Foto da Banda/Artista (URL):</label>
+        <input type="url" id="foto" name="foto" required />
+      </div>
+
+      <div class="form-group">
+        <label for="tipoEspetaculo">Tipo de espetáculo:</label>
+        <select id="tipoEspetaculo" name="tipoEspetaculo" required>
           <option value="">Selecione</option>
           <option value="musica">Música</option>
           <option value="danca">Dança</option>
           <option value="teatro">Teatro</option>
         </select>
+      </div>
 
-        <label for="anoFundacao" class="form-label">Ano de fundação:</label>
-        <input type="number" id="anoFundacao" name="anoFundacao" min="1900" max="2025" required>
+      <div class="form-group">
+        <label for="anoFundacao">Ano de fundação:</label>
+        <input type="number" id="anoFundacao" name="anoFundacao" min="1900" max="2025" required />
+      </div>
 
-        <label for="qtdIntegrantes" class="form-label">Quantidade de integrantes:</label>
-        <input type="number" id="qtdIntegrantes" name="qtdIntegrantes" min="1" required>
+      <div class="form-group">
+        <label for="qtdIntegrantes">Quantidade de integrantes:</label>
+        <input type="number" id="qtdIntegrantes" name="qtdIntegrantes" min="1" required />
+      </div>
 
-        <label for="cidade" class="form-label">Cidade:</label>
-        <input type="text" id="cidade" name="cidade" required>
+      <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" required />
+      </div>
 
-        <label for="generoArtistico" class="form-label">Gênero artístico:</label>
-        <input type="text" id="generoArtistico" name="generoArtistico" required>
+      <div class="form-group">
+        <label for="generoArtistico">Gênero artístico:</label>
+        <input type="text" id="generoArtistico" name="generoArtistico" required />
+      </div>
 
-        <button type="submit" class="submit-button">Cadastrar Artista</button>
-      </form>
-    </main>
+      <fieldset>
+        <legend>Onde encontrar o artista:</legend>
+
+        <div class="form-group">
+          <label for="spotify">Spotify:</label>
+          <input type="url" id="spotify" name="spotify" placeholder="https://spotify.com/" />
+        </div>
+
+        <div class="form-group">
+          <label for="instagram">Instagram:</label>
+          <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/" />
+        </div>
+
+        <div class="form-group">
+          <label for="youtube">YouTube:</label>
+          <input type="url" id="youtube" name="youtube" placeholder="https://youtube.com/" />
+        </div>
+
+        <div class="form-group">
+          <label for="facebook">Facebook:</label>
+          <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/" />
+        </div>
+      </fieldset>
+
+      <button type="submit" class="submit-button">Cadastrar Artista</button>
+    </form>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="cad_artistas.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
+
 </html>

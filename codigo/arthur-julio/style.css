@@ -36,68 +36,135 @@ h1 {
   font-size: 2em;
 }
 
-h2 {
+h2.subtitulo-pagina1 {
   font-size: 1.5em;
-  margin-bottom: 30px;
+  margin: 30px 0 40px;
   text-align: center;
+  color: #e1bee7;
 }
 
-main {
-  background-color: #673ab7;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-form {
+nav.botoes-middle {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
 }
 
-/* Inputs e Selects */
-input[type="text"],
-input[type="date"],
-input[type="number"],
-select {
-  width: 80%;
-  margin-bottom: 15px;
-  padding: 10px;
-  font-size: 1em;
-  border: none;
-  border-radius: 5px;
-}
-
-.form-label {
-  width: 80%;
-  font-size: 1em;
-  font-weight: bold;
-  margin-bottom: 5px;
-  text-align: left;
-  color: #ffffff;
-}
-
-/* Botões */
-button, .submit-button {
-  width: 50%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #1d6e25c1;
+.nav-button {
+  padding: 10px 20px;
+  background-color: #6a1b9a;
   color: #fff;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  min-width: 120px;
 }
 
-button:hover, .submit-button:hover {
-  background-color: #388e3c;
+.nav-button:hover {
+  background-color: #8e24aa;
 }
 
+/* Botão Voltar */
 .back-button {
   background-color: #ab1717;
   color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #d32f2f;
+}
+
+form#evento-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #6a1b9a;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(105, 27, 154, 0.5);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ddd;
+}
+
+/* Inputs e Selects - padronizados */
+input[type="text"],
+select {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #8e24aa;
+  color: #fff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  font-weight: 500;
+}
+
+/* Ajuste para selects múltiplos */
+select[multiple] {
+  height: 120px;
+  padding-top: 10px;
+  background-color: #7b1fa2;
+  cursor: pointer;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+  font-weight: 500;
+}
+
+input[type="text"]:focus,
+select:focus {
+  background-color: #a450d5;
+  box-shadow: 0 0 8px 2px #d1a3f0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.erro {
+  border: 2px solid red !important;
+}
+
+/* Botão enviar */
+.submit-button {
+  width: 50%;
+  max-width: 300px;
+  padding: 12px;
+  background-color: #1d6e25c1;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #388e3c;
 }
 
 /* Responsividade */
@@ -106,20 +173,31 @@ button:hover, .submit-button:hover {
     font-size: 1.5em;
   }
 
-  h2 {
+  h2.subtitulo-pagina1 {
     font-size: 1.2em;
   }
 
-  input[type="text"],
-  input[type="date"],
-  input[type="number"],
-  select,
-  .form-label,
-  .submit-button {
-    width: 100%;
+  nav.botoes-middle {
+    gap: 10px;
   }
 
+  .nav-button {
+    min-width: 100px;
+    font-size: 0.9em;
+    padding: 8px 12px;
+  }
+
+  form#evento-form {
+    padding: 20px;
+  }
+
+  .form-group {
+    max-width: 100%;
+  }
+
+  input[type="text"],
+  select,
   .submit-button {
-    font-size: 1em;
+    width: 100%;
   }
 }
