@@ -20,12 +20,9 @@ function cadastrarPromotor(){
             email: email.value.trim(),
           };
         
-          const promotores = JSON.parse(localStorage.getItem("promotores")) || [];;
-        
-          const teste = promotores.some(
-            (user) => user.email.toLowerCase() === promotor.email.toLowerCase()
-          );
-        
+          const promotores = JSON.parse(localStorage.getItem("promotores")) || [];
+          
+          const teste = validarConta(promotores)
           if (teste) {
             alert("E-mail já veinculado a uma conta!.");
             email.focus();
@@ -38,8 +35,6 @@ function cadastrarPromotor(){
           alert("Usuário cadastrado com sucesso!");
           form.reset();
         });
-
-
 }
 
 function validarValores(){

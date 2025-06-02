@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DivulgaHub - Cadastrar Novo Promotor de Eventos</title>
+        <title>DivulgaHub - Deletar um Promotor de Eventos</title>
         <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     </head>
@@ -25,19 +25,13 @@
                 <a href="../arthur-julio/cadastro-artista.html" class="nav-button comunidade">Cadastrar Artista</a>
                 <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
             </nav>
-            <!-- ------------------- Formulario de Cadastro Promotor ------------------- -->
-            <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Promotor</h2>
-            <form class="conj-campos" id="formulario" data-aos="fade-up" novalidate>
-                <input type="text" id="form-name" placeholder="Nome" required>
-                <input type="text" id="form-email" placeholder="Email" required>
-                <input type="text" id="form-tel" placeholder="Telefone" required>
-                <input type="text" id="form-loc" placeholder="Localização" required>
-                <select name="tipoPromotor" class="tipo-promotor" required>
-                    <option value="" disabled selected>Individuo ou Empresa</option>
-                    <option value="individuo">Individuo</option>
-                    <option value="empresa">Empresa</option>
+            <!-- ------------------- Formulario para deletar um Promotor ------------------- -->
+            <h2 class="subtitulo-pagina1" data-aos="fade-right">Deletar Promotor</h2>
+            <form class="conj-campos" id="formulario-del" data-aos="fade-up" novalidate>
+                <select name="tipoPromotor" class="tipo-promotor" id="select-promotor" required>
+                    <option value="" disabled selected>Selecione o promotor que voce deseja deletar</option>
                   </select>
-                <button type="submit" class="submit-button">Cadastrar</button>
+                <button type="submit" class="submit-button">Deletar</button>
             </form>
         
     </div>
@@ -45,8 +39,6 @@
     <script>AOS.init();</script>
     <script src="script.js"></script>
     <script>
-            validarTel();
-            cadastrarPromotor();
     </script>
     </body>
 
