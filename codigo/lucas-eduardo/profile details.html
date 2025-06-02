@@ -7,45 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <main class="card">
+    <img id="foto-perfil" alt="Foto de Perfil" class="foto-perfil" />
+    <h1 id="nome">Nome do Usuário</h1>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Descrição:</strong> <span id="descricao"></span></p>
 
-  <header>
-    <h1>Detalhes do Perfil</h1>
-    <a href="index.html" class="voltar-button">Voltar</a>
-  </header>
+    <div id="grupo-musical" style="display: none;">
+      <p><strong>Grupo Musical:</strong> <span id="grupo"></span></p>
+    </div>
 
-  <main class="container" role="main" aria-labelledby="nome">
-    <section class="perfil">
-      <img id="foto-perfil" alt="Foto de perfil do usuário" class="foto-perfil" />
+    <div id="eventos" style="display: none;">
+      <h2>Eventos Organizados</h2>
+      <ul id="lista-eventos"></ul>
+    </div>
 
-      <h2 id="nome">Buscando Informações...</h2>
-      <p><strong>Email:</strong> <span id="email"></span></p>
-      <p><strong>Descrição:</strong> <span id="descricao"></span></p>
-      
-      <div id="grupo-musical" style="display: none;">
-        <p><strong>Grupo Musical:</strong> <span id="grupo"></span></p>
-      </div>
+    <div class="redes-sociais">
+      <h2>Redes Sociais</h2>
+      <a id="instagram" class="btn" target="_blank">Instagram</a>
+      <a id="facebook" class="btn" target="_blank">Facebook</a>
+      <a id="twitter" class="btn" target="_blank">Twitter</a>
+    </div>
 
-      <section id="eventos" style="display: none;">
-        <h3>Eventos Organizados</h3>
-        <ul id="lista-eventos"></ul>
-      </section>
+    <div class="botoes-middle">
+      <a href="editar-perfil.html" class="btn">✏ Editar Perfil</a>
+      <a href="configuracoes.html" class="btn">⚙ Configurações</a>
+    </div>
 
-      <section class="redes-sociais" aria-label="Redes sociais">
-        <h3>Redes Sociais</h3>
-        <ul>
-          <li><a id="instagram" class="rede-social-button instagram" target="_blank">Instagram</a></li>
-          <li><a id="facebook" class="rede-social-button facebook" target="_blank">Facebook</a></li>
-          <li><a id="twitter" class="rede-social-button twitter" target="_blank">Twitter</a></li>
-        </ul>
-      </section>
-
-      <nav class="botoes-middle" aria-label="Ações do perfil">
-        <a href="editar-perfil.html" class="nav-button">Editar Perfil</a>
-        <a href="configuracoes.html" class="nav-button">Configurações</a>
-      </nav>
-    </section>
+    <a href="index.html" class="btn voltar">⬅ Voltar</a>
+    <script src="script.js"></script>
   </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
