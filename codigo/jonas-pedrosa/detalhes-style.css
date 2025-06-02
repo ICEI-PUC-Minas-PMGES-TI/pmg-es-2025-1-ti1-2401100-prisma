@@ -1,6 +1,6 @@
 :root {
-    --roxo-principal: #580B94;    
-    --roxo-escuro-fundo: #2C0145;  
+    --principal: #5a555e;    
+    --roxo-escuro-fundo: #2c0237;  
     --branco: #FFFFFF;
     --preto: #000000;
     --cinza-claro: #F0F0F0;
@@ -29,7 +29,7 @@ body {
 }
 
 .container::before {
-    display: none; 
+    display: none;  
 }
 
 h1 {
@@ -88,7 +88,7 @@ h1 {
 .social-media a {
     display: inline-block;
     color: var(--branco);
-    background-color: var(--roxo-principal);
+    background-color: var(--principal);
     padding: 12px 25px;
     border-radius: 30px;
     text-decoration: none;
@@ -107,7 +107,7 @@ h1 {
     color: var(--branco);
     margin-top: 40px;
     margin-bottom: 20px;
-    border-bottom: 2px solid var(--roxo-principal);
+    border-bottom: 2px solid var(--principal);
     padding-bottom: 10px;
     display: inline-block;
 }
