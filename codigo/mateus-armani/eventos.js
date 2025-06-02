@@ -13,25 +13,26 @@ document.addEventListener("DOMContentLoaded", function () {
         data: document.getElementById("data")
     };
 
+
     if (typeof jQuery === 'undefined' || typeof jQuery.fn.select2 === 'undefined') {
         console.error("ERRO: jQuery ou Select2 não estão carregados! Verifique a ordem dos scripts no HTML.");
-        return; 
+        return;
     }
     console.log("jQuery e Select2 detectados. Inicializando campos Select2.");
 
     $(campos.artistas).select2({
         placeholder: "Selecione ou digite os artistas",
-        allowClear: true, 
-        tags: true, 
+        allowClear: true,
+        tags: true,
         tokenSeparators: [',', ' '],
-        createTag: function (params) { 
+        createTag: function (params) {
             if (params.term.trim() === '') {
-                return null; 
+                return null;
             }
             return {
                 id: params.term.trim(),
-                text: '⭐ ' + params.term.trim(), 
-                newTag: true 
+                text: '⭐ ' + params.term.trim(),
+                newTag: true
             };
         },
         templateResult: function (data) {
@@ -42,11 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         templateSelection: function (data) {
             if (data.newTag) {
-                return data.text.replace('⭐ ', ''); 
+                return data.text.replace('⭐ ', '');
             }
-            return data.text.replace('🟢 ', ''); 
+            return data.text.replace('🟢 ', '');
         }
     });
+
 
     $(campos.promotor).select2({
         placeholder: "Selecione os promotores",
@@ -62,18 +64,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Configurando máscaras para Preço e Data.");
     campos.preco.addEventListener("input", function (e) {
-        let valor = e.target.value.replace(/\D/g, ""); 
+        let valor = e.target.value.replace(/\D/g, "");
         if (valor.length < 3) {
-            valor = valor.padStart(3, "0"); 
+            valor = valor.padStart(3, "0");
         }
-        valor = (parseInt(valor, 10) / 100).toFixed(2); 
-        valor = valor.replace(".", ","); 
-        valor = "R$ " + valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); 
+        valor = (parseInt(valor, 10) / 100).toFixed(2);
+        valor = valor.replace(".", ",");
+        valor = "R$ " + valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         e.target.value = valor;
     });
 
     campos.data.addEventListener("input", function (e) {
-        let value = e.target.value.replace(/\D/g, ''); 
+        let value = e.target.value.replace(/\D/g, '');
         if (value.length > 2 && value.length <= 4) {
             value = value.slice(0, 2) + '/' + value.slice(2);
         } else if (value.length > 4) {
@@ -87,16 +89,16 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const campoNome in campos) {
         const campoElement = campos[campoNome];
 
-        if (campoElement.multiple) { 
-            $(campoElement).on('change', function() {
+        if (campoElement.multiple) {
+            $(campoElement).on('change', function () {
                 if ($(this).val() && $(this).val().length > 0) {
                     $(this).next('.select2-container').find('.select2-selection').removeClass("erro");
                 }
             });
-            $(campoElement).on('select2:open', function() {
+            $(campoElement).on('select2:open', function () {
                 $(this).next('.select2-container').find('.select2-selection').removeClass("erro");
             });
-        } else { 
+        } else {
             campoElement.addEventListener("input", function () {
                 if (this.value.trim() !== "") {
                     this.classList.remove("erro");
@@ -106,32 +108,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     form.addEventListener("submit", function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
         console.log("Formulário submetido. Iniciando validação.");
         let valid = true;
-        let firstInvalidField = null; 
+        let firstInvalidField = null;
 
         // Validação de todos os campos
         for (const campoNome in campos) {
             const campoElement = campos[campoNome];
-            campoElement.classList.remove("erro"); 
+            campoElement.classList.remove("erro");
 
             if (campoElement.multiple) {
                 const select2Container = $(campoElement).next('.select2-container').find('.select2-selection');
                 if (!$(campoElement).val() || $(campoElement).val().length === 0) {
-                    select2Container.addClass("erro"); 
-                    if (valid) { 
-                        firstInvalidField = select2Container; 
+                    select2Container.addClass("erro");
+                    if (valid) {
+                        firstInvalidField = select2Container;
                         valid = false;
                     }
                     console.log(`Campo Select2 "${campoNome}" inválido.`);
                 } else {
-                    select2Container.removeClass("erro"); 
+                    select2Container.removeClass("erro");
                 }
             } else {
                 if (campoElement.value.trim() === "") {
                     campoElement.classList.add("erro");
-                    if (valid) { 
+                    if (valid) {
                         firstInvalidField = campoElement;
                         valid = false;
                     }
@@ -142,16 +144,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        if (!valid) { 
+        if (!valid) {
             console.log("Validação falhou. Focando no primeiro campo inválido.");
             if (firstInvalidField) {
                 if (firstInvalidField.hasClass('select2-selection')) {
                     firstInvalidField.find('.select2-search__field').focus();
                 } else {
-                    firstInvalidField.focus(); 
+                    firstInvalidField.focus();
                 }
             }
-            return; 
+            return;
         }
 
         console.log("Formulário validado com sucesso. Montando objeto evento.");
@@ -160,27 +162,27 @@ document.addEventListener("DOMContentLoaded", function () {
             local: campos.local.value.trim(),
             endereco: campos.endereco.value.trim(),
             preco: campos.preco.value.trim(),
-            tipo: Array.from($(campos.tipo).val() || []), 
-            artistas: ($(campos.artistas).val() || []).map(val => val.replace('🟢 ', '').replace('⭐ ', '')), 
+            tipo: Array.from($(campos.tipo).val() || []),
+            artistas: ($(campos.artistas).val() || []).map(val => val.replace('🟢 ', '').replace('⭐ ', '')),
             promotor: Array.from($(campos.promotor).val() || []),
             data: campos.data.value.trim(),
-            dataCadastro: new Date().toISOString() 
+            dataCadastro: new Date().toISOString()
         };
         console.log("Objeto evento criado:", evento);
 
         // --- Salvar no localStorage ---
         try {
-            let listaEventos = JSON.parse(localStorage.getItem("eventos")) || []; 
+            let listaEventos = JSON.parse(localStorage.getItem("eventos")) || [];
             console.log("Eventos existentes antes de adicionar:", listaEventos);
-            listaEventos.push(evento); 
+            listaEventos.push(evento);
             console.log("Eventos após adicionar o novo:", listaEventos);
-            localStorage.setItem("eventos", JSON.stringify(listaEventos)); 
+            localStorage.setItem("eventos", JSON.stringify(listaEventos));
             console.log("Dados salvos no localStorage com a chave 'eventos'.");
-            
+
             const storedData = localStorage.getItem("eventos");
             console.log("Conteúdo de 'eventos' no localStorage após salvamento:", storedData);
             if (storedData) {
-                 console.log("Parsed 'eventos' do localStorage:", JSON.parse(storedData));
+                console.log("Parsed 'eventos' do localStorage:", JSON.parse(storedData));
             } else {
                 console.warn("Chave 'eventos' não encontrada no localStorage após salvamento. Isso é inesperado.");
             }
@@ -188,13 +190,13 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (e) {
             console.error("ERRO ao salvar no localStorage:", e);
             alert("Ocorreu um erro ao salvar o evento. Verifique o console para mais detalhes.");
-            return; 
+            return;
         }
 
         alert("Evento cadastrado com sucesso!");
-        form.reset(); 
+        form.reset();
 
-        
+
         $(campos.artistas).val(null).trigger('change');
         $(campos.promotor).val(null).trigger('change');
         $(campos.tipo).val(null).trigger('change');
@@ -202,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    
+
     console.log("Tentando carregar artistas salvos.");
     const artistasSelect = campos.artistas;
     let artistasSalvos = localStorage.getItem("artistas");
@@ -210,16 +212,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (artistasSalvos) {
         try {
             const artistasArray = JSON.parse(artistasSalvos);
-            $(artistasSelect).empty(); 
+            $(artistasSelect).empty();
             artistasArray.forEach(artista => {
                 if (!$(artistasSelect).find(`option[value="${artista}"]`).length) {
                     const option = document.createElement("option");
                     option.value = artista;
-                    option.textContent = "🟢 " + artista; 
+                    option.textContent = "🟢 " + artista;
                     artistasSelect.appendChild(option);
                 }
             });
-            $(artistasSelect).trigger('change'); 
+            $(artistasSelect).trigger('change');
             console.log("Artistas carregados e Select2 atualizado.");
         } catch (e) {
             console.error("ERRO ao carregar artistas do localStorage:", e);
