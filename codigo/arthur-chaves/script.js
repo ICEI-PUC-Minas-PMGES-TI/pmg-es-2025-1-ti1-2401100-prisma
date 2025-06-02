@@ -22,6 +22,28 @@ function listaPromotoresDel(){
     }
 }
 
+function deletarPromotor(){
+    const formDel = document.getElementById("formulario-del")
+    formDel.addEventListener("submit", () => {
+        const promotores = JSON.parse(localStorage.getItem("promotores")) || [];
+        const email = document.getElementById("select-promotor")
+        if(!email.value){
+            alert("É necessário selecionar o usuário antes de deletá-lo!")
+            formDel.reset();
+            return;
+        }
+        for(let i = 0; i < promotores.length; i++){
+            if(promotores[i]["email"] === email.value){
+                promotores.splice(i, i)
+            }
+        }
+        localStorage.setItem("promotores", JSON.stringify(promotores));
+        alert("Usuário deletado com sucesso!");
+        formDel.reset();
+    })
+
+}
+
 function cadastrarPromotor(){
     
     form.addEventListener("submit", function (cadastro) {
