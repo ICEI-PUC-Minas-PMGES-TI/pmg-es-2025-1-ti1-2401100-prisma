@@ -67,13 +67,14 @@ body {
   .back-button {
     background-color: #e53935;
     color: white;
-    border: none;
+    text-decoration: none;
+    padding: 10px 25px;
     border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
+    font-size: 1em;
     font-weight: 500;
-    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
   }
   
   .back-button:hover {
@@ -85,14 +86,14 @@ body {
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
   }
   
   .conj-campos {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 100%;
+    gap: 10px;
+    width: 90%; 
     max-width: 500px;
     margin: 0 auto;
   }

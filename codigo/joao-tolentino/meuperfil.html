@@ -12,20 +12,19 @@
 <body>
   <div class="container">
     <!-- ------------------- Cabeçalho ------------------- -->
-    <header class="header">
-  <div class="logo">Divulga<span>Hub</span></div>
-  <nav class="nav-links">
-    <a href=="../joao-heleno/event-search.html">Eventos</a>
-    <a href="../mateus-armani/cad_eventos.html">Cadastro de Eventos</a>
-    <a href="cad_artistas.html"> Cadastro de Artistas</a>
-    <a href="cad_usuarios.html">Cadastro de Usuários</a>
-    <a href="meuperfil.html" class="active">Meu Perfil</a>
+    <header data-aos="fade-down">
+      <h1>DivulgaHub</h1>
+      <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+      <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
+      <a href="cad_artistas.html" class="nav-button comunidade">Cadastrar Artista</a>
+      <a href="meuperfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+      <button class="back-button" onclick="history.back()">Voltar</button>  
+    </header>
   </nav>
 </header>
 
     <!-- ------------------- Título ------------------- -->
     <h2 class="subtitulo-pagina1" data-aos="fade-right">Meu Perfil</h2>
- 
   <!-- Scripts para animações e funcionamento-->
   <script src="scripts.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
