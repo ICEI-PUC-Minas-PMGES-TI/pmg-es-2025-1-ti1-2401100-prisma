@@ -1,45 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DivulgaHub - Meu Perfil</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  </head>
-  
-  <body>
-    <div class="container">
-      <!-- ------------------- Cabeçalho ------------------- -->
-      <header data-aos="fade-down">
-        <h1>DivulgaHub</h1>
-        <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-        <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
-        <a href="cad_artistas.html" class="nav-button comunidade">Cadastrar Artista</a>
 
-        <!-- Ícone de usuário com SVG inline -->
-        <a href="meuperfil.html" class="nav-button meu-perfil" aria-label="Meu Perfil">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" 
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-               viewBox="0 0 24 24">
-            <path d="M20 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M4 21v-2a4 4 0 0 1 3-3.87"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </a>
-        
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DivulgaHub - Meu Perfil</title>
 
-        <button class="back-button" onclick="history.back()">Voltar</button>  
-      </header>
-  
-      <!-- ------------------- Título ------------------- -->
-      <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Usuário</h2>
-  
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="style-perfil.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <header data-aos="fade-down">
+      <h1>DivulgaHub</h1>
+      <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+      <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
+      <a href="cad_artistas.html" class="nav-button comunidade">Cadastrar Artista</a>
+      <a href="meuperfil.html" class="nav-button meu-perfil active">Meu Perfil</a>
+      <button class="back-button" onclick="history.back()">Voltar</button>
+    </header>
+
+    <h2 class="subtitulo-pagina1" data-aos="fade-right">Meu Perfil</h2>
+
+    <div class="profile-container" data-aos="fade-up">
+
+      <div class="profile-header">
+        <div class="profile-picture">
+          </div>
+        <div class="profile-title">
+          <h2 id="profile-nome">Carregando...</h2>
+          <p id="profile-cidade">Carregando...</p>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-item" data-aos="fade-up" data-aos-delay="100">
+          <strong>Email</strong>
+          <span id="profile-email">Carregando...</span>
+        </div>
+        <div class="detail-item" data-aos="fade-up" data-aos-delay="200">
+          <strong>Telefone</strong>
+          <span id="profile-telefone">Carregando...</span>
+        </div>
+        <div class="detail-item" data-aos="fade-up" data-aos-delay="300">
+          <strong>Data de Nascimento</strong>
+          <span id="profile-dataNascimento">Carregando...</span>
+        </div>
+        <div class="detail-item" data-aos="fade-up" data-aos-delay="400">
+          <strong>Gênero</strong>
+          <span id="profile-genero">Carregando...</span>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button class="action-button events-button">Meus Eventos</button>
+        <button class="action-button edit-button">Editar Perfil</button>
+      </div>
+
     </div>
+  </div>
 
-    <!-- Scripts para animações e funcionamento -->
-    <script src="scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init();</script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <script src="script-perfil.js"></script>
+</body>
+
 </html>

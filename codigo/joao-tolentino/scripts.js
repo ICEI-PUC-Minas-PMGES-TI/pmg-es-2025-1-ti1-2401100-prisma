@@ -30,37 +30,60 @@ const email = document.getElementById("email");
 const cidade = document.getElementById("cidade");
 const genero = document.getElementById("genero");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+// ... (todo o código anterior do seu scripts.js) ...
 
-  if (!validarFormulario()) return;
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-  const usuario = {
-    nome: nome.value.trim(),
-    telefone: telefone.value.trim(),
-    cidade: cidade.value.trim(),
-    email: email.value.trim(),
-    genero: genero.value
-  };
+    if (!validarFormulario()) return;
 
-  const usuariosCadastrados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    // ... (código para buscar a foto) ...
+    let fotoPerfil = "";
+    try {
+        const res = await fetch("https://randomuser.me/api/");
+        const data = await res.json();
+        fotoPerfil = data.results[0].picture.large;
+    } catch (err) {
+        console.error("Erro ao buscar imagem de perfil:", err);
+        fotoPerfil = "https://via.placeholder.com/150"; // fallback
+    }
 
-  const emailJaExiste = usuariosCadastrados.some(
-    (u) => u.email.toLowerCase() === usuario.email.toLowerCase()
-  );
+    const usuario = {
+        nome: nome.value.trim(),
+        // Adicionei a data de nascimento que estava faltando no objeto
+        dataNascimento: document.getElementById("dataNascimento").value, 
+        telefone: telefone.value.trim(),
+        cidade: cidade.value.trim(),
+        email: email.value.trim(),
+        genero: genero.value,
+        foto: fotoPerfil
+    };
 
-  if (emailJaExiste) {
-    alert("Este e-mail já está cadastrado.");
-    email.focus();
-    return;
-  }
+    const usuariosCadastrados = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  usuariosCadastrados.push(usuario);
-  localStorage.setItem("usuarios", JSON.stringify(usuariosCadastrados));
+    const emailJaExiste = usuariosCadastrados.some(
+        (u) => u.email.toLowerCase() === usuario.email.toLowerCase()
+    );
 
-  alert("Usuário cadastrado com sucesso!");
-  form.reset();
+    if (emailJaExiste) {
+        alert("Este e-mail já está cadastrado.");
+        email.focus();
+        return;
+    }
+
+    usuariosCadastrados.push(usuario);
+    localStorage.setItem("usuarios", JSON.stringify(usuariosCadastrados));
+
+    // --- NOVA PARTE ---
+    // Loga o usuário automaticamente após o cadastro
+    localStorage.setItem('usuarioLogado', usuario.email);
+
+    alert("Usuário cadastrado com sucesso! Você será direcionado para o seu perfil.");
+    // Redireciona para a página de perfil
+    window.location.href = 'meuperfil.html';
 });
+
+// ... (resto do seu código, como a função validarFormulario) ...
 
 // ------------------- Função de Validação -------------------
 function validarFormulario() {
