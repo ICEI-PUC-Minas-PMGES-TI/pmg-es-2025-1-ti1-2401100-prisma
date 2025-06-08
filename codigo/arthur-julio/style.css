@@ -6,11 +6,9 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #410445;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to bottom right, #410445, #2a0140);
   color: #ffffff;
-  margin: 0;
-  padding: 0;
 }
 
 .container {
@@ -24,58 +22,58 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 20px 0;
   border-bottom: 2px solid #883078;
 }
 
-h1, h2 {
-  margin: 0;
-}
-
 h1 {
-  font-size: 2em;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 h2.subtitulo-pagina1 {
-  font-size: 1.5em;
-  margin: 30px 0 40px;
+  font-size: 1.5rem;
+  margin: 30px 0 20px;
   text-align: center;
   color: #e1bee7;
 }
 
+/* Navegação central */
 nav.botoes-middle {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin: 20px 0;
   flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .nav-button {
-  padding: 10px 20px;
-  background-color: #6a1b9a;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
+  background-color: transparent;
+  color: #e1bee7;
+  padding: 8px 14px;
   font-weight: 600;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  min-width: 120px;
+  text-decoration: none;
+  border: 2px solid #e1bee7;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
 }
 
 .nav-button:hover {
   background-color: #8e24aa;
+  border-color: #8e24aa;
+  color: #fff;
 }
 
-/* Botão Voltar */
+/* Botão voltar */
 .back-button {
   background-color: #ab1717;
   color: #fff;
   border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
   font-weight: 600;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -83,121 +81,139 @@ nav.botoes-middle {
   background-color: #d32f2f;
 }
 
+/* Formulário principal */
 form#evento-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #6a1b9a;
-  padding: 25px 30px;
+  display: grid;
+  gap: 16px;
+  background-color: #4c0450;
+  padding: 24px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(105, 27, 154, 0.5);
-  max-width: 700px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
   margin: 0 auto;
 }
 
+/* Grupos de formulário com espaçamento */
 .form-group {
-  width: 100%;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
 }
 
+/* Labels */
 .form-group label {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #ddd;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #e0c8f4;
 }
 
-/* Inputs e Selects - padronizados */
+/* Inputs e selects padronizados */
 input[type="text"],
 select {
   width: 100%;
-  height: 40px;
-  padding: 8px 12px;
-  font-size: 1em;
-  border-radius: 6px;
+  height: 42px;
+  padding: 10px 14px;
+  font-size: 1rem;
   border: none;
-  outline: none;
-  background-color: #8e24aa;
+  border-radius: 8px;
+  background-color: #732390;
   color: #fff;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
   font-weight: 500;
 }
 
-/* Ajuste para selects múltiplos */
+/* Campos com tamanho menor (data nascimento, ano fundação, número integrantes, etc) */
+input[type="date"],
+input[type="number"],
+select.tamanho-menor {
+  width: 60%;
+  max-width: 250px;
+  height: 36px;
+  font-size: 0.9rem;
+  padding: 8px 10px;
+  background-color: #732390;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Campo múltiplo (ex: links) */
 select[multiple] {
-  height: 120px;
-  padding-top: 10px;
-  background-color: #7b1fa2;
-  cursor: pointer;
-  box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
-  font-weight: 500;
+  height: 140px;
+  padding: 10px;
+  background-color: #6a1b9a;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  overflow-y: auto;
 }
 
+/* Focus em inputs e selects */
 input[type="text"]:focus,
-select:focus {
-  background-color: #a450d5;
-  box-shadow: 0 0 8px 2px #d1a3f0;
-  color: #fff;
-  font-weight: 700;
+select:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select.tamanho-menor:focus {
+  background-color: #8d3cae;
+  outline: none;
+  box-shadow: 0 0 6px #e1bee7;
 }
 
+/* Campo com erro */
 .erro {
   border: 2px solid red !important;
 }
 
 /* Botão enviar */
 .submit-button {
-  width: 50%;
-  max-width: 300px;
-  padding: 12px;
-  background-color: #1d6e25c1;
-  border: none;
-  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  background-color: #2e7d32;
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: 700;
   transition: background-color 0.3s ease;
-  margin-top: 10px;
 }
 
 .submit-button:hover {
-  background-color: #388e3c;
+  background-color: #43a047;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   h1 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 
   h2.subtitulo-pagina1 {
-    font-size: 1.2em;
-  }
-
-  nav.botoes-middle {
-    gap: 10px;
+    font-size: 1.2rem;
   }
 
   .nav-button {
-    min-width: 100px;
-    font-size: 0.9em;
-    padding: 8px 12px;
+    font-size: 0.85rem;
+    padding: 6px 12px;
   }
 
   form#evento-form {
-    padding: 20px;
+    padding: 16px;
   }
 
-  .form-group {
-    max-width: 100%;
-  }
-
-  input[type="text"],
-  select,
   .submit-button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  /* Ajuste para tamanho menor em telas pequenas */
+  input[type="date"],
+  input[type="number"],
+  select.tamanho-menor {
     width: 100%;
+    max-width: 100%;
+    height: 38px;
   }
 }
