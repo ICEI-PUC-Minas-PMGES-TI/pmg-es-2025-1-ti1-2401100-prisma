@@ -42,17 +42,13 @@
                 <input type="text" id="titulo" name="titulo" required />
             </div>
             <div class="form-group">
-                <label for="endereco">Estado:</label>
-                <select id="estado-select" class="estado-select">
-                    <option value="">Selecionar Estado</option>
-                </select>
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" required />
             </div>
 
             <div class="form-group">
-                <label for="endereco">Cidade:</label>
-                <select id="cidade-select" class="cidade-select">
-                    <option value="">Selecionar Cidade</option>
-                </select>
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required />
             </div>
 
             <div class="form-group">
@@ -73,6 +69,11 @@
             <div class="form-group" id="artistas-group">
                 <label for="artistas">Selecione os Artistas:</label>
                 <select name="artistas" id="artistas" class="genero" multiple required>
+                    <option value="Poze Do Rodo">Poze Do Rodo</option>
+                    <option value="Caetano Veloso">Caetano Veloso</option>
+                    <option value="Oruam">Oruam</option>
+                    <option value="Marisa Monte">Marisa Monte</option>
+                    <option value="Armandinho">Armandinho</option>
                 </select>
             </div>
 
@@ -106,6 +107,12 @@
             <button type="submit" class="submit-button">Cadastrar</button>
         </form>
     </div>
+
+    <div id="mensagem-erro" style="display: none; color: #ff4d4d; font-weight: bold; margin-bottom: 15px;">
+  ⚠️ Por favor, preencha todos os campos obrigatórios.
+</div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
