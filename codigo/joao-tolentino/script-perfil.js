@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailLogado = localStorage.getItem('usuarioLogado');
     const profileContainer = document.querySelector('.profile-container');
 
-    // Se ninguém estiver logado, redireciona para a página de login
+    //Joga pra pag de login caso ninguem esteja logado
     if (!emailLogado) {
         alert("Nenhum usuário logado. Por favor, faça o login.");
         window.location.href = 'login.html';
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.profile-picture').style.backgroundImage = `url('${usuarioLogado.foto}')`;
     }
 
-    // Função para mudar para o modo de edição
+    // Modo de edição
     function modoEdicao() {
         profileContainer.innerHTML = `
             <div class="profile-header">
@@ -94,23 +94,23 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Encontra o índice do usuário na lista para poder atualizá-lo
+        
         const userIndex = usuarios.findIndex(u => u.email === emailLogado);
         
-        // Atualiza o objeto do usuário com os novos dados
+        
         usuarios[userIndex] = { ...usuarios[userIndex], ...novosDados };
 
-        // Salva a lista inteira de volta no Local Storage
+        
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
         alert("Perfil atualizado com sucesso!");
         location.reload(); // Recarrega a página para mostrar os dados atualizados
     }
 
-    // Lógica principal
+    
     exibirDados(); // Exibe os dados quando a página carrega
 
-    // Adiciona o listener ao botão de editar
+    
     document.querySelector('.edit-button').addEventListener('click', modoEdicao);
 
     // Adiciona um botão de Sair (Logout)

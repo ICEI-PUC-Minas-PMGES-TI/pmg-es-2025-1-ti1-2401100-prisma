@@ -30,14 +30,13 @@ const email = document.getElementById("email");
 const cidade = document.getElementById("cidade");
 const genero = document.getElementById("genero");
 
-// ... (todo o código anterior do seu scripts.js) ...
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     if (!validarFormulario()) return;
 
-    // ... (código para buscar a foto) ...
+    // foto de perfil usa uma API externa para buscar uma imagem aleatória
     let fotoPerfil = "";
     try {
         const res = await fetch("https://randomuser.me/api/");
@@ -50,7 +49,6 @@ form.addEventListener("submit", async function (e) {
 
     const usuario = {
         nome: nome.value.trim(),
-        // Adicionei a data de nascimento que estava faltando no objeto
         dataNascimento: document.getElementById("dataNascimento").value, 
         telefone: telefone.value.trim(),
         cidade: cidade.value.trim(),
@@ -74,7 +72,6 @@ form.addEventListener("submit", async function (e) {
     usuariosCadastrados.push(usuario);
     localStorage.setItem("usuarios", JSON.stringify(usuariosCadastrados));
 
-    // --- NOVA PARTE ---
     // Loga o usuário automaticamente após o cadastro
     localStorage.setItem('usuarioLogado', usuario.email);
 
@@ -83,7 +80,7 @@ form.addEventListener("submit", async function (e) {
     window.location.href = 'meuperfil.html';
 });
 
-// ... (resto do seu código, como a função validarFormulario) ...
+
 
 // ------------------- Função de Validação -------------------
 function validarFormulario() {

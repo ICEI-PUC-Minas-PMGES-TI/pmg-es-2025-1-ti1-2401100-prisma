@@ -7,17 +7,15 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         return;
     }
 
-    // Pega a lista de usuários do Local Storage
+    // puxa a lista de usuários do Local Storage
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
     // Encontra um usuário com o e-mail fornecido
     const usuarioEncontrado = usuarios.find(u => u.email.toLowerCase() === emailInput.toLowerCase());
 
     if (usuarioEncontrado) {
-        // Se encontrou, salva o e-mail no Local Storage para marcar como "logado"
         localStorage.setItem('usuarioLogado', usuarioEncontrado.email);
         alert(`Bem-vindo(a) de volta, ${usuarioEncontrado.nome}!`);
-        // Redireciona para a página de perfil
         window.location.href = 'meuperfil.html';
     } else {
         alert('E-mail não encontrado. Verifique o e-mail digitado ou cadastre-se.');
