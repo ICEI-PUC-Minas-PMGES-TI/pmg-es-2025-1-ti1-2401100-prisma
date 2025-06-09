@@ -47,8 +47,6 @@ function carregarArtistasDoLocalStorage() {
     }
   );
 
-  console.log("Artistas salvos:", artistasSalvos);
-
   if (artistasSalvos) {
     try {
       const artistasArray = artistasSalvos;
@@ -59,8 +57,6 @@ function carregarArtistasDoLocalStorage() {
         option.textContent = artista;
         artistaSelect.appendChild(option);
       });
-
-      console.log(artistasArray);
     } catch (e) {
       console.error("Erro ao carregar artistas do localStorage:", e);
     }
@@ -116,6 +112,7 @@ function gerarEventosMockados(dataHoje) {
       horario: "20:00",
       preco: 150,
       data: startDate.value,
+      artista: artistaSelect.value,
     },
     {
       nome: "Feira Cultural",
@@ -123,6 +120,7 @@ function gerarEventosMockados(dataHoje) {
       horario: "10:00",
       preco: 80,
       data: endDate.value,
+      artista: artistaSelect.value,
     },
     {
       nome: "Stand-up Comedy",
@@ -130,6 +128,7 @@ function gerarEventosMockados(dataHoje) {
       horario: "19:30",
       preco: 120,
       data: startDate.value,
+      artista: artistaSelect.value,
     },
     {
       nome: "Teatro Clássico",
@@ -137,6 +136,7 @@ function gerarEventosMockados(dataHoje) {
       horario: "18:00",
       preco: 220,
       data: endDate.value,
+      artista: artistaSelect.value,
     },
     {
       nome: "Festival de Dança",
@@ -144,6 +144,7 @@ function gerarEventosMockados(dataHoje) {
       horario: "21:00",
       preco: 400,
       data: endDate.value,
+      artista: artistaSelect.value,
     },
   ];
 
@@ -189,6 +190,7 @@ function gerarEventosMockados(dataHoje) {
           <p><strong>Data:</strong> ${evento.data}</p>
           <p><strong>Horário:</strong> ${evento.horario}</p>
           <p><strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}</p>
+          <p><strong>Artista:</strong> ${evento.artista || "Não informado"}</p>
         `;
     cardsWrapper.appendChild(card);
   });
