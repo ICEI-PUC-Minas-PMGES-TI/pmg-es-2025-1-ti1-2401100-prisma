@@ -29,63 +29,60 @@
 
     <main class="content">
 
-        <!-- Filtragem e procura de eventos -->
-        <section class="search-bar">
-            <input type="text" placeholder="Buscar eventos próximos…">
-            <select title="categoria" name="categoria" id="selecao-categoria">
-                <option disabled selected>categoria</option>
-                <option disabled>categoria1</option>
-            </select>
-            <select title="data" name="data" id="selecao-data">
-                <option disabled selected>data</option>
-                <option disabled>data1</option>
-            </select>
-            <select title="localizacao" name="localizacao" id="selecao-localizacao">
-                <option disabled selected>localizacao</option>
-                <!-- TODO - definir melhor isso; pode ser bairro, ou o usuário pode ter a opção de aumentar o raio de distância para os eventos -->
-                <option disabled>localizacao1</option>
-            </select>
-        </section>
-
         <!-- Mapa -->
         <section class="map-container">
             <div id="map"></div>
+            <!-- Botão filtrar -->
+            <div class="filter-button-wrapper">
+                <button id="filter-button" aria-label="Filter events">
+                    <img src="assets/filter_button.svg" alt="Símbolo para o botão para filtragem">
+                </button>
+                <div id="filter-message">Faça uma filtragem de eventos e veja os resultados no mapa!</div>
+            </div>
+
+            <!-- Popup de filtragem -->
+            <div id="filter-popup" class="filter-popup hidden">
+                <div class="popup-content">
+                    <h2>Filtrar Eventos</h2>
+
+                    <label for="filter-price">Preço máximo (R$):</label>
+                    <input type="number" id="filter-price" name="price" min="0" placeholder="Ex: 50" />
+
+                    <label for="filter-type">Tipo:</label>
+                    <select id="filter-type" name="type">
+                        <option value="">Todos</option>
+                        <option value="musica">Música</option>
+                        <option value="literario">Literário</option>
+                        <option value="esportivo">Esportivo</option>
+                    </select>
+
+                    <label for="filter-category">Categoria:</label>
+                    <select id="filter-category" name="category">
+                        <option value="">Todas</option>
+                        <option value="show">Show</option>
+                        <option value="palestra">Palestra</option>
+                        <option value="oficina">Oficina</option>
+                    </select>
+
+                    <label for="filter-date">Até a data:</label>
+                    <input type="date" id="filter-date" name="date" />
+
+                    <div>
+                        <label for="filter-distance">Proximidade:</label>
+                        <input type="range" id="filter-distance" name="distance" min="1" max="100" value="10" />
+                        <span id="distance-value">10 km</span>
+            </div>
+
+                    <button id="apply-filter">Aplicar</button>
+                </div>
+            </div>
         </section>
 
-        <!-- Cards de eventos -->
-        <h1 id="titulo-secao-resultados">Resultados</h1>
-        <section class="event-cards">
-            <div class="event-card">
-                <img src="https://placehold.co/200x200" alt="Evento">
-                <div class="event-info">
-                    <h3>Evento 1</h3>
-                    <p>Data: 14/06/2025</p>
-                    <p>Localização: Praça Sete</p>
-                    <p>Preço: R$ 100,00</p>
-                    <p class="description">Descrição breve do evento...</p>
-                </div>
-            </div>
-            <div class="event-card">
-                <img src="https://placehold.co/200x200" alt="Evento">
-                <div class="event-info">
-                    <h3>Evento 2</h3>
-                    <p>Data: 05/09/2025</p>
-                    <p>Localização: Mineirão</p>
-                    <p>Preço: R$ 50,00</p>
-                    <p class="description">Descrição breve do evento...</p>
-                </div>
-            </div>
-            <div class="event-card">
-                <img src="https://placehold.co/200x200" alt="Evento">
-                <div class="event-info">
-                    <h3>Evento 3</h3>
-                    <p>Data: 25/12/2025</p>
-                    <p>Localização: Casa dos Artistas, 187</p>
-                    <p>Preço: R$ 70,00</p>
-                    <p class="description">Descrição breve do evento...</p>
-                </div>
-            </div>
-        </section>
+        <!-- Detalhes do evento clicado -->
+        <!-- <h1 id="titulo-secao-resultados">Detalhes do evento …</h1>
+        <section class="selected-event-details">
+
+        </section> -->
 
     </main>
 
