@@ -7,6 +7,7 @@ const submitButton = document.querySelector("#submit-button");
 const estadoSelect = document.querySelector("#estado-select");
 const cardsWrapper = document.querySelector("#cards-wrapper");
 const form = document.querySelector("#form-busca-eventos");
+const artistaSelect = document.querySelector("#artista-select");
 
 async function carregarEstados() {
   const response = await fetch(
@@ -39,7 +40,32 @@ estadoSelect.addEventListener("change", async function () {
   });
 });
 
-carregarEstados();
+function carregarArtistasDoLocalStorage() {
+  const artistasSalvos = JSON.parse(localStorage.getItem("eventos")).map(
+    (evento) => {
+      return evento.artistas;
+    }
+  );
+
+  console.log("Artistas salvos:", artistasSalvos);
+
+  if (artistasSalvos) {
+    try {
+      const artistasArray = artistasSalvos;
+      artistaSelect.innerHTML = '<option value="">Selecionar Artista</option>';
+      artistasArray.forEach((artista) => {
+        const option = document.createElement("option");
+        option.value = artista;
+        option.textContent = artista;
+        artistaSelect.appendChild(option);
+      });
+
+      console.log(artistasArray);
+    } catch (e) {
+      console.error("Erro ao carregar artistas do localStorage:", e);
+    }
+  }
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -167,3 +193,6 @@ function gerarEventosMockados(dataHoje) {
     cardsWrapper.appendChild(card);
   });
 }
+
+carregarEstados();
+carregarArtistasDoLocalStorage();
