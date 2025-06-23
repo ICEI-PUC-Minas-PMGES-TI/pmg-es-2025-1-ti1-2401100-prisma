@@ -147,6 +147,10 @@ body {
     border: none;
     border-radius: 5px;   
   }
+  #delete-button {
+    background-color: red;
+  }
+
  /* ------------------- Responsividade ------------------- */
 @media (max-width: 600px) {
   header {

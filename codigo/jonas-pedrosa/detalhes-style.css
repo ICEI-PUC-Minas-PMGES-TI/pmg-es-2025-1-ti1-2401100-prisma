@@ -154,18 +154,40 @@ h1 {
     color: var(--preto);
     margin: 0;
 }
-/* Responsivo */
+
 @media (max-width: 600px) {
-  .container {
-    width: 95%;
-    padding: 20px;
-  }
+    .container {
+        padding: 25px;
+    }
 
-  h1 {
-    font-size: 1.5em;
-  }
+    h1 {
+        font-size: 2em;
+    }
 
-  p {
-    font-size: 1em;
-  }
+    .artist-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .artist-name {
+        font-size: 1.8em;
+    }
+
+    .artist-genre {
+        font-size: 1em;
+    }
+
+    .artist-bio {
+        font-size: 0.9em;
+        padding: 0 10px;
+    }
+
+    .social-media a {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
 }

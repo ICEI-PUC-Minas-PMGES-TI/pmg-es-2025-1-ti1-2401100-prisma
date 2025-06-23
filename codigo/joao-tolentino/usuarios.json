@@ -1,17 +1,72 @@
 [
-    {
-      "nome": "João Silva",
-      "telefone": "(11) 91234-5678",
-      "cidade": "São Paulo",
-      "email": "joao.silva@email.com",
-      "genero": "Masculino"
-    },
-    {
-      "nome": "Maria Oliveira",
-      "telefone": "(21) 99876-5432",
-      "cidade": "Rio de Janeiro",
-      "email": "maria.oliveira@email.com",
-      "genero": "Feminino"
-    }
-  ]
-  
+  {
+    "nome": "Ana Beatriz Costa",
+    "telefone": "(11) 98765-4321",
+    "cidade": "São Paulo",
+    "email": "ana.costa@gmail.com",
+    "genero": "Feminino"
+  },
+  {
+    "nome": "Carlos Henrique Souza",
+    "telefone": "(21) 91234-5678",
+    "cidade": "Rio de Janeiro",
+    "email": "carlos.souza@hotmail.com",
+    "genero": "Masculino"
+  },
+  {
+    "nome": "Mariana Ferreira",
+    "telefone": "(31) 99876-5432",
+    "cidade": "Belo Horizonte",
+    "email": "mariana.ferreira@yahoo.com",
+    "genero": "Feminino"
+  },
+  {
+    "nome": "Rafael Lima",
+    "telefone": "(61) 91123-4567",
+    "cidade": "Brasília",
+    "email": "rafael.lima@outlook.com",
+    "genero": "Masculino"
+  },
+  {
+    "nome": "Juliana Almeida",
+    "telefone": "(71) 98712-3456",
+    "cidade": "Salvador",
+    "email": "juliana.almeida@gmail.com",
+    "genero": "Prefiro não informar"
+  },
+  {
+    "nome": "Lucas Mendes",
+    "telefone": "(41) 91234-7890",
+    "cidade": "Curitiba",
+    "email": "lucas.mendes@gmail.com",
+    "genero": "Masculino"
+  },
+  {
+    "nome": "Isabela Rocha",
+    "telefone": "(85) 99876-5432",
+    "cidade": "Fortaleza",
+    "email": "isabela.rocha@gmail.com",
+    "genero": "Feminino"
+  },
+  {
+    "nome": "Thiago Oliveira",
+    "telefone": "(51) 91111-2222",
+    "cidade": "Porto Alegre",
+    "email": "thiago.oliveira@gmail.com",
+    "genero": "Masculino"
+  },
+  {
+    "nome": "Camila Martins",
+    "telefone": "(27) 98888-7777",
+    "cidade": "Vitória",
+    "email": "camila.martins@gmail.com",
+    "genero": "Feminino"
+  },
+  {
+    "nome": "Pedro Santos",
+    "telefone": "(62) 97777-6666",
+    "cidade": "Goiânia",
+    "email": "pedro.santos@gmail.com",
+    "genero": "Prefiro não informar"
+  }
+]

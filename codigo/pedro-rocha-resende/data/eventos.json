@@ -1,7 +1,8 @@
 [
   {
     "id": 1001,
-    "tipo": "musical",
+    "tipo": "musica",
+    "categoria": "samba",
     "titulo": "Samba sob as Estrelas",
     "descricao": "Apresentação ao vivo de samba em espaço aberto.",
     "imagens": ["imagem1.png", "imagem2.png"],
@@ -10,14 +11,15 @@
     "local": {
       "estado": "Minas Gerais",
       "cidade": "Belo Horizonte",
-      "endereco": "Rua Doresópolis, 480 - Fernão Dias"
+      "endereco": "Av. Amazonas, 6200 - Gameleira"
     },
-    "preco": "100",
+    "preco": 100,
     "idsArtistas": [1, 2]
   },
   {
     "id": 1002,
     "tipo": "esportivo",
+    "categoria": "futebol",
     "titulo": "Semifinal 1 da copa MG Stars",
     "descricao": "Jogo que vale para a semifinal da copa MG Stars, entre Patos FC e Operários FC.",
     "imagens": ["imagem3.png", "imagem4.png"],
@@ -26,14 +28,15 @@
     "local": {
       "estado": "Minas Gerais",
       "cidade": "Belo Horizonte",
-      "endereco": "Rua Nicolina Pachêco, 449 - Palmares"
+      "endereco": "R. Humaitá, 1167 - Padre Eustáquio"
     },
-    "preco": "20",
+    "preco": 20,
     "idsArtistas": [3]
   },
   {
     "id": 1003,
     "tipo": "Literário",
+    "categoria": "oficina",
     "titulo": "13ª feira do livro do MG Shopping",
     "descricao": "Decima terceira feira do livro do MG Shopping, com diversas obras de literatura. Ocorrerá no Pátio 2, perto da livraria Leitura",
     "imagens": ["imagem5.png", "imagem6.png"],
@@ -42,9 +45,9 @@
     "local": {
       "estado": "Minas Gerais",
       "cidade": "Belo Horizonte",
-      "endereco": "Av. Cristiano Machado, 4000 - União"
+      "endereco": "Av. Amazonas, 6825 - Gameleira"
     },
-    "preco": "Gratuito",
+    "preco": 0,
     "idsArtistas": []
   }
 ]

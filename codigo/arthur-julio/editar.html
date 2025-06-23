@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DivulgaHub - Gerenciar Artistas</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+        /* Estilos básicos para a página de gerenciamento */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #5d5d5d;
+            margin-bottom: 30px;
+        }
+        .back-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        /* Estilos para a tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .actions {
+            white-space: nowrap;
+        }
+        .actions button {
+            padding: 8px 12px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: white;
+            transition: background-color 0.2s ease;
+        }
+        .actions .edit-button {
+            background-color: #28a745;
+        }
+        .actions .edit-button:hover {
+            background-color: #218838;
+        }
+        .actions .delete-button {
+            background-color: #dc3545;
+        }
+        .actions .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        /* Estilos para o Modal de Edição */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+        }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #444;
+        }
+        .modal-content .form-group {
+            margin-bottom: 15px;
+        }
+        .modal-content label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .modal-content input[type="text"],
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content input[type="url"],
+        .modal-content select,
+        .modal-content textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .modal-content fieldset {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .modal-content legend {
+            font-weight: bold;
+            padding: 0 10px;
+            color: #666;
+        }
+        .modal-content button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+        .modal-content button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        /* Classe de erro para validação */
+        .erro {
+            border: 2px solid red !important;
+        }
+
+        /* Responsividade básica */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+            }
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .actions button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            .nav-button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header data-aos="fade-down">
+            <h1>DivulgaHub</h1>
+            <button class="back-button" onclick="history.back()">Voltar</button>
+        </header>
+
+        <nav class="botoes-middle" data-aos="fade-up">
+            <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+            <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+            <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
+            <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
+            <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+            <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+        </nav>
+
+        <h2 class="subtitulo-pagina1" data-aos="fade-right">Gerenciar Artistas Cadastrados</h2>
+
+        <div id="artistas-lista">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome Artístico</th>
+                        <th>Gênero Musical</th>
+                        <th>Cidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-artistas-corpo">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="modalEdicao" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Editar Artista</h2>
+            <form id="form-editar-artista">
+                <input type="hidden" id="edit-id">
+
+                <div class="form-group">
+                    <label for="edit-nomePessoa">Nome completo:</label>
+                    <input type="text" id="edit-nomePessoa" name="nomePessoa" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-generoPessoa">Gênero:</label>
+                    <select id="edit-generoPessoa" name="generoPessoa" required>
+                        <option value="">Selecione</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="nao-binario">Não-binário</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-dataNascimento">Data de nascimento:</label>
+                    <input type="date" id="edit-dataNascimento" name="dataNascimento" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-nomeArtistico">Nome da Banda/Artista:</label>
+                    <input type="text" id="edit-nomeArtistico" name="nomeArtistico" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-descricao">Descrição:</label>
+                    <textarea id="edit-descricao" name="descricao" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-genero">Gênero musical:</label>
+                    <input type="text" id="edit-genero" name="genero" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-foto">Foto da Banda/Artista (URL):</label>
+                    <input type="url" id="edit-foto" name="foto" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-tipoEspetaculo">Tipo de espetáculo:</label>
+                    <select id="edit-tipoEspetaculo" name="tipoEspetaculo" required>
+                        <option value="">Selecione</option>
+                        <option value="musica">Música</option>
+                        <option value="danca">Dança</option>
+                        <option value="teatro">Teatro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-anoFundacao">Ano de fundação:</label>
+                    <input type="number" id="edit-anoFundacao" name="anoFundacao" min="1900" max="2025" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-qtdIntegrantes">Quantidade de integrantes:</label>
+                    <input type="number" id="edit-qtdIntegrantes" name="qtdIntegrantes" min="1" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-cidade">Cidade:</label>
+                    <input type="text" id="edit-cidade" name="cidade" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-telefone">Telefone:</label>
+                    <input type="text" id="edit-telefone" name="telefone" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-generoArtistico">Gênero artístico:</label>
+                    <input type="text" id="edit-generoArtistico" name="generoArtistico" required />
+                </div>
+
+                <fieldset>
+                    <legend>Onde encontrar o artista:</legend>
+                    <div class="form-group">
+                        <label for="edit-spotify">Spotify:</label>
+                        <input type="url" id="edit-spotify" name="spotify" placeholder="https://spotify.com/" />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-instagram">Instagram:</label>
+                        <input type="url" id="edit-instagram" name="instagram" placeholder="https://instagram.com/" />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-youtube">YouTube:</label>
+                        <input type="url" id="edit-youtube" name="youtube" placeholder="https://youtube.com/" />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-facebook">Facebook:</label>
+                        <input type="url" id="edit-facebook" name="facebook" placeholder="https://facebook.com/" />
+                    </div>
+                </fieldset>
+
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="cad_artistas.js"></script>
+    
+    <script>
+        AOS.init(); // Inicializa a biblioteca AOS para animações
+
+        // Função para carregar e exibir todos os artistas do localStorage na tabela
+        function carregarArtistas() {
+            // Obtém a lista de artistas do localStorage; se não houver, inicializa como um array vazio
+            const artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+            const tabelaCorpo = document.getElementById('tabela-artistas-corpo');
+            tabelaCorpo.innerHTML = ''; // Limpa a tabela antes de adicionar os artistas atualizados
+
+            // Verifica se não há artistas cadastrados e exibe uma mensagem
+            if (artistas.length === 0) {
+                tabelaCorpo.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">Nenhum artista cadastrado ainda.</td></tr>';
+                return;
+            }
+
+            // Para cada artista, cria uma nova linha na tabela
+            artistas.forEach(artista => {
+                const row = tabelaCorpo.insertRow();
+                // Adiciona as células com os dados principais do artista
+                row.insertCell().textContent = artista.nomeArtistico;
+                row.insertCell().textContent = artista.genero;
+                row.insertCell().textContent = artista.cidade;
+
+                const acoesCell = row.insertCell();
+                acoesCell.classList.add('actions'); // Adiciona a classe para estilização dos botões
+
+                // Cria o botão "Editar"
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Editar';
+                editButton.classList.add('edit-button');
+                // Adiciona um evento de clique para abrir o modal de edição com os dados do artista
+                editButton.addEventListener('click', () => abrirModalEdicao(artista.id));
+                acoesCell.appendChild(editButton);
+
+                // Cria o botão "Excluir"
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Excluir';
+                deleteButton.classList.add('delete-button');
+                // Adiciona um evento de clique para excluir o artista
+                deleteButton.addEventListener('click', () => excluirArtista(artista.id));
+                acoesCell.appendChild(deleteButton);
+            });
+        }
+
+        // Função para excluir um artista do localStorage
+        function excluirArtista(id) {
+            // Solicita confirmação ao usuário antes de excluir
+            if (confirm('Tem certeza que deseja excluir este artista? Esta ação é irreversível.')) {
+                let artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+                // Filtra a lista, removendo o artista com o ID correspondente
+                artistas = artistas.filter(artista => artista.id !== id);
+                // Salva a nova lista (sem o artista excluído) de volta no localStorage
+                localStorage.setItem('artistas', JSON.stringify(artistas));
+                alert('Artista excluído com sucesso!');
+                carregarArtistas(); // Recarrega a tabela para exibir a lista atualizada
+            }
+        }
+
+        /* --- Lógica do Modal de Edição --- */
+        const modal = document.getElementById('modalEdicao');
+        const spanClose = document.getElementsByClassName('close-button')[0];
+        const formEditarArtista = document.getElementById('form-editar-artista');
+
+        // Quando o usuário clica no "x" (botão de fechar), esconde o modal
+        spanClose.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        // Quando o usuário clica em qualquer lugar fora do modal, fecha o modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Função para abrir o modal de edição e preencher seus campos com os dados do artista
+        function abrirModalEdicao(id) {
+            const artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+            // Encontra o artista na lista pelo ID
+            const artistaParaEditar = artistas.find(artista => artista.id === id);
+
+            if (artistaParaEditar) {
+                // Preenche cada campo do formulário no modal com os dados do artista
+                document.getElementById('edit-id').value = artistaParaEditar.id;
+                document.getElementById('edit-nomePessoa').value = artistaParaEditar.nomePessoa;
+                document.getElementById('edit-generoPessoa').value = artistaParaEditar.generoPessoa;
+                document.getElementById('edit-dataNascimento').value = artistaParaEditar.dataNascimento;
+                document.getElementById('edit-nomeArtistico').value = artistaParaEditar.nomeArtistico;
+                document.getElementById('edit-descricao').value = artistaParaEditar.descricao;
+                document.getElementById('edit-genero').value = artistaParaEditar.genero;
+                document.getElementById('edit-foto').value = artistaParaEditar.foto;
+                document.getElementById('edit-tipoEspetaculo').value = artistaParaEditar.tipoEspetaculo;
+                document.getElementById('edit-anoFundacao').value = artistaParaEditar.anoFundacao;
+                document.getElementById('edit-qtdIntegrantes').value = artistaParaEditar.qtdIntegrantes;
+                document.getElementById('edit-cidade').value = artistaParaEditar.cidade;
+                document.getElementById('edit-telefone').value = artistaParaEditar.telefone; // Preenche o telefone
+                document.getElementById('edit-generoArtistico').value = artistaParaEditar.generoArtistico;
+                document.getElementById('edit-spotify').value = artistaParaEditar.spotify;
+                document.getElementById('edit-instagram').value = artistaParaEditar.instagram;
+                document.getElementById('edit-youtube').value = artistaParaEditar.youtube;
+                document.getElementById('edit-facebook').value = artistaParaEditar.facebook;
+
+                modal.style.display = 'block'; // Torna o modal visível
+            } else {
+                alert('Artista não encontrado para edição.');
+            }
+        }
+
+        // Lidar com o envio do formulário de edição dentro do modal
+        formEditarArtista.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o comportamento padrão de envio do formulário
+
+            // **Chama a função de validação externa para o formulário do modal**
+            if (!validaFormulario(formEditarArtista)) {
+                alert("Por favor, preencha os campos obrigatórios corretamente para atualizar o artista.");
+                return; // Impede a atualização se a validação falhar
+            }
+
+            const id = parseInt(document.getElementById('edit-id').value); // Pega o ID do artista a ser atualizado
+            let artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+
+            // Encontra o índice do artista na lista pelo ID
+            const index = artistas.findIndex(artista => artista.id === id);
+
+            if (index !== -1) {
+                // Atualiza os dados do artista na lista com os novos valores do formulário
+                artistas[index] = {
+                    id: id, // Mantém o mesmo ID
+                    nomePessoa: document.getElementById('edit-nomePessoa').value,
+                    generoPessoa: document.getElementById('edit-generoPessoa').value,
+                    dataNascimento: document.getElementById('edit-dataNascimento').value,
+                    nomeArtistico: document.getElementById('edit-nomeArtistico').value,
+                    descricao: document.getElementById('edit-descricao').value,
+                    genero: document.getElementById('edit-genero').value,
+                    foto: document.getElementById('edit-foto').value,
+                    tipoEspetaculo: document.getElementById('edit-tipoEspetaculo').value,
+                    anoFundacao: document.getElementById('edit-anoFundacao').value,
+                    qtdIntegrantes: document.getElementById('edit-qtdIntegrantes').value,
+                    cidade: document.getElementById('edit-cidade').value,
+                    telefone: document.getElementById('edit-telefone').value, // Captura o telefone atualizado
+                    generoArtistico: document.getElementById('edit-generoArtistico').value,
+                    spotify: document.getElementById('edit-spotify').value,
+                    instagram: document.getElementById('edit-instagram').value,
+                    youtube: document.getElementById('edit-youtube').value,
+                    facebook: document.getElementById('edit-facebook').value,
+                };
+                // Salva a lista de artistas atualizada de volta no localStorage
+                localStorage.setItem('artistas', JSON.stringify(artistas));
+                alert('Artista atualizado com sucesso!');
+                modal.style.display = 'none'; // Esconde o modal
+                carregarArtistas(); // Recarrega a tabela para exibir as alterações
+            } else {
+                alert('Erro ao atualizar artista: ID não encontrado.');
+            }
+        });
+
+        // Garante que os artistas sejam carregados assim que a página estiver pronta
+        document.addEventListener('DOMContentLoaded', carregarArtistas);
+    </script>
+</body>
+</html>
