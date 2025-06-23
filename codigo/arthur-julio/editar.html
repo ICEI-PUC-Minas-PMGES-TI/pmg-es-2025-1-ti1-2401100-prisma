@@ -28,6 +28,17 @@
             color: #5d5d5d;
             margin-bottom: 30px;
         }
+        /* Estilo para o cabeçalho - Nova cor de fundo */
+        header {
+            background-color: #2c0237; /* Cor de fundo adicionada */
+            padding: 20px; /* Adicionado um padding para melhor visualização */
+            border-radius: 8px 8px 0 0; /* Para combinar com o container */
+            text-align: center; /* Centraliza o conteúdo do header */
+        }
+        header h1 {
+            color: white; /* Alterado a cor do texto do H1 para contrastar com o fundo */
+            margin-bottom: 15px;
+        }
         .back-button {
             background-color: #007bff;
             color: white;
@@ -43,6 +54,27 @@
         .back-button:hover {
             background-color: #0056b3;
         }
+        /* Estilos para os botões de navegação dentro do header */
+        .botoes-middle {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .nav-button {
+            background-color: #6a057e; /* Exemplo de cor para os botões */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: #8c07a8;
+        }
+
         /* Estilos para a tabela */
         table {
             width: 100%;
@@ -227,16 +259,15 @@
         <header data-aos="fade-down">
             <h1>DivulgaHub</h1>
             <button class="back-button" onclick="history.back()">Voltar</button>
+            <nav class="botoes-middle" data-aos="fade-up">
+                <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+                <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+                <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
+                <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
+                <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+                <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+            </nav>
         </header>
-
-        <nav class="botoes-middle" data-aos="fade-up">
-            <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-            <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
-            <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
-            <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
-            <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
-            <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-        </nav>
 
         <h2 class="subtitulo-pagina1" data-aos="fade-right">Gerenciar Artistas Cadastrados</h2>
 
@@ -465,7 +496,7 @@
                 document.getElementById('edit-anoFundacao').value = artistaParaEditar.anoFundacao;
                 document.getElementById('edit-qtdIntegrantes').value = artistaParaEditar.qtdIntegrantes;
                 document.getElementById('edit-cidade').value = artistaParaEditar.cidade;
-                document.getElementById('edit-telefone').value = artistaParaEditar.telefone; // Preenche o telefone
+                document.getElementById('edit-telefone').value = artistaParaEditar.telefone;
                 document.getElementById('edit-generoArtistico').value = artistaParaEditar.generoArtistico;
                 document.getElementById('edit-spotify').value = artistaParaEditar.spotify;
                 document.getElementById('edit-instagram').value = artistaParaEditar.instagram;
@@ -483,7 +514,7 @@
             e.preventDefault(); // Impede o comportamento padrão de envio do formulário
 
             // **Chama a função de validação externa para o formulário do modal**
-            if (!validaFormulario(formEditarArtista)) {
+            if (typeof validaFormulario === 'function' && !validaFormulario(formEditarArtista)) {
                 alert("Por favor, preencha os campos obrigatórios corretamente para atualizar o artista.");
                 return; // Impede a atualização se a validação falhar
             }
@@ -509,7 +540,7 @@
                     anoFundacao: document.getElementById('edit-anoFundacao').value,
                     qtdIntegrantes: document.getElementById('edit-qtdIntegrantes').value,
                     cidade: document.getElementById('edit-cidade').value,
-                    telefone: document.getElementById('edit-telefone').value, // Captura o telefone atualizado
+                    telefone: document.getElementById('edit-telefone').value,
                     generoArtistico: document.getElementById('edit-generoArtistico').value,
                     spotify: document.getElementById('edit-spotify').value,
                     instagram: document.getElementById('edit-instagram').value,
