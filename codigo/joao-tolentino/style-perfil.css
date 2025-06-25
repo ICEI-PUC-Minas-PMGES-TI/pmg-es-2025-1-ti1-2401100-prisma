@@ -116,7 +116,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Estilos para o modo de edição no perfil */
 .profile-details-edit {
     width: 100%;
     display: grid;

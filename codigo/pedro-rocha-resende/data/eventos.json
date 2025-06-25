@@ -1,7 +1,8 @@
 [
   {
     "id": 1001,
-    "tipo": "musical",
+    "tipo": "musica",
+    "categoria": "samba",
     "titulo": "Samba sob as Estrelas",
     "descricao": "Apresentação ao vivo de samba em espaço aberto.",
     "imagens": ["imagem1.png", "imagem2.png"],
@@ -18,6 +19,7 @@
   {
     "id": 1002,
     "tipo": "esportivo",
+    "categoria": "futebol",
     "titulo": "Semifinal 1 da copa MG Stars",
     "descricao": "Jogo que vale para a semifinal da copa MG Stars, entre Patos FC e Operários FC.",
     "imagens": ["imagem3.png", "imagem4.png"],
@@ -34,6 +36,7 @@
   {
     "id": 1003,
     "tipo": "Literário",
+    "categoria": "oficina",
     "titulo": "13ª feira do livro do MG Shopping",
     "descricao": "Decima terceira feira do livro do MG Shopping, com diversas obras de literatura. Ocorrerá no Pátio 2, perto da livraria Leitura",
     "imagens": ["imagem5.png", "imagem6.png"],
