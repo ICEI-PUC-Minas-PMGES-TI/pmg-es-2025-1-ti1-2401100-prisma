@@ -4,7 +4,6 @@ let favoritos = [];
 const filtro = document.getElementById("filtro-genero");
 const container = document.getElementById("eventos-container");
 
-
 fetch("eventos.json")
   .then(res => res.json())
   .then(data => {
@@ -68,5 +67,3 @@ function renderizarEventos(generoSelecionado) {
     container.appendChild(card);
   });
 }
-
-
