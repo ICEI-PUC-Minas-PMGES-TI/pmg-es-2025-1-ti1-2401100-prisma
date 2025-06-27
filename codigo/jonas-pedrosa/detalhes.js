@@ -1,90 +1,69 @@
-// cad_artistas.js
+// detalhes.js
 
-// Função para validar URLs
-function validaURL(url) {
-    // Se a URL estiver vazia, considera válida (a não ser que seja um campo obrigatório tratado em outro lugar)
-    if (!url) return true;
-    try {
-        new URL(url); // Tenta criar um objeto URL
-        return true; // Se conseguir, a URL é válida
-    } catch {
-        return false; // Se der erro, a URL é inválida
+document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('artists-container');
+    const noArtistsMessage = document.getElementById('no-artists-message');
+
+    const artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+
+    if (artistas.length === 0) {
+        noArtistsMessage.style.display = 'block';
+        return;
     }
-}
 
-// Função para validar telefones brasileiros (com DDD, 8 ou 9 dígitos)
-function validaTelefone(tel) {
-    // Regex para telefone brasileiro com DDD, aceita formatos como (xx) xxxx-xxxx ou (xx) xxxxx-xxxx
-    const regex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
-    return regex.test(tel); // Testa se o telefone corresponde ao padrão
+    noArtistsMessage.style.display = 'none';
+
+    artistas.forEach(artista => {
+        const artistProfileDiv = document.createElement('div');
+        artistProfileDiv.className = 'artist-profile';
+
+        artistProfileDiv.innerHTML = gerarPerfilArtista(artista);
+
+        container.appendChild(artistProfileDiv);
+    });
+});
+
+/**
+ * Gera o HTML do perfil do artista com base nos dados fornecidos
+ * @param {Object} artista - Objeto com os dados do artista
+ * @returns {string} - HTML do perfil do artista
+ */
+function gerarPerfilArtista(artista) {
+    return `
+        <div class="artist-header">
+            <img src="${artista.foto}" alt="Foto de ${artista.nomeArtistico}" class="artist-avatar">
+            <h2 class="artist-name">${artista.nomeArtistico}</h2>
+            <p class="artist-genre">| ${artista.genero} |</p>
+        </div>
+
+        <p class="artist-bio">${artista.descricao}</p>
+
+        <h2 class="section-title">Informações</h2>
+        <ul class="info-list">
+            <li><strong>Nome da pessoa:</strong> ${artista.nomePessoa}</li>
+            <li><strong>Ano de Fundação:</strong> ${artista.anoFundacao}</li>
+            <li><strong>Quantidade de Integrantes:</strong> ${artista.qtdIntegrantes}</li>
+            <li><strong>Cidade:</strong> ${artista.cidade}</li>
+            <li><strong>Telefone:</strong> ${artista.telefone}</li>
+            <li><strong>Gênero Artístico:</strong> ${artista.generoArtistico}</li>
+        </ul>
+
+        <h2 class="section-title">Onde Encontrar o Artista</h2>
+        <div class="social-media">
+            ${gerarLinkRede("Spotify", artista.spotify)}
+            ${gerarLinkRede("Instagram", artista.instagram)}
+            ${gerarLinkRede("YouTube", artista.youtube)}
+            ${gerarLinkRede("Facebook", artista.facebook)}
+        </div>
+    `;
 }
 
 /**
- * Função genérica para validar um formulário.
- * Adiciona a classe 'erro' aos campos inválidos.
- * @param {HTMLFormElement} formElement O elemento do formulário a ser validado.
- * @returns {boolean} True se o formulário for válido, False caso contrário.
+ * Gera o HTML para um link de rede social, se a URL estiver presente
+ * @param {string} nome - Nome da rede social
+ * @param {string} url - URL do perfil
+ * @returns {string} - HTML do link ou string vazia
  */
-function validaFormulario(formElement) {
-    const campos = formElement.querySelectorAll("input, select, textarea");
-    // Remove a classe 'erro' de todos os campos antes de revalidar
-    campos.forEach(campo => campo.classList.remove("erro"));
-
-    let valido = true; // Variável para controlar a validade geral do formulário
-
-    // Lista de campos obrigatórios que devem ser preenchidos
-    // Nota: Certifique-se de que o campo 'telefone' existe no seu HTML, pois ele está na sua validação.
-    const camposObrigatorios = [
-        "nomePessoa", "generoPessoa", "dataNascimento", "nomeArtistico",
-        "descricao", "genero", "foto", "tipoEspetaculo",
-        "anoFundacao", "qtdIntegrantes", "cidade", "telefone", "generoArtistico"
-    ];
-
-    // Itera sobre os campos obrigatórios e verifica se estão vazios
-    camposObrigatorios.forEach(campoNome => {
-        const campo = formElement[campoNome];
-        // Verifica se o campo existe no formulário e se seu valor está vazio (após remover espaços)
-        if (campo && !campo.value.trim()) {
-            valido = false; // Define o formulário como inválido
-            campo.classList.add("erro"); // Adiciona a classe 'erro' para estilização visual
-        }
-    });
-
-    // Validações específicas para campos que precisam de formato
-    // Validação da URL da foto (obrigatória e deve ser uma URL válida)
-    if (formElement.foto && (!formElement.foto.value.trim() || !validaURL(formElement.foto.value))) {
-        valido = false;
-        formElement.foto.classList.add("erro");
-    }
-
-    // Validação do Ano de Fundação (deve ser um número dentro do intervalo)
-    if (formElement.anoFundacao && (formElement.anoFundacao.value < 1900 || formElement.anoFundacao.value > 2025)) {
-        valido = false;
-        formElement.anoFundacao.classList.add("erro");
-    }
-
-    // Validação da Quantidade de Integrantes (deve ser um número maior ou igual a 1)
-    if (formElement.qtdIntegrantes && formElement.qtdIntegrantes.value < 1) {
-        valido = false;
-        formElement.qtdIntegrantes.classList.add("erro");
-    }
-
-    // Validação do Telefone (obrigatório e deve seguir o padrão brasileiro)
-    if (formElement.telefone && (!formElement.telefone.value.trim() || !validaTelefone(formElement.telefone.value.trim()))) {
-        valido = false;
-        formElement.telefone.classList.add("erro");
-    }
-
-    // Validação para campos de URL opcionais (se preenchidos, devem ser URLs válidas)
-    const camposURLOpcionais = ["spotify", "instagram", "youtube", "facebook"];
-    camposURLOpcionais.forEach(campoNome => {
-        const campo = formElement[campoNome];
-        // Se o campo existe, não está vazio e a URL é inválida
-        if (campo && campo.value.trim() && !validaURL(campo.value)) {
-            valido = false;
-            campo.classList.add("erro");
-        }
-    });
-
-    return valido; // Retorna o resultado final da validação
+function gerarLinkRede(nome, url) {
+    return url ? `<a href="${url}" target="_blank">${nome}</a>` : '';
 }

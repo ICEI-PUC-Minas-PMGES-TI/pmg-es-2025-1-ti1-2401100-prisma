@@ -1,6 +1,7 @@
 :root {
-    --principal: #5a555e;    
-    --roxo-escuro-fundo: #2c0237;  
+    --principal: #5a555e;
+    --roxo-escuro-fundo: #2c0237;
+    --roxo-claro: #7E20C9;
     --branco: #FFFFFF;
     --preto: #000000;
     --cinza-claro: #F0F0F0;
@@ -10,26 +11,19 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    padding: 0;
+    padding-top: 70px;
     background-color: var(--roxo-escuro-fundo);
     color: var(--branco);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
 }
 
 .container {
     width: 90%;
     max-width: 800px;
-    padding: 40px;                            
+    padding: 40px;
     text-align: center;
     position: relative;
-    overflow: hidden;
-}
-
-.container::before {
-    display: none;  
+    margin: 0 auto;
 }
 
 h1 {
@@ -37,6 +31,36 @@ h1 {
     font-size: 2.8em;
     margin-bottom: 30px;
     text-shadow: 2px 2px 4px var(--sombra-leve);
+}
+
+.back-button {
+    background-color: var(--principal);
+    color: var(--branco);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--sombra-leve);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: var(--roxo-claro);
+    transform: translateY(-2px);
+}
+
+.artist-profile {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.artist-profile:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .artist-header {
@@ -59,7 +83,6 @@ h1 {
 .artist-name {
     font-size: 2.5em;
     font-weight: 700;
-    color: var(--branco);
     margin: 0;
 }
 
@@ -70,11 +93,34 @@ h1 {
 }
 
 .artist-bio {
-    text-align: left;
     font-size: 1.1em;
     line-height: 1.6;
     margin-bottom: 30px;
     padding: 0 20px;
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: var(--branco);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--principal);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0 20px;
+    font-size: 1em;
+    line-height: 1.7;
+    color: var(--branco);
+}
+
+.info-list li {
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 6px;
 }
 
 .social-media {
@@ -98,63 +144,55 @@ h1 {
 }
 
 .social-media a:hover {
-    background-color: #7E20C9; 
+    background-color: var(--roxo-claro);
     transform: translateY(-3px);
 }
 
-.section-title {
-    font-size: 1.8em;
-    color: var(--branco);
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--principal);
-    padding-bottom: 10px;
-    display: inline-block;
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 2px solid #883078;
 }
 
-.recent-works {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
-}
-
-.work-item {
-    background-color: var(--branco); 
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.work-item:hover {
-    transform: translateY(-5px);
-}
-
-.work-item img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    display: block;
-}
-
-.work-item-info {
-    padding: 15px;
-    text-align: left;
-}
-
-.work-item-info h3 {
-    font-size: 1.3em;
-    margin: 0 0 8px 0;
-    color: var(--preto); 
-}
-
-.work-item-info p {
-    font-size: 0.9em;
-    color: var(--preto);
+header h1 {
     margin: 0;
+    font-size: 1.8em;
 }
 
+/* Navegação no topo */
+nav.botoes-middle {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  border-bottom: 2px solid #883078;
+}
+
+.nav-button {
+  background-color: transparent;
+  color: #e1bee7;
+  padding: 8px 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid #e1bee7;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.nav-button:hover {
+  background-color: #8e24aa;
+  border-color: #8e24aa;
+  color: #fff;
+}
+
+/* Responsivo */
 @media (max-width: 600px) {
     .container {
         padding: 25px;
@@ -178,16 +216,32 @@ h1 {
     }
 
     .artist-bio {
-        font-size: 0.9em;
+        font-size: 0.95em;
         padding: 0 10px;
     }
 
     .social-media a {
-        padding: 10px 20px;
+        padding: 10px 18px;
         font-size: 0.9em;
     }
 
     .section-title {
         font-size: 1.5em;
     }
+
+    .info-list {
+        font-size: 0.95em;
+        padding: 0 10px;
+    }
+
+    nav.botoes-middle {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .nav-button {
+        font-size: 0.9em;
+    }
+
+    
 }
