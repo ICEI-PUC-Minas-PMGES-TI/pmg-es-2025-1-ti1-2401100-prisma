@@ -106,7 +106,6 @@ header {
   transition: all 0.3s;
 }
 
-
 .detalhes-btn {
   background-color: #7c0fd2;
   color: white;
@@ -116,7 +115,6 @@ header {
 .detalhes-btn:hover {
   background-color: #9d38f1;
 }
-
 
 .favorito-btn {
   background-color: transparent;
