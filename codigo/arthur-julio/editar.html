@@ -184,6 +184,7 @@
         .modal-content input[type="date"],
         .modal-content input[type="number"],
         .modal-content input[type="url"],
+        .modal-content input[type="file"], /* Adicionado para input file */
         .modal-content select,
         .modal-content textarea {
             width: calc(100% - 20px);
@@ -282,7 +283,7 @@
                     </tr>
                 </thead>
                 <tbody id="tabela-artistas-corpo">
-                    </tbody>
+                </tbody>
             </table>
         </div>
     </div>
@@ -326,13 +327,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="edit-genero">Gênero musical:</label>
-                    <input type="text" id="edit-genero" name="genero" required />
+                    <label for="edit-generoMusical">Gênero musical:</label>
+                    <select id="edit-generoMusical" name="generoMusical" required>
+                        <option value="">Selecione</option>
+                        <option value="Trap">Trap</option>
+                        <option value="Funk">Funk</option>
+                        <option value="Gospel">Gospel</option>
+                        <option value="Pagode">Pagode</option>
+                        <option value="MPB">MPB</option>
+                        <option value="Outro">Outro</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="edit-foto">Foto da Banda/Artista (URL):</label>
-                    <input type="url" id="edit-foto" name="foto" required />
+                    <label for="edit-foto">Foto da Banda/Artista:</label>
+                    <input type="file" id="edit-foto" name="foto" accept="image/*" />
+                    <img id="current-foto-preview" src="" alt="Prévia da Foto Atual" style="max-width: 100px; max-height: 100px; margin-top: 10px; display: none;">
                 </div>
 
                 <div class="form-group">
@@ -364,8 +374,6 @@
                     <label for="edit-telefone">Telefone:</label>
                     <input type="text" id="edit-telefone" name="telefone" required />
                 </div>
-
-          
 
                 <fieldset>
                     <legend>Onde encontrar o artista:</legend>
@@ -418,7 +426,8 @@
                 const row = tabelaCorpo.insertRow();
                 // Adiciona as células com os dados principais do artista
                 row.insertCell().textContent = artista.nomeArtistico;
-                row.insertCell().textContent = artista.genero;
+                // ATUALIZADO: Usar artista.generoMusical para o gênero
+                row.insertCell().textContent = artista.generoMusical;
                 row.insertCell().textContent = artista.cidade;
 
                 const acoesCell = row.insertCell();
@@ -460,6 +469,8 @@
         const modal = document.getElementById('modalEdicao');
         const spanClose = document.getElementsByClassName('close-button')[0];
         const formEditarArtista = document.getElementById('form-editar-artista');
+        const editFotoInput = document.getElementById('edit-foto'); // Novo: Referência ao input de arquivo
+        const currentFotoPreview = document.getElementById('current-foto-preview'); // Novo: Referência à prévia da imagem
 
         // Quando o usuário clica no "x" (botão de fechar), esconde o modal
         spanClose.onclick = function() {
@@ -487,14 +498,27 @@
                 document.getElementById('edit-dataNascimento').value = artistaParaEditar.dataNascimento;
                 document.getElementById('edit-nomeArtistico').value = artistaParaEditar.nomeArtistico;
                 document.getElementById('edit-descricao').value = artistaParaEditar.descricao;
-                document.getElementById('edit-genero').value = artistaParaEditar.genero;
-                document.getElementById('edit-foto').value = artistaParaEditar.foto;
+                
+                // ATUALIZADO: Campo generoMusical no modal agora é um select
+                document.getElementById('edit-generoMusical').value = artistaParaEditar.generoMusical;
+                
+                // NOVO: Lida com a prévia da imagem
+                if (artistaParaEditar.foto) {
+                    currentFotoPreview.src = artistaParaEditar.foto; // Assume que 'foto' armazena a Base64 ou URL
+                    currentFotoPreview.style.display = 'block';
+                } else {
+                    currentFotoPreview.style.display = 'none';
+                    currentFotoPreview.src = '';
+                }
+                // Limpa o input de arquivo para que o usuário precise selecionar um novo se quiser mudar
+                editFotoInput.value = '';
+
                 document.getElementById('edit-tipoEspetaculo').value = artistaParaEditar.tipoEspetaculo;
                 document.getElementById('edit-anoFundacao').value = artistaParaEditar.anoFundacao;
                 document.getElementById('edit-qtdIntegrantes').value = artistaParaEditar.qtdIntegrantes;
                 document.getElementById('edit-cidade').value = artistaParaEditar.cidade;
                 document.getElementById('edit-telefone').value = artistaParaEditar.telefone;
-                document.getElementById('edit-generoArtistico').value = artistaParaEditar.generoArtistico;
+                
                 document.getElementById('edit-spotify').value = artistaParaEditar.spotify;
                 document.getElementById('edit-instagram').value = artistaParaEditar.instagram;
                 document.getElementById('edit-youtube').value = artistaParaEditar.youtube;
@@ -506,11 +530,28 @@
             }
         }
 
+        // NOVO: Adiciona um listener para a prévia da imagem ao selecionar um arquivo
+        editFotoInput.addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    currentFotoPreview.src = event.target.result;
+                    currentFotoPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(e.target.files[0]); // Lê o arquivo como URL de dados (Base64)
+            } else {
+                currentFotoPreview.style.display = 'none';
+                currentFotoPreview.src = '';
+            }
+        });
+
+
         // Lidar com o envio do formulário de edição dentro do modal
         formEditarArtista.addEventListener('submit', function(e) {
             e.preventDefault(); // Impede o comportamento padrão de envio do formulário
 
             // **Chama a função de validação externa para o formulário do modal**
+            // Note que 'validaFormulario' espera o formulário em si, então passe 'formEditarArtista'
             if (typeof validaFormulario === 'function' && !validaFormulario(formEditarArtista)) {
                 alert("Por favor, preencha os campos obrigatórios corretamente para atualizar o artista.");
                 return; // Impede a atualização se a validação falhar
@@ -523,32 +564,47 @@
             const index = artistas.findIndex(artista => artista.id === id);
 
             if (index !== -1) {
-                // Atualiza os dados do artista na lista com os novos valores do formulário
-                artistas[index] = {
-                    id: id, // Mantém o mesmo ID
-                    nomePessoa: document.getElementById('edit-nomePessoa').value,
-                    generoPessoa: document.getElementById('edit-generoPessoa').value,
-                    dataNascimento: document.getElementById('edit-dataNascimento').value,
-                    nomeArtistico: document.getElementById('edit-nomeArtistico').value,
-                    descricao: document.getElementById('edit-descricao').value,
-                    genero: document.getElementById('edit-genero').value,
-                    foto: document.getElementById('edit-foto').value,
-                    tipoEspetaculo: document.getElementById('edit-tipoEspetaculo').value,
-                    anoFundacao: document.getElementById('edit-anoFundacao').value,
-                    qtdIntegrantes: document.getElementById('edit-qtdIntegrantes').value,
-                    cidade: document.getElementById('edit-cidade').value,
-                    telefone: document.getElementById('edit-telefone').value,
-                    generoArtistico: document.getElementById('edit-generoArtistico').value,
-                    spotify: document.getElementById('edit-spotify').value,
-                    instagram: document.getElementById('edit-instagram').value,
-                    youtube: document.getElementById('edit-youtube').value,
-                    facebook: document.getElementById('edit-facebook').value,
-                };
-                // Salva a lista de artistas atualizada de volta no localStorage
-                localStorage.setItem('artistas', JSON.stringify(artistas));
-                alert('Artista atualizado com sucesso!');
-                modal.style.display = 'none'; // Esconde o modal
-                carregarArtistas(); // Recarrega a tabela para exibir as alterações
+                const updatedArtista = { ...artistas[index] }; // Cria uma cópia do artista existente
+
+                // Atualiza os dados do artista na cópia com os novos valores do formulário
+                updatedArtista.nomePessoa = document.getElementById('edit-nomePessoa').value;
+                updatedArtista.generoPessoa = document.getElementById('edit-generoPessoa').value;
+                updatedArtista.dataNascimento = document.getElementById('edit-dataNascimento').value;
+                updatedArtista.nomeArtistico = document.getElementById('edit-nomeArtistico').value;
+                updatedArtista.descricao = document.getElementById('edit-descricao').value;
+                updatedArtista.generoMusical = document.getElementById('edit-generoMusical').value;
+                updatedArtista.tipoEspetaculo = document.getElementById('edit-tipoEspetaculo').value;
+                updatedArtista.anoFundacao = document.getElementById('edit-anoFundacao').value;
+                updatedArtista.qtdIntegrantes = document.getElementById('edit-qtdIntegrantes').value;
+                updatedArtista.cidade = document.getElementById('edit-cidade').value;
+                updatedArtista.telefone = document.getElementById('edit-telefone').value;
+                updatedArtista.spotify = document.getElementById('edit-spotify').value;
+                updatedArtista.instagram = document.getElementById('edit-instagram').value;
+                updatedArtista.youtube = document.getElementById('edit-youtube').value;
+                updatedArtista.facebook = document.getElementById('edit-facebook').value;
+
+                // NOVO: Lida com a imagem uploaded
+                const fotoFile = editFotoInput.files[0];
+                if (fotoFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        updatedArtista.foto = event.target.result; // Armazena a imagem como Base64
+                        artistas[index] = updatedArtista;
+                        localStorage.setItem('artistas', JSON.stringify(artistas));
+                        alert('Artista atualizado com sucesso!');
+                        modal.style.display = 'none';
+                        carregarArtistas();
+                    };
+                    reader.readAsDataURL(fotoFile); // Converte para Base64
+                } else {
+                    // Se nenhum novo arquivo for selecionado, mantém a foto existente (se houver)
+                    // Não é necessário fazer nada aqui, pois `updatedArtista.foto` já terá o valor antigo
+                    artistas[index] = updatedArtista;
+                    localStorage.setItem('artistas', JSON.stringify(artistas));
+                    alert('Artista atualizado com sucesso!');
+                    modal.style.display = 'none';
+                    carregarArtistas();
+                }
             } else {
                 alert('Erro ao atualizar artista: ID não encontrado.');
             }
