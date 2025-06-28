@@ -15,6 +15,7 @@ function validaURL(url) {
 // Função para validar telefones brasileiros (com DDD, 8 ou 9 dígitos)
 function validaTelefone(tel) {
     // Regex para telefone brasileiro com DDD, aceita formatos como (xx) xxxx-xxxx ou (xx) xxxxx-xxxx
+    // Adicionado ? para o hífen, tornando-o opcional
     const regex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
     return regex.test(tel); // Testa se o telefone corresponde ao padrão
 }
@@ -33,58 +34,76 @@ function validaFormulario(formElement) {
     let valido = true; // Variável para controlar a validade geral do formulário
 
     // Lista de campos obrigatórios que devem ser preenchidos
-    // Nota: Certifique-se de que o campo 'telefone' existe no seu HTML, pois ele está na sua validação.
+    // 'genero' foi substituído por 'generoMusical' e 'generoArtistico' foi removido
     const camposObrigatorios = [
         "nomePessoa", "generoPessoa", "dataNascimento", "nomeArtistico",
-        "descricao", "genero", "foto", "tipoEspetaculo",
-        "anoFundacao", "qtdIntegrantes", "cidade", "telefone", "generoArtistico"
+        "descricao", "generoMusical", "foto", "tipoEspetaculo",
+        "anoFundacao", "qtdIntegrantes", "cidade", "telefone"
     ];
 
     // Itera sobre os campos obrigatórios e verifica se estão vazios
     camposObrigatorios.forEach(campoNome => {
         const campo = formElement[campoNome];
-        // Verifica se o campo existe no formulário e se seu valor está vazio (após remover espaços)
-        if (campo && !campo.value.trim()) {
-            valido = false; // Define o formulário como inválido
-            campo.classList.add("erro"); // Adiciona a classe 'erro' para estilização visual
+        if (!campo) {
+            console.warn(`Campo '${campoNome}' não encontrado no formulário.`);
+            return; // Pula se o campo não existir
+        }
+
+        // Para inputs de arquivo, a validação de .value.trim() não é adequada.
+        // Verificamos se há arquivos selecionados.
+        if (campo.type === "file") {
+            if (campo.files.length === 0) {
+                valido = false;
+                campo.classList.add("erro");
+            }
+        }
+        // Validação para selects simples e outros inputs (text, number, textarea, date)
+        else {
+            if (!campo.value.trim()) {
+                valido = false;
+                campo.classList.add("erro");
+            }
         }
     });
 
-    // Validações específicas para campos que precisam de formato
-    // Validação da URL da foto (obrigatória e deve ser uma URL válida)
-    if (formElement.foto && (!formElement.foto.value.trim() || !validaURL(formElement.foto.value))) {
-        valido = false;
-        formElement.foto.classList.add("erro");
-    }
+    // Validação da URL da foto (REMOVIDA, pois é um input type="file" e não URL)
+    // A checagem de obrigatoriedade já é feita em camposObrigatorios para `foto`
+    // if (formElement.foto && (!formElement.foto.value.trim() || !validaURL(formElement.foto.value))) {
+    //     valido = false;
+    //     formElement.foto.classList.add("erro");
+    // }
 
-    // Validação do Ano de Fundação (deve ser um número dentro do intervalo)
-    if (formElement.anoFundacao && (formElement.anoFundacao.value < 1900 || formElement.anoFundacao.value > 2025)) {
+    // Validação do Ano de Fundação (deve estar entre 1900 e 2025)
+    // Usar parseInt para garantir que a comparação seja numérica
+    const anoFundacaoValue = parseInt(formElement.anoFundacao.value);
+    if (formElement.anoFundacao && (isNaN(anoFundacaoValue) || anoFundacaoValue < 1900 || anoFundacaoValue > 2025)) {
         valido = false;
         formElement.anoFundacao.classList.add("erro");
     }
 
-    // Validação da Quantidade de Integrantes (deve ser um número maior ou igual a 1)
-    if (formElement.qtdIntegrantes && formElement.qtdIntegrantes.value < 1) {
+    // Validação da Quantidade de Integrantes (maior ou igual a 1)
+    // Usar parseInt para garantir que a comparação seja numérica
+    const qtdIntegrantesValue = parseInt(formElement.qtdIntegrantes.value);
+    if (formElement.qtdIntegrantes && (isNaN(qtdIntegrantesValue) || qtdIntegrantesValue < 1)) {
         valido = false;
         formElement.qtdIntegrantes.classList.add("erro");
     }
 
-    // Validação do Telefone (obrigatório e deve seguir o padrão brasileiro)
+    // Validação do Telefone (obrigatório e formato válido)
     if (formElement.telefone && (!formElement.telefone.value.trim() || !validaTelefone(formElement.telefone.value.trim()))) {
         valido = false;
         formElement.telefone.classList.add("erro");
     }
 
-    // Validação para campos de URL opcionais (se preenchidos, devem ser URLs válidas)
+    // Validação para URLs opcionais (se preenchidas, devem ser válidas)
     const camposURLOpcionais = ["spotify", "instagram", "youtube", "facebook"];
     camposURLOpcionais.forEach(campoNome => {
         const campo = formElement[campoNome];
-        // Se o campo existe, não está vazio e a URL é inválida
         if (campo && campo.value.trim() && !validaURL(campo.value)) {
             valido = false;
             campo.classList.add("erro");
         }
     });
 
-    return valido; // Retorna o resultado final da validação
+    return valido;
 }

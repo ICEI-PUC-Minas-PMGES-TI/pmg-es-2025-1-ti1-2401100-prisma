@@ -2,225 +2,240 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DivulgaHub - Cadastrar Artista</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <style>
-    .erro {
-      border: 2px solid red;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DivulgaHub - Cadastrar Artista</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+        .erro {
+            border: 2px solid red;
+        }
 
-    .preview-imagem {
-      max-width: 200px;
-      max-height: 200px;
-      margin-top: 10px;
-    }
-  </style>
+        .preview-imagem {
+            max-width: 200px;
+            max-height: 200px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <header data-aos="fade-down">
-      <h1>DivulgaHub</h1>
-      <button class="back-button" onclick="history.back()">Voltar</button>
-      <nav class="botoes-middle" data-aos="fade-up">
-        <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-        <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
-        <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
-        <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
-        <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
-        <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-      </nav>
-    </header>
+    <div class="container">
+        <header data-aos="fade-down">
+            <h1>DivulgaHub</h1>
+            <button class="back-button" onclick="history.back()">Voltar</button>
+            <nav class="botoes-middle" data-aos="fade-up">
+                <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+                <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+                <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
+                <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
+                <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+                <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+            </nav>
+        </header>
 
-    <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Artista</h2>
+        <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Artista</h2>
 
-    <form id="form-artista" class="conj-campos" data-aos="fade-up" novalidate>
-      <div class="form-group">
-        <label for="nomePessoa">Nome completo:</label>
-        <input type="text" id="nomePessoa" name="nomePessoa" required />
-      </div>
+        <form id="form-artista" class="conj-campos" data-aos="fade-up" novalidate>
+            <div class="form-group">
+                <label for="nomePessoa">Nome completo:</label>
+                <input type="text" id="nomePessoa" name="nomePessoa" required />
+            </div>
 
-      <div class="form-group">
-        <label for="generoPessoa">Gênero:</label>
-        <select id="generoPessoa" name="generoPessoa" required>
-          <option value="">Selecione</option>
-          <option value="masculino">Masculino</option>
-          <option value="feminino">Feminino</option>
-          <option value="nao-binario">Não-binário</option>
-          <option value="outro">Outro</option>
-        </select>
-      </div>
+            <div class="form-group">
+                <label for="generoPessoa">Gênero:</label>
+                <select id="generoPessoa" name="generoPessoa" required>
+                    <option value="">Selecione</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="nao-binario">Não-binário</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
 
-      <div class="form-group">
-        <label for="dataNascimento">Data de nascimento:</label>
-        <input type="date" id="dataNascimento" name="dataNascimento" required />
-      </div>
+            <div class="form-group">
+                <label for="dataNascimento">Data de nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" required />
+            </div>
 
-      <div class="form-group">
-        <label for="nomeArtistico">Nome da Banda/Artista:</label>
-        <input type="text" id="nomeArtistico" name="nomeArtistico" required />
-      </div>
+            <div class="form-group">
+                <label for="nomeArtistico">Nome da Banda/Artista:</label>
+                <input type="text" id="nomeArtistico" name="nomeArtistico" required />
+            </div>
 
-      <div class="form-group">
-        <label for="descricao">Descrição:</label>
-        <textarea id="descricao" name="descricao" required></textarea>
-      </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" required></textarea>
+            </div>
 
-      <div class="form-group">
-        <label for="genero">Gênero musical:</label>
-        <input type="text" id="genero" name="genero" required />
-      </div>
+            <div class="form-group">
+                <label for="generoMusical">Selecione o gênero musical:</label>
+                <select id="generoMusical" name="generoMusical" class="form-control" required>
+                    <option value="">Selecione</option>
+                    <option value="Trap">Trap</option>
+                    <option value="Funk">Funk</option>
+                    <option value="Gospel">Gospel</option>
+                    <option value="Pagode">Pagode</option>
+                    <option value="MPB">MPB</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
 
-      <div class="form-group">
-        <label for="foto">Foto da Banda/Artista (JPEG ou PNG):</label>
-        <input type="file" id="foto" name="foto" accept="image/jpeg, image/png" required />
-        <img id="preview" class="preview-imagem" alt="Prévia da imagem" style="display:none;" />
-      </div>
 
-      <div class="form-group">
-        <label for="tipoEspetaculo">Tipo de espetáculo:</label>
-        <select id="tipoEspetaculo" name="tipoEspetaculo" required>
-          <option value="">Selecione</option>
-          <option value="musica">Música</option>
-          <option value="danca">Dança</option>
-          <option value="teatro">Teatro</option>
-        </select>
-      </div>
+            <div class="form-group">
+                <label for="foto">Foto da Banda/Artista (JPEG ou PNG):</label>
+                <input type="file" id="foto" name="foto" accept="image/jpeg, image/png" required />
+                <img id="preview" class="preview-imagem" alt="Prévia da imagem" style="display:none;" />
+            </div>
 
-      <div class="form-group">
-        <label for="anoFundacao">Ano de fundação:</label>
-        <input type="number" id="anoFundacao" name="anoFundacao" min="1900" max="2025" required />
-      </div>
+            <div class="form-group">
+                <label for="tipoEspetaculo">Tipo de espetáculo:</label>
+                <select id="tipoEspetaculo" name="tipoEspetaculo" required>
+                    <option value="">Selecione</option>
+                    <option value="musica">Música</option>
+                    <option value="danca">Dança</option>
+                    <option value="teatro">Teatro</option>
+                </select>
+            </div>
 
-      <div class="form-group">
-        <label for="qtdIntegrantes">Quantidade de integrantes:</label>
-        <input type="number" id="qtdIntegrantes" name="qtdIntegrantes" min="1" required />
-      </div>
+            <div class="form-group">
+                <label for="anoFundacao">Ano de fundação:</label>
+                <input type="number" id="anoFundacao" name="anoFundacao" min="1900" max="2025" required />
+            </div>
 
-      <div class="form-group">
-        <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" name="cidade" required />
-      </div>
+            <div class="form-group">
+                <label for="qtdIntegrantes">Quantidade de integrantes:</label>
+                <input type="number" id="qtdIntegrantes" name="qtdIntegrantes" min="1" required />
+            </div>
 
-      <div class="form-group">
-        <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" name="telefone" required />
-      </div>
+            <div class="form-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required />
+            </div>
 
-      
-      <fieldset>
-        <legend>Onde encontrar o artista:</legend>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required />
+            </div>
 
-        <div class="form-group">
-          <label for="spotify">Spotify:</label>
-          <input type="url" id="spotify" name="spotify" placeholder="https://spotify.com/" />
-        </div>
+            <fieldset>
+                <legend>Onde encontrar o artista:</legend>
 
-        <div class="form-group">
-          <label for="instagram">Instagram:</label>
-          <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/" />
-        </div>
+                <div class="form-group">
+                    <label for="spotify">Spotify:</label>
+                    <input type="url" id="spotify" name="spotify" placeholder="https://spotify.com/" />
+                </div>
 
-        <div class="form-group">
-          <label for="youtube">YouTube:</label>
-          <input type="url" id="youtube" name="youtube" placeholder="https://youtube.com/" />
-        </div>
+                <div class="form-group">
+                    <label for="instagram">Instagram:</label>
+                    <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/" />
+                </div>
 
-        <div class="form-group">
-          <label for="facebook">Facebook:</label>
-          <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/" />
-        </div>
-      </fieldset>
+                <div class="form-group">
+                    <label for="youtube">YouTube:</label>
+                    <input type="url" id="youtube" name="youtube" placeholder="https://youtube.com/" />
+                </div>
 
-      <button type="submit" class="submit-button">Cadastrar Artista</button>
-    </form>
+                <div class="form-group">
+                    <label for="facebook">Facebook:</label>
+                    <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/" />
+                </div>
+            </fieldset>
 
-    <button id="btn-ver-artistas" style="margin-top: 20px;">Ver / Editar Artistas Cadastrados</button>
-  </div>
+            <button type="submit" class="submit-button">Cadastrar Artista</button>
+        </form>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="cad_artistas.js"></script>
-  <script>
-    AOS.init();
+        <button id="btn-ver-artistas" style="margin-top: 20px;">Ver / Editar Artistas Cadastrados</button>
+    </div>
 
-    const form = document.getElementById('form-artista');
-    const preview = document.getElementById('preview');
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="cad_artistas.js"></script>
+    <script>
+        AOS.init();
 
-    document.getElementById('foto').addEventListener('change', function () {
-      const file = this.files[0];
-      if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          preview.src = e.target.result;
-          preview.style.display = 'block';
+        $(document).ready(function () {
+            // Removida a inicialização do Select2 para o campo '#genero'
+            // $('#genero').select2({
+            //     placeholder: "Selecione o(s) gênero(s) musical(is)",
+            //     width: '100%'
+            // });
+        });
+
+        const form = document.getElementById('form-artista');
+        const preview = document.getElementById('preview');
+
+        document.getElementById('foto').addEventListener('change', function () {
+            const file = this.files[0];
+            if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!validaFormulario(form)) {
+                alert("Por favor, preencha os campos obrigatórios corretamente.");
+                return;
+            }
+
+            const artista = {
+                id: Date.now(),
+                nomePessoa: form.nomePessoa.value,
+                generoPessoa: form.generoPessoa.value,
+                dataNascimento: form.dataNascimento.value,
+                nomeArtistico: form.nomeArtistico.value,
+                descricao: form.descricao.value,
+                // Alterado para 'generoMusical' e pega o valor direto do select padrão
+                generoMusical: form.generoMusical.value, 
+                tipoEspetaculo: form.tipoEspetaculo.value,
+                anoFundacao: form.anoFundacao.value,
+                qtdIntegrantes: form.qtdIntegrantes.value,
+                cidade: form.cidade.value,
+                telefone: form.telefone.value,
+                spotify: form.spotify.value,
+                instagram: form.instagram.value,
+                youtube: form.youtube.value,
+                facebook: form.facebook.value,
+            };
+
+            const file = form.foto.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    artista.foto = e.target.result;
+                    saveArtista(artista);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("Foto inválida.");
+            }
+        });
+
+        function saveArtista(artista) {
+            let artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+            artistas.push(artista);
+            localStorage.setItem('artistas', JSON.stringify(artistas));
+            alert('Artista cadastrado com sucesso!');
+            document.getElementById('form-artista').reset();
+            // Removida a linha de reset do Select2
+            // $('#genero').val(null).trigger('change'); 
+            document.getElementById('preview').style.display = 'none';
         }
-        reader.readAsDataURL(file);
-      } else {
-        preview.style.display = 'none';
-      }
-    });
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      if (!validaFormulario(form)) {
-        alert("Por favor, preencha os campos obrigatórios corretamente.");
-        return;
-      }
-
-      const artista = {
-        id: Date.now(),
-        nomePessoa: form.nomePessoa.value,
-        generoPessoa: form.generoPessoa.value,
-        dataNascimento: form.dataNascimento.value,
-        nomeArtistico: form.nomeArtistico.value,
-        descricao: form.descricao.value,
-        genero: form.genero.value,
-        tipoEspetaculo: form.tipoEspetaculo.value,
-        anoFundacao: form.anoFundacao.value,
-        qtdIntegrantes: form.qtdIntegrantes.value,
-        cidade: form.cidade.value,
-        telefone: form.telefone.value,
-        generoArtistico: form.generoArtistico.value,
-        spotify: form.spotify.value,
-        instagram: form.instagram.value,
-        youtube: form.youtube.value,
-        facebook: form.facebook.value,
-      };
-
-      const file = form.foto.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          artista.foto = e.target.result;
-
-          saveArtista(artista); // Alterado de salvarArtista para saveArtista
-        };
-        reader.readAsDataURL(file);
-      } else {
-        alert("Foto inválida.");
-      }
-    });
-
-    function saveArtista(artista) { // Alterado de salvarArtista para saveArtista
-      let artistas = JSON.parse(localStorage.getItem('artistas')) || [];
-      artistas.push(artista);
-      localStorage.setItem('artistas', JSON.stringify(artistas));
-      alert('Artista cadastrado com sucesso!');
-      document.getElementById('form-artista').reset();
-      document.getElementById('preview').style.display = 'none';
-    }
-
-    document.getElementById('btn-ver-artistas').addEventListener('click', () => {
-      window.location.href = 'editar.html';
-    });
-  </script>
+        document.getElementById('btn-ver-artistas').addEventListener('click', () => {
+            window.location.href = 'editar.html';
+        });
+    </script>
 </body>
 
 </html>
