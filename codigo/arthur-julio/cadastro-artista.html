@@ -26,16 +26,15 @@
     <header data-aos="fade-down">
       <h1>DivulgaHub</h1>
       <button class="back-button" onclick="history.back()">Voltar</button>
+      <nav class="botoes-middle" data-aos="fade-up">
+        <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+        <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+        <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
+        <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
+        <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+        <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+      </nav>
     </header>
-
-    <nav class="botoes-middle" data-aos="fade-up">
-      <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-      <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
-      <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
-      <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
-      <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
-      <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-    </nav>
 
     <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Artista</h2>
 
@@ -205,7 +204,7 @@
         reader.onload = function (e) {
           artista.foto = e.target.result;
 
-          salvarArtista(artista);
+          saveArtista(artista); // Alterado de salvarArtista para saveArtista
         };
         reader.readAsDataURL(file);
       } else {
@@ -213,7 +212,7 @@
       }
     });
 
-    function salvarArtista(artista) {
+    function saveArtista(artista) { // Alterado de salvarArtista para saveArtista
       let artistas = JSON.parse(localStorage.getItem('artistas')) || [];
       artistas.push(artista);
       localStorage.setItem('artistas', JSON.stringify(artistas));
