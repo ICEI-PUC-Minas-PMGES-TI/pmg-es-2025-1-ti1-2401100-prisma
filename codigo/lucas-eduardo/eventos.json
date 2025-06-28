@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "titulo": "Festival Indie",
+    "local": "Praça da Liberdade",
+    "preco": "R$45.00",
+    "tipo": "Indie Rock",
+    "artistas": "Tim Bernardes, Cadu Pereira e Jovukt",
+    "promotor": "Marcos Junior"
+  },
+  {
+  "id": 2,
+    "titulo": "Festival da Luz",
+    "local": "Praça da Liberdade",
+    "preco": "Gratuito",
+    "tipo": "Arte e Cultura",
+    "artistas": "Grupo Luzes, Coral Minas",
+    "promotor": "Prefeitura de BH"
+  },
+  {
+    "id": 3,
+    "titulo": "Rock no Parque",
+    "local": "Parque Municipal",
+    "preco": "R$75.00",
+    "tipo": "Rock",
+    "artistas": "Scalene, Supercombo, Pitty",
+    "promotor": "Pedro Eventos"
+  },
+  {
+    "id": 4,
+    "titulo": "Samba da Feira",
+    "local": "Feira de Arte Savassi",
+    "preco": "R$50.00",
+    "tipo": "Samba",
+    "artistas": "Diogo Nogueira, Maria Rita",
+    "promotor": "Luciana Eventos"
+  },
+  {
+    "id": 5,
+    "titulo": "Noite Eletrônica",
+    "local": "Clube 88",
+    "preco": "120.00",
+    "tipo": "Eletrônica",
+    "artistas": "Vintage Culture, Alok",
+    "promotor": "Bass Produções"
+  },
+  {
+    "id": 6,
+    "titulo": "Hip Hop Street",
+    "local": "Arena BH",
+    "preco": "99.90",
+    "tipo": "Hip Hop",
+    "artistas": "BK, Racionais MC's, Filipe Ret",
+    "promotor": "Urbano Hub"
+  },
+  {
+    "id": 7,
+    "titulo": "Jazz Sunset",
+    "local": "Museu do Amanhã",
+    "preco": "60.00",
+    "tipo": "Jazz",
+    "artistas": "Hamilton de Holanda, Rosa Passos",
+    "promotor": "Música Viva"
+  },
+  {
+    "id": 8,
+    "titulo": "Festival Indie",
+    "local": "Esplanada do Mineirão",
+    "preco": "85.00",
+    "tipo": "Indie",
+    "artistas": "Terno Rei, Maglore, Boogarins",
+    "promotor": "Letícia Cultura"
+  },
+  {
+    "id": 9,
+    "titulo": "Pagodão do Fim de Tarde",
+    "local": "Avenida Brasil",
+    "preco": "40.00",
+    "tipo": "Pagode",
+    "artistas": "Turma do Pagode, Sorriso Maroto",
+    "promotor": "JP Eventos"
+  },
+  {
+    "id": 10,
+    "titulo": "Clássicos ao Ar Livre",
+    "local": "Praça do Papa",
+    "preco": "Gratuito",
+    "tipo": "Música Clássica",
+    "artistas": "Orquestra Sinfônica de Minas",
+    "promotor": "Fundação Arte e Som"
+  }
+]
