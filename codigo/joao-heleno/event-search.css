@@ -21,7 +21,8 @@ header {
   border-bottom: 2px solid #883078;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin: 0;
 }
 
@@ -83,6 +84,7 @@ form {
 
 .estado-select,
 .localizacao-select,
+.artista-select,
 .hour-select,
 .price-select,
 .data-input,
@@ -102,6 +104,7 @@ form {
 
 .estado-select:focus,
 .localizacao-select:focus,
+.artista-select:focus,
 .hour-select:focus,
 .price-select:focus,
 .data-input:focus,
