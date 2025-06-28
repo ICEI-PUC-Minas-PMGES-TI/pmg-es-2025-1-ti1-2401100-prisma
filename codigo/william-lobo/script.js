@@ -1,49 +1,27 @@
 let eventos = [];
 let favoritos = [];
 
-const filtro = document.getElementById("filtro-genero");
 const container = document.getElementById("eventos-container");
 
 fetch("eventos.json")
   .then(res => res.json())
   .then(data => {
     const eventosLocal = JSON.parse(localStorage.getItem("eventosSalvos")) || [];
-    
     eventos = [...data, ...eventosLocal];
-
-    const optionTodos = document.createElement("option");
-    optionTodos.value = "Todos";
-    optionTodos.textContent = "Todos";
-    filtro.appendChild(optionTodos);
-
-    const generos = [...new Set(eventos.map(e => e.genero))];
-    generos.forEach(genero => {
-      const option = document.createElement("option");
-      option.value = genero;
-      option.textContent = genero;
-      filtro.appendChild(option);
-    });
-
-    renderizarEventos("Todos");
+    renderizarEventos();
   })
   .catch(err => {
     console.error("Erro ao carregar eventos:", err);
   });
 
-filtro.addEventListener("change", () => {
-  renderizarEventos(filtro.value);
-});
-
 function redirecionarDetalhes() {
   window.location.href = "../lucas-eduardo/event details.html";
 }
 
-function renderizarEventos(generoSelecionado) {
+function renderizarEventos() {
   container.innerHTML = "";
 
-  const eventosFiltrados = generoSelecionado === "Todos"
-    ? eventos
-    : eventos.filter(e => e.genero === generoSelecionado);
+  const eventosFiltrados = eventos;
 
   eventosFiltrados.forEach(evento => {
     const card = document.createElement("div");
@@ -55,7 +33,7 @@ function renderizarEventos(generoSelecionado) {
       <h3>${evento.titulo}</h3>
       <p>📍 ${evento.local}</p>
       <p>📅 ${evento.data}</p>
-      <p>🎵 ${evento.genero}</p>
+      <p>🎵 ${evento.categoria}</p>
       <p>Preço R$ ${evento.preco.toFixed(2)}</p>
       <button onclick="redirecionarDetalhes()" class="detalhes-btn">Ver Detalhes</button>
       <button class="favorito-btn">${isFavorito ? "❤️ Desfavoritar" : "🤍 Favoritar"}</button> 
@@ -68,7 +46,7 @@ function renderizarEventos(generoSelecionado) {
       } else {
         favoritos.push(evento.id);
       }
-      renderizarEventos(filtro.value);
+      renderizarEventos();
     });
 
     container.appendChild(card);

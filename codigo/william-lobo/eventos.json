@@ -4,7 +4,7 @@
     "titulo": "Festival Indie",
     "local": "Praça da Liberdade",
     "data": "20/05/2025",
-    "genero": "Indie Rock",
+    "categoria": "Indie Rock",
     "preco": 45.00
   },
   {
@@ -12,7 +12,7 @@
     "titulo": "Noite do Samba",
     "local": "Sambódromo",
     "data": "01/06/2025",
-    "genero": "Samba",
+    "categoria": "Samba",
     "preco": 35.00
   },
   {
@@ -20,7 +20,7 @@
     "titulo": "Jazz Sunset",
     "local": "Parque Municipal",
     "data": "15/06/2025",
-    "genero": "Jazz",
+    "categoria": "Jazz",
     "preco": 50.00
   }
 ]
