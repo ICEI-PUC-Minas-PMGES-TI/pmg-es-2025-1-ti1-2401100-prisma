@@ -9,6 +9,10 @@ const cardsWrapper = document.querySelector("#cards-wrapper");
 const form = document.querySelector("#form-busca-eventos");
 const artistaSelect = document.querySelector("#artista-select");
 
+const storage = localStorage.getItem("eventos");
+
+const storageParsed = storage ? JSON.parse(storage) : [];
+
 async function carregarEstados() {
   const response = await fetch(
     "https://servicodados.ibge.gov.br/api/v1/localidades/estados"
@@ -84,11 +88,13 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  if (
-    (dataInicio && dataFim && dataInicio > dataFim) ||
-    dataInicio < dataHoje
-  ) {
+  if (dataInicio && dataFim && dataInicio > dataFim) {
     alert("A data de início não pode ser maior que a data de fim.");
+    return;
+  }
+
+  if (dataInicio && dataFim && dataInicio < dataHoje) {
+    alert("A data de início não pode ser menor que a data atual.");
     return;
   }
 
@@ -100,77 +106,43 @@ form.addEventListener("submit", (e) => {
   gerarEventosMockados(dataHoje);
 });
 
+const dataTal = new Date(storageParsed.data);
+
 function gerarEventosMockados(dataHoje) {
   const precoSelecionado = priceSelect.value;
   const dataInicioSelecionada = startDate.value;
   const dataFimSelecionada = endDate.value;
 
-  const eventosMock = [
-    {
-      nome: "Festival de Música",
-      cidade: localizacaoSelect.value,
-      horario: "20:00",
-      preco: 150,
-      data: startDate.value,
-      artista: artistaSelect.value,
-    },
-    {
-      nome: "Feira Cultural",
-      cidade: localizacaoSelect.value,
-      horario: "10:00",
-      preco: 80,
-      data: endDate.value,
-      artista: artistaSelect.value,
-    },
-    {
-      nome: "Stand-up Comedy",
-      cidade: localizacaoSelect.value,
-      horario: "19:30",
-      preco: 120,
-      data: startDate.value,
-      artista: artistaSelect.value,
-    },
-    {
-      nome: "Teatro Clássico",
-      cidade: localizacaoSelect.value,
-      horario: "18:00",
-      preco: 220,
-      data: endDate.value,
-      artista: artistaSelect.value,
-    },
-    {
-      nome: "Festival de Dança",
-      cidade: localizacaoSelect.value,
-      horario: "21:00",
-      preco: 400,
-      data: endDate.value,
-      artista: artistaSelect.value,
-    },
-  ];
 
-  const eventosFiltrados = eventosMock.filter((evento) => {
+  const eventosFiltrados = storageParsed.filter((ls) => {
     let condicaoPreco = true;
     switch (precoSelecionado) {
       case "menorcem":
-        condicaoPreco = evento.preco < 100;
+        condicaoPreco = ls.preco < 100;
         break;
       case "entre-cem-dozentos":
-        condicaoPreco = evento.preco >= 100 && evento.preco <= 200;
+        condicaoPreco = ls.preco >= 100 && ls.preco <= 200;
         break;
       case "entre-dozentos-trezentos":
-        condicaoPreco = evento.preco > 200 && evento.preco <= 350;
+        condicaoPreco = ls.preco > 200 && ls.preco <= 350;
         break;
       case "maior-que-trezentos":
-        condicaoPreco = evento.preco > 350;
+        condicaoPreco = ls.preco > 350;
         break;
     }
 
     const dentroDoIntervalo =
-      evento.data >= dataInicioSelecionada &&
-      evento.data <= dataFimSelecionada &&
-      evento.data >= dataHoje;
+      ls.data >= dataInicioSelecionada &&
+      ls.data <= dataFimSelecionada &&
+      ls.data >= dataHoje;
 
-    return condicaoPreco && dentroDoIntervalo;
+    const estadoFiltrado = ls.estado === Number(estadoSelect.value);
+
+    const artistaFiltrado = !!ls.artistas.includes(artistaSelect.value);
+
+    return (
+      condicaoPreco && dentroDoIntervalo && estadoFiltrado && artistaFiltrado
+    );
   });
 
   cardsWrapper.innerHTML = "";
@@ -190,7 +162,9 @@ function gerarEventosMockados(dataHoje) {
           <p><strong>Data:</strong> ${evento.data}</p>
           <p><strong>Horário:</strong> ${evento.horario}</p>
           <p><strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}</p>
-          <p><strong>Artista:</strong> ${evento.artista || "Não informado"}</p>
+          <p><strong>Artista:</strong> ${
+            evento.map((e) => e.artista).join(", ") || "Não informado"
+          }</p>
         `;
     cardsWrapper.appendChild(card);
   });

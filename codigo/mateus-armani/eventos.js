@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     titulo: document.getElementById("titulo"),
     estado: document.getElementById("estado-select"),
     cidade: document.getElementById("cidade-select"),
-    endereco: document.getElementById("endereco"),
+    rua: document.getElementById("rua"),
+    numero: document.getElementById("numero"),
+    bairro: document.getElementById("bairro"),
     descricao: document.getElementById("descricao"),
     preco: document.getElementById("preco"),
     tipo: document.getElementById("tipo"),
@@ -36,16 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
     $(campos.artistas).select2({
       placeholder: "Selecione ou digite os artistas",
       allowClear: true,
-      tags: true,
-      tokenSeparators: [",", " "],
-      createTag: (params) => ({
-        id: params.term.trim(),
-        text: "⭐ " + params.term.trim(),
-        newTag: true,
-      }),
-      templateResult: (data) =>
-        data.newTag ? `<span>${data.text} (novo)</span>` : data.text,
-      templateSelection: (data) => data.text.replace(/⭐ |🟢 /g, ""),
     });
   }
 
@@ -53,16 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
     $(campos.promotor).select2({
       placeholder: "Selecione ou digite os promotores",
       allowClear: true,
-      tags: true,
-      tokenSeparators: [",", " "],
-      createTag: (params) => ({
-        id: params.term.trim(),
-        text: "👤 " + params.term.trim(),
-        newTag: true,
-      }),
-      templateResult: (data) =>
-        data.newTag ? `<span>${data.text} (novo)</span>` : data.text,
-      templateSelection: (data) => data.text.replace(/👤 |👨‍💼 /g, ""),
     });
   }
 
@@ -131,12 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
   carregarOpcoesSelect("promotores", campos.promotor, "nome", "👨‍💼 ");
 
   // --- 6. MÁSCARAS E LISTENERS DE INPUT ---
-  campos.preco.addEventListener("input", (e) => {
-    let valor = e.target.value.replace(/\D/g, "").padStart(3, "0");
-    valor = (parseInt(valor, 10) / 100).toFixed(2);
-    e.target.value =
-      "R$ " + valor.replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  });
   campos.data.addEventListener("input", (e) => {
     let value = e.target.value.replace(/\D/g, "");
     if (value.length > 2 && value.length <= 4)
@@ -204,14 +180,16 @@ document.addEventListener("DOMContentLoaded", function () {
       "nome"
     );
 
+    const endereco = `${campos.rua.value.trim()}, ${campos.numero.value.trim()} - ${campos.bairro.value.trim()}`;
+
     const evento = {
       id: "evento_" + Date.now(),
       titulo: campos.titulo.value.trim(),
-      estado: campos.estado.value.trim(),
+      estado: Number(campos.estado.value.trim()),
       cidade: campos.cidade.value.trim(),
-      endereco: campos.endereco.value.trim(),
+      endereco: endereco,
       descricao: campos.descricao.value.trim(),
-      preco: campos.preco.value.trim(),
+      preco: Number(campos.preco.value.trim()),
       tipo: $(campos.tipo).val() || [],
       artistas: $(campos.artistas).val() || [],
       promotores: $(campos.promotor).val() || [],
