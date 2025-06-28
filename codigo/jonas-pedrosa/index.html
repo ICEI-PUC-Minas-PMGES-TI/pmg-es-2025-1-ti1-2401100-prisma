@@ -4,140 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DivulgaHub - Detalhes do Artista</title>
-    <link rel="stylesheet" href="detalhes-style.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="detalhes-style.css"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <h1>DivulgaHub</h1>
-        <button class="back-button" onclick="history.back()">Voltar</button>
-
-        <div id="artist-details-content">
-            <div class="artist-header">
-                <img id="artist-avatar" src="" alt="Foto do Artista" class="artist-avatar">
-                <h2 id="artist-name" class="artist-name"></h2>
-                <p id="artist-genre-display" class="artist-genre"></p>
-            </div>
-
-            <p id="artist-bio" class="artist-bio"></p>
-
-            <h2 class="section-title">Onde Encontrar Artista</h2>
-            <div id="social-media-links" class="social-media">
-                </div>
-
-            <h2 class="section-title">Trabalhos Recentes</h2>
-            <div id="recent-works-container" class="recent-works">
-                </div>
-            <p id="no-recent-works-message" style="display: none;">Nenhum trabalho recente cadastrado para este artista.</p>
+        <div class="artist-header">
+            <img src="img/raca.jpg" alt="Foto do Artista" class="artist-avatar">
+            <h2 class="artist-name">Raça Negra</h2>
+            <p class="artist-genre">|Pagode Romântico|</p>
         </div>
-        
-        <p id="artist-not-found">Artista não encontrado. Verifique o ID na URL.</p>
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elementos HTML onde os detalhes do artista serão exibidos
-            const artistAvatar = document.getElementById('artist-avatar');
-            const artistName = document.getElementById('artist-name');
-            const artistGenreDisplay = document.getElementById('artist-genre-display');
-            const artistBio = document.getElementById('artist-bio');
-            const socialMediaLinksDiv = document.getElementById('social-media-links');
-            const recentWorksContainer = document.getElementById('recent-works-container'); 
-            const artistDetailsContent = document.getElementById('artist-details-content');
-            const artistNotFoundMessage = document.getElementById('artist-not-found');
-            const noRecentWorksMessage = document.getElementById('no-recent-works-message');
+        <p class="artist-bio">
+            O Raça Negra é um grupo de pagode romântico formado em 1983, na Zona Leste de São Paulo. Liderado pelo vocalista Luiz Carlos, o grupo é um dos pioneiros e mais influentes do gênero, conhecido por sucessos como "Cheia de Manias" e "É Tarde Demais", que popularizaram o pagode em todo o Brasil e venderam milhões de cópias.
+        </p>
 
-            // 1. Obter o ID do artista da URL (ex: detalhes-artista.html?id=123)
-            const urlParams = new URLSearchParams(window.location.search);
-            const artistId = parseInt(urlParams.get('id'));
+        <h2 class="section-title">Onde Encontrar Artista</h2>
+        <div class="social-media">
+            <a href="https://open.spotify.com/intl-pt/artist/1RnHJ07H3jcpay9PrUPjnt" target="_blank">Spotify</a>
+            <a href="https://www.instagram.com/racanegra/" target="_blank">Instagram</a>
+            <a href="https://youtube.com/raçanegra" target="_blank">YouTube</a>
+            <a href="https://web.facebook.com/bandaracanegra/?locale=pt_BR&_rdc=1&_rdr#" target="_blank">Facebook</a>
+        </div>
 
-            // Verifica se o ID é um número válido. Se não for, esconde o conteúdo e exibe a mensagem de erro.
-            if (isNaN(artistId)) {
-                artistDetailsContent.style.display = 'none';
-                artistNotFoundMessage.style.display = 'block';
-                return; // Encerra a execução do script
-            }
-
-            // 2. Carregar todos os artistas do localStorage
-            const artistas = JSON.parse(localStorage.getItem('artistas')) || [];
-
-            // 3. Encontrar o artista específico pelo ID
-            const artista = artistas.find(a => a.id === artistId);
-
-            if (artista) {
-                // 4. Preencher os elementos HTML com os dados do artista encontrado
-                artistAvatar.src = artista.foto || 'https://via.placeholder.com/150?text=Sem+Foto'; // Usa a foto do artista ou uma imagem placeholder
-                artistName.textContent = artista.nomeArtistico;
-                artistGenreDisplay.textContent = `|${artista.genero}|`; // Usando 'genero' para gênero musical
-                artistBio.textContent = artista.descricao;
-
-                // 5. Preencher os links de redes sociais dinamicamente
-                socialMediaLinksDiv.innerHTML = ''; // Limpa qualquer link estático existente
-
-                // Cria e adiciona links apenas se a URL existir no objeto do artista
-                if (artista.spotify) {
-                    const link = document.createElement('a');
-                    link.href = artista.spotify;
-                    link.target = '_blank';
-                    link.textContent = 'Spotify';
-                    socialMediaLinksDiv.appendChild(link);
-                }
-                if (artista.instagram) {
-                    const link = document.createElement('a');
-                    link.href = artista.instagram;
-                    link.target = '_blank';
-                    link.textContent = 'Instagram';
-                    socialMediaLinksDiv.appendChild(link);
-                }
-                if (artista.youtube) {
-                    const link = document.createElement('a');
-                    link.href = artista.youtube;
-                    link.target = '_blank';
-                    link.textContent = 'YouTube';
-                    socialMediaLinksDiv.appendChild(link);
-                }
-                if (artista.facebook) {
-                    const link = document.createElement('a');
-                    link.href = artista.facebook;
-                    link.target = '_blank';
-                    link.textContent = 'Facebook';
-                    socialMediaLinksDiv.appendChild(link);
-                }
-
-                // 6. Preencher os Trabalhos Recentes dinamicamente
-                recentWorksContainer.innerHTML = ''; // Limpa qualquer conteúdo estático ou anterior
-
-                if (artista.trabalhosRecentes && artista.trabalhosRecentes.length > 0) {
-                    artista.trabalhosRecentes.forEach(work => {
-                        const workItem = document.createElement('div');
-                        workItem.classList.add('work-item');
-
-                        workItem.innerHTML = `
-                            <img src="${work.capa || 'https://via.placeholder.com/200?text=Sem+Capa'}" alt="Capa do ${work.titulo}">
-                            <div class="work-item-info">
-                                <h3>${work.titulo}</h3>
-                                <p>Lançamento: ${work.lancamento}</p>
-                                <a href="${work.linkYoutube}" target="_blank">Ouvir no Youtube</a>
-                            </div>
-                        `;
-                        recentWorksContainer.appendChild(workItem);
-                    });
-                    noRecentWorksMessage.style.display = 'none'; // Esconde a mensagem se houver trabalhos
-                } else {
-                    noRecentWorksMessage.style.display = 'block'; // Mostra a mensagem se não houver trabalhos
-                }
-
-
-                // Exibe o conteúdo do artista e esconde a mensagem de não encontrado
-                artistDetailsContent.style.display = 'block';
-                artistNotFoundMessage.style.display = 'none';
-
-            } else {
-                // Se o artista não for encontrado (ID válido, mas não existe na lista)
-                artistDetailsContent.style.display = 'none';
-                artistNotFoundMessage.style.display = 'block';
-            }
-        });
-    </script>
+        <h2 class="section-title">Trabalhos Recentes</h2>
+        <div class="recent-works">
+            <div class="work-item">
+                <img src="img/inquilino.jpg" alt="Capa do Single Inquilino">
+                <div class="work-item-info">
+                    <h3>Single "Inquilino"</h3>
+                    <p>Lançamento: 2022</p>
+                    <a href="https://www.youtube.com/watch?v=uApyy4QpZkM" target="_blank">Ouvir no Youtube</a>
+                </div>
+            </div>
+            <div class="work-item">
+                <img src="img/maravilha.jpg" alt="Capa do Single Maravilhosa">
+                <div class="work-item-info">
+                    <h3>Single "Maravilha"</h3>
+                    <p>Lançamento: 2018</p>
+                    <a href="https://www.youtube.com/watch?v=_I4LWWWhrj0" target="_blank">Ouvir no Youtube</a>
+                </div>
+            </div>
+            <div class="work-item">
+                <img src="img/socio.jpg" alt="Capa do Single Socio">
+                <div class="work-item-info">
+                    <h3>Single "Socio"</h3>
+                    <p>Lançamento: 2022</p>
+                    <a href="https://www.youtube.com/watch?v=FIHWoATLGZo" target="_blank">Ouvir no Youtube</a>
+                </div>
+            </div>
+        </div>
+      <p id="no-artists-message" class="no-artists-message" style="display: none;">Nenhum artista cadastrado ainda.</p>
+    </main>
+  </div>
+  <script src="lista_artistas.js"></script>
 </body>
 </html>
