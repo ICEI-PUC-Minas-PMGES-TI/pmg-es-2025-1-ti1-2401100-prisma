@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(to bottom right, #410445, #2a0140);
+  background-color: #2c0237; /* Alterado para a cor sólida #2c0237 */
   color: #ffffff;
 }
 

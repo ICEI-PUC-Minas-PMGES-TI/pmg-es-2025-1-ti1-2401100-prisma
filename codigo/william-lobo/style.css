@@ -1,33 +1,63 @@
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c0237;
-    color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #2c0237;
+  color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
+  background-color: #2c0237;
 }
-
 
 .logo {
   font-size: 28px;
   font-weight: bold;
   color: white;
+  margin: 0;
+}
+
+.botoes-middle {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center; 
+  flex-grow: 1; 
+}
+
+.nav-button {
+  background-color: #9e28b5;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #c54fe4;
+  transform: scale(1.05);
+}
+
+.voltar-button {
+  background-color: #e63946;
+}
+
+.voltar-button:hover {
+  background-color: #ff5e66;
 }
 
 .filtro-criar-container {
   display: flex;
-  align-items: flex-end;
-  gap: 20px;
+  align-items: center;
+  gap: 10px;
 }
 
 .filtro-label-select {
@@ -35,32 +65,21 @@ header {
   flex-direction: column;
 }
 
-.filtro-container label {
+.filtro-label-select label {
   font-size: 14px;
   margin-bottom: 5px;
   color: white;
+  display: none;
 }
 
 select {
   padding: 8px 12px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 6px;
   border: none;
   background-color: white;
   color: #3b0a66;
   cursor: pointer;
-}
-
-
-.criar-btn {
-  padding: 10px 20px;
-  background-color: #b86fb9;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 #eventos-container {
@@ -100,7 +119,7 @@ select {
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
-} 
+}
 
 .card a {
   margin-top: 10px;
@@ -121,4 +140,34 @@ select {
 .favorito-btn {
   background-color: transparent;
   color: red;
+}
+
+.nav-botoes {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-button {
+  background-color: #9e28b5;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #c54fe4;
+  transform: scale(1.05);
+}
+
+.voltar-button {
+  background-color: #e63946;
+}
+
+.voltar-button:hover {
+  background-color: #ff5e66;
 }

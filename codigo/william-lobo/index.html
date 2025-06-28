@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eventos - DivulgaHub</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
-
 <body>
   <header>
     <h1 class="logo">DivulgaHub</h1>
+    <nav class="botoes-middle" data-aos="fade-up">
+      <a href="#" class=nav-button">Cadastro de Eventos</a>
+      <a href="#" class="nav-button cad-artistas">Cadastro de Artistas</a>
+        <a href="#" class="nav-button cad-artistas">Mapa de Eventos</a>
+      <a href="#" class="nav-button">Meu Perfil</a>
+      <a href="#" class="nav-button voltar-button">Voltar</a>
+    </nav>
     <div class="filtro-criar-container">
       <div class="filtro-label-select">
         <label for="filtro-genero">Filtrar por gênero</label>
@@ -18,12 +24,14 @@
           <option value="Todos">Todos</option>
         </select>
       </div>
-      <a href="../mateus-armani/cad_eventos.html" class="criar-btn">+ Criar Evento</a>
     </div>
   </header>
   <hr class="linha-divisoria" />
-  <main id="eventos-container" style="padding-left: 20px;"></main>
+  <main>
+    <section id="eventos-container"></section>
+  </main>
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
-
 </html>
