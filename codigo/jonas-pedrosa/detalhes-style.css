@@ -190,6 +190,37 @@ nav.botoes-middle {
   color: #fff;
 }
 
+/* Navegação no topo */
+nav.botoes-middle {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  border-bottom: 2px solid #883078;
+}
+
+.nav-button {
+  background-color: transparent;
+  color: #e1bee7;
+  padding: 8px 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid #e1bee7;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.nav-button:hover {
+  background-color: #8e24aa;
+  border-color: #8e24aa;
+  color: #fff;
+}
+
+/* Responsivo */
 @media (max-width: 600px) {
     .container {
         padding: 25px;
