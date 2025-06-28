@@ -7,7 +7,14 @@ const container = document.getElementById("eventos-container");
 fetch("eventos.json")
   .then(res => res.json())
   .then(data => {
-    eventos = data;
+    const eventosLocal = JSON.parse(localStorage.getItem("eventosSalvos")) || [];
+    
+    eventos = [...data, ...eventosLocal];
+
+    const optionTodos = document.createElement("option");
+    optionTodos.value = "Todos";
+    optionTodos.textContent = "Todos";
+    filtro.appendChild(optionTodos);
 
     const generos = [...new Set(eventos.map(e => e.genero))];
     generos.forEach(genero => {
@@ -27,7 +34,7 @@ filtro.addEventListener("change", () => {
   renderizarEventos(filtro.value);
 });
 
-function redirecionarDetalhes(){
+function redirecionarDetalhes() {
   window.location.href = "../lucas-eduardo/event details.html";
 }
 
