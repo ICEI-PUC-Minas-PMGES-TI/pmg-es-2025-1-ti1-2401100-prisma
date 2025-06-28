@@ -1,102 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DivulgaHub - Cadastrar Novo Evento</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
 
     <style>
-        /* Estilo para a borda de erro nos campos e no Select2 */
-        .erro {
-            border: 2px solid red !important;
-        }
-        /* Ajuste para a borda de erro do Select2 */
-        .select2-container--default .select2-selection--multiple.erro {
-            border: 2px solid red !important;
-        }
+      /* Estilo para a borda de erro nos campos e no Select2 */
+      .erro {
+        border: 2px solid red !important;
+      }
+      /* Ajuste para a borda de erro do Select2 */
+      .select2-container--default .select2-selection--multiple.erro {
+        border: 2px solid red !important;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header data-aos="fade-down">
-            <h1>DivulgaHub</h1>
-            <button class="back-button" onclick="history.back()">Voltar</button>
-        </header>
+      <header data-aos="fade-down">
+        <h1>DivulgaHub</h1>
+        <button class="back-button" onclick="history.back()">Voltar</button>
+      </header>
 
-        <nav class="botoes-middle" data-aos="fade-up">
-            <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-            <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
-            <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
-            <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
-            <a href="../arthur-julio/cadastro-artista.html" class="nav-button cad-artistas">Cadastro de Artistas</a>
-            <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-        </nav>
+      <nav class="botoes-middle" data-aos="fade-up">
+        <a href="../joao-heleno/event-search.html" class="nav-button eventos"
+          >Eventos</a
+        >
+        <a
+          href="../pedro-rocha-resende/mapa.html"
+          class="nav-button mapa-eventos"
+          >Mapa de Eventos</a
+        >
+        <a
+          href="../joao-tolentino/cad_usuarios.html"
+          class="nav-button cad-usuario"
+          >Cadastro de Usuário</a
+        >
+        <a
+          href="../arthur-chaves/cad_promotor.html"
+          class="nav-button cad-promotor"
+          >Cadastro de Promotor</a
+        >
+        <a
+          href="../arthur-julio/cadastro-artista.html"
+          class="nav-button cad-artistas"
+          >Cadastro de Artistas</a
+        >
+        <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+      </nav>
 
-        <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Evento</h2>
+      <h2 class="subtitulo-pagina1" data-aos="fade-right">
+        Cadastrar Novo Evento
+      </h2>
 
-        <form id="evento-form" class="conj-campos" data-aos="fade-up" novalidate>
-            <div class="form-group">
-                <label for="titulo">Título do evento:</label>
-                <input type="text" id="titulo" name="titulo" required />
-            </div>
-            <div class="form-group">
-                <label for="estado">Estado:</label>
-                <input type="text" id="estado" name="estado" required />
-            </div>
-            <div class="form-group">
-                <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" required />
-            </div>
-            <div class="form-group">
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" required />
-            </div>
-            <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao" required />
-            </div>
-            <div class="form-group">
-                <label for="data">Data do Evento:</label>
-                <input type="text" id="data" name="data" placeholder="DD/MM/AAAA" required />
-            </div>
+      <form id="evento-form" class="conj-campos" data-aos="fade-up" novalidate>
+        <div class="form-group">
+          <label for="titulo">Título do evento:</label>
+          <input type="text" id="titulo" name="titulo" required />
+        </div>
+        <div class="form-group">
+          <label for="estado-select">Estado: </label>
+          <select id="estado-select" class="estado-select">
+            <option value="">Selecionar Estado</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cidade-select">Cidade: </label>
+          <select id="cidade-select" class="cidade-select">
+            <option value="">Selecionar Cidade</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="descricao">Descrição:</label>
+          <input type="text" id="descricao" name="descricao" required />
+        </div>
+        <div class="form-group">
+          <label for="data">Data do Evento:</label>
+          <input
+            type="text"
+            id="data"
+            name="data"
+            placeholder="DD/MM/AAAA"
+            required
+          />
+        </div>
 
-            <div class="form-group" id="artistas-group">
-                <label for="artistas">Selecione os Artistas:</label>
-                <select name="artistas" id="artistas" class="genero" multiple required></select>
-            </div>
+        <div class="form-group" id="artistas-group">
+          <label for="artistas">Selecione os Artistas:</label>
+          <select
+            name="artistas"
+            id="artistas"
+            class="genero"
+            multiple
+            required
+          ></select>
+        </div>
 
-            <div class="form-group">
-                <label for="promotor">Selecione os Promotores:</label>
-                <select name="promotor" id="promotor" class="genero" multiple required></select>
-            </div>
+        <div class="form-group">
+          <label for="promotor">Selecione os Promotores:</label>
+          <select
+            name="promotor"
+            id="promotor"
+            class="genero"
+            multiple
+            required
+          ></select>
+        </div>
 
-            <div class="form-group" id="tipo-group">
-                <label for="tipo">Selecione o Tipo de Evento:</label>
-                <select name="tipo" id="tipo" class="genero" multiple required>
-                    <option value="Trap">Trap</option>
-                    <option value="Funk">Funk</option>
-                    <option value="Gospel">Gospel</option>
-                    <option value="Pagode">Pagode</option>
-                    <option value="MPB">MPB</option>
-                </select>
-            </div>
+        <div class="form-group" id="tipo-group">
+          <label for="tipo">Selecione o Tipo de Evento:</label>
+          <select name="tipo" id="tipo" class="genero" multiple required>
+            <option value="Trap">Trap</option>
+            <option value="Funk">Funk</option>
+            <option value="Gospel">Gospel</option>
+            <option value="Pagode">Pagode</option>
+            <option value="MPB">MPB</option>
+          </select>
+        </div>
 
-            <div class="form-group">
-                <label for="preco">Preço:</label>
-                <input type="text" id="preco" name="preco" placeholder="R$ 0,00" required />
-            </div>
+        <div class="form-group">
+          <label for="preco">Preço:</label>
+          <input
+            type="text"
+            id="preco"
+            name="preco"
+            placeholder="R$ 0,00"
+            required
+          />
+        </div>
 
-            <button type="submit" class="submit-button">Cadastrar</button>
-        </form>
+        <button type="submit" class="submit-button">Cadastrar</button>
+      </form>
     </div>
 
-    <div id="mensagem-erro" style="display: none; color: #ff4d4d; font-weight: bold; margin-bottom: 15px;">
-        ⚠️ Por favor, preencha todos os campos obrigatórios.
+    <div
+      id="mensagem-erro"
+      style="
+        display: none;
+        color: #ff4d4d;
+        font-weight: bold;
+        margin-bottom: 15px;
+      "
+    >
+      ⚠️ Por favor, preencha todos os campos obrigatórios.
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -104,8 +161,7 @@
     <script src="eventos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init();
+      AOS.init();
     </script>
-</body>
-
+  </body>
 </html>
