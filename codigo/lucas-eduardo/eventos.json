@@ -10,20 +10,20 @@
   },
   {
   "id": 2,
-    "titulo": "Festival da Luz",
-    "local": "Praça da Liberdade",
-    "preco": "Gratuito",
-    "tipo": "Arte e Cultura",
-    "artistas": "Grupo Luzes, Coral Minas",
+    "titulo": "Noite do Samba",
+    "local": "Sambódromo",
+    "preco": "35.00",
+    "tipo": "Samba",
+    "artistas": "João Batera, Adriana Araújo e o Grupo Simplicidade",
     "promotor": "Prefeitura de BH"
   },
   {
     "id": 3,
-    "titulo": "Rock no Parque",
+    "titulo": "Jazz Sunset",
     "local": "Parque Municipal",
-    "preco": "R$75.00",
-    "tipo": "Rock",
-    "artistas": "Scalene, Supercombo, Pitty",
+    "preco": "R$50.00",
+    "tipo": "Jazz",
+    "artistas": "Trio Pop Jazz BH e Mambo Jazz",
     "promotor": "Pedro Eventos"
   },
   {
