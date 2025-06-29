@@ -161,6 +161,11 @@ function gerarEventosMockados(dataHoje) {
         ? evento.artistas.join(", ")
         : "Não informado";
 
+    const tipoMusical =
+      Array.isArray(evento.tipo) && evento.tipo.length
+        ? evento.tipo.join(", ")
+        : "Não informado";
+
     const dataFormatada = new Date(evento.data).toLocaleDateString("pt-BR", {
       day: "2-digit",
       month: "2-digit",
@@ -169,11 +174,12 @@ function gerarEventosMockados(dataHoje) {
 
     card.innerHTML = `
     <h3 style="text-align: center">${evento.titulo}</h3>
-    <p><strong>Cidade:</strong> ${evento.cidade}</p>
-    <p><strong>Data:</strong> ${dataFormatada}</p>
-    <p><strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}</p>
+    <p><strong>📍</strong> ${evento.cidade}</p>
+    <p><strong>📍</strong> ${evento.endereco}</p>
+    <p><strong>📅</strong> ${dataFormatada}</p>
+    <p>R$ ${evento.preco.toFixed(2)}</p>
     <p><strong>Artista:</strong> ${artistasTexto}</p>
-    <p><strong>Endereço:</strong> ${evento.endereco}</p>
+    <p><strong>🎵</strong> ${tipoMusical}</p>
   `;
     cardsWrapper.appendChild(card);
   });

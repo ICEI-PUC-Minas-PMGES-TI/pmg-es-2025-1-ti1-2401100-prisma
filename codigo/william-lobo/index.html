@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eventos - DivulgaHub</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-</head>
-<body>
-  <header>
-    <h1 class="logo">DivulgaHub</h1>
-    <nav class="botoes-middle" data-aos="fade-up">
-      <a href="#" class="nav-button">Cadastro de Eventos</a>
-      <a href="#" class="nav-button cad-artistas">Cadastro de Artistas</a>
-      <a href="#" class="nav-button cad-artistas">Mapa de Eventos</a>
-      <a href="#" class="nav-button">Meu Perfil</a>
-      <a href="#" class="nav-button voltar-button">Voltar</a>
-    </nav>
-  </header>
-  
-  <hr class="linha-divisoria" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos - DivulgaHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <img
+          src="../pedro-rocha-resende/assets/placeholder.svg"
+          alt="placeholder icon"
+        />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../mateus-armani/cad_eventos.html" class="nav-button"
+          >Cadastro de Eventos</a
+        >
+        <a
+          href="../arthur-julio/cadastro-artista.html"
+          class="nav-button cad-artistas"
+          >Cadastro de Artistas</a
+        >
+        <a
+          href="../pedro-rocha-resende/mapa.html"
+          class="nav-button cad-artistas"
+          >Mapa de Eventos</a
+        >
+      </nav>
+    </header>
 
-  <main>
-    <section id="eventos-container"></section>
-  </main>
+    <hr class="linha-divisoria" />
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init();</script>
-</body>
+    <main>
+      <section id="eventos-container"></section>
+    </main>
+
+    <footer>2025 - DivulgaHub - Todos os direitos reservados</footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>

@@ -27,13 +27,15 @@
   </head>
 
   <body>
-    <div class="container">
-      <header data-aos="fade-down">
-        <h1>DivulgaHub</h1>
-        <button class="back-button" onclick="history.back()">Voltar</button>
-      </header>
-
-      <nav class="botoes-middle" data-aos="fade-up">
+    <header class="navbar">
+      <div class="brand">
+        <img
+          src="../pedro-rocha-resende/assets/placeholder.svg"
+          alt="placeholder icon"
+        />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
         <a href="../joao-heleno/event-search.html" class="nav-button eventos"
           >Eventos</a
         >
@@ -59,7 +61,8 @@
         >
         <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
       </nav>
-
+    </header>
+    <div class="container">
       <h2 class="subtitulo-pagina1" data-aos="fade-right">
         Cadastrar Novo Evento
       </h2>
@@ -161,6 +164,8 @@
     >
       ⚠️ Por favor, preencha todos os campos obrigatórios.
     </div>
+
+    <footer>2025 - DivulgaHub - Todos os direitos reservados</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
