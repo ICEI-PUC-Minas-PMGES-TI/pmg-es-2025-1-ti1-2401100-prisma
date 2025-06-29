@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tipo: document.getElementById("tipo"),
     artistas: document.getElementById("artistas"),
     promotor: document.getElementById("promotor"),
-    data: document.getElementById("data"),
+    data: document.getElementById("date"),
   };
   const mensagemErro = document.getElementById("mensagem-erro");
 
@@ -111,16 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- 5. CARREGAMENTO INICIAL DE DADOS ---
   carregarOpcoesSelect("artistas", campos.artistas, "nomeArtistico", "🟢 ");
   carregarOpcoesSelect("promotores", campos.promotor, "nome", "👨‍💼 ");
-
-  // --- 6. MÁSCARAS E LISTENERS DE INPUT ---
-  campos.data.addEventListener("input", (e) => {
-    let value = e.target.value.replace(/\D/g, "");
-    if (value.length > 2 && value.length <= 4)
-      value = `${value.slice(0, 2)}/${value.slice(2)}`;
-    else if (value.length > 4)
-      value = `${value.slice(0, 2)}/${value.slice(2, 4)}/${value.slice(4, 8)}`;
-    e.target.value = value;
-  });
 
   // Remove a classe de erro ao interagir com o campo
   Object.values(campos).forEach((campo) => {

@@ -45,26 +45,18 @@ estadoSelect.addEventListener("change", async function () {
 });
 
 function carregarArtistasDoLocalStorage() {
-  const artistasSalvos = JSON.parse(localStorage.getItem("eventos")).map(
-    (evento) => {
-      return evento.artistas;
-    }
-  );
+  const artistas = localStorage.getItem("artistas");
 
-  if (artistasSalvos) {
-    try {
-      const artistasArray = artistasSalvos;
-      artistaSelect.innerHTML = '<option value="">Selecionar Artista</option>';
-      artistasArray.forEach((artista) => {
-        const option = document.createElement("option");
-        option.value = artista;
-        option.textContent = artista;
-        artistaSelect.appendChild(option);
-      });
-    } catch (e) {
-      console.error("Erro ao carregar artistas do localStorage:", e);
-    }
-  }
+  const artistasJSON = JSON.parse(artistas) || [];
+
+  console.log(artistasJSON);
+
+  artistasJSON.forEach((artista) => {
+    const option = document.createElement("option");
+    option.value = artista.nomeArtistico;
+    option.textContent = `${artista.nomeArtistico}`;
+    artistaSelect.appendChild(option);
+  });
 }
 
 form.addEventListener("submit", (e) => {
@@ -113,6 +105,9 @@ function gerarEventosMockados(dataHoje) {
   const dataInicioSelecionada = startDate.value;
   const dataFimSelecionada = endDate.value;
 
+  console.log(dataInicioSelecionada);
+  console.log(dataFimSelecionada);
+  console.log(storageParsed.data);
 
   const eventosFiltrados = storageParsed.filter((ls) => {
     let condicaoPreco = true;
@@ -138,7 +133,9 @@ function gerarEventosMockados(dataHoje) {
 
     const estadoFiltrado = ls.estado === Number(estadoSelect.value);
 
-    const artistaFiltrado = !!ls.artistas.includes(artistaSelect.value);
+    const artistaFiltrado = ls.artistas.includes(artistaSelect.value);
+
+    console.log(condicaoPreco, "eae");
 
     return (
       condicaoPreco && dentroDoIntervalo && estadoFiltrado && artistaFiltrado
@@ -153,19 +150,31 @@ function gerarEventosMockados(dataHoje) {
     return;
   }
 
+  console.log(eventosFiltrados);
+
   eventosFiltrados.forEach((evento) => {
     const card = document.createElement("div");
     card.classList.add("card");
+
+    const artistasTexto =
+      Array.isArray(evento.artistas) && evento.artistas.length
+        ? evento.artistas.join(", ")
+        : "Não informado";
+
+    const dataFormatada = new Date(evento.data).toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+
     card.innerHTML = `
-          <h3>${evento.nome}</h3>
-          <p><strong>Cidade:</strong> ${evento.cidade}</p>
-          <p><strong>Data:</strong> ${evento.data}</p>
-          <p><strong>Horário:</strong> ${evento.horario}</p>
-          <p><strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}</p>
-          <p><strong>Artista:</strong> ${
-            evento.map((e) => e.artista).join(", ") || "Não informado"
-          }</p>
-        `;
+    <h3 style="text-align: center">${evento.titulo}</h3>
+    <p><strong>Cidade:</strong> ${evento.cidade}</p>
+    <p><strong>Data:</strong> ${dataFormatada}</p>
+    <p><strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}</p>
+    <p><strong>Artista:</strong> ${artistasTexto}</p>
+    <p><strong>Endereço:</strong> ${evento.endereco}</p>
+  `;
     cardsWrapper.appendChild(card);
   });
 }
