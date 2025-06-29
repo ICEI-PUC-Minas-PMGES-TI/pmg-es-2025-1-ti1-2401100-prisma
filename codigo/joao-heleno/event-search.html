@@ -13,27 +13,31 @@
   </head>
 
   <body>
-    <div class="container">
-      <header data-aos="fade-down">
-        <h1>DivulgaHub</h1>
-        <button class="back-button">Voltar</button>
-      </header>
-
-      <nav class="botoes-middle" data-aos="fade-up">
-        <a href="../mateus-armani/cad_eventos.html" class="nav-button eventos"
-          >Cadastro de Eventos</a
-        >
+    <header class="navbar">
+      <div class="brand">
+        <img
+          src="../pedro-rocha-resende/assets/placeholder.svg"
+          alt="placeholder icon"
+        />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
         <a
-          href="../joao-tolentino/cad_usuarios.html"
-          class="nav-button cadastrar-usuario"
-          >Cadastrar Usuário</a
+          href="../pedro-rocha-resende/mapa.html"
+          class="nav-button mapa-eventos"
+          >Mapa de Eventos</a
         >
         <a href="../jonas-pedrosa/index.html" class="nav-button comunidade"
-          >Cadastrar Artista</a
+          >Comunidade</a
         >
-        <a href="../" class="nav-button meu-perfil">Meu Perfil</a>
+        <a
+          href="../mateus-armani/cad_eventos.html"
+          class="nav-button cadastro-eventos"
+          >Cadastro de Eventos</a
+        >
       </nav>
-
+    </header>
+    <div class="container">
       <div class="div-main">
         <aside class="aside">
           <h2 class="subtitulo-pagina1">Pesquisar Eventos</h2>
@@ -87,6 +91,8 @@
         <section id="cards-wrapper" class="cards-wrapper"></section>
       </div>
     </div>
+
+    <footer>2025 - DivulgaHub - Todos os direitos reservados</footer>
 
     <script src="event-search.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
