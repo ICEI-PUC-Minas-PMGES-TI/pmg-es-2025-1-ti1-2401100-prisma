@@ -1,29 +1,22 @@
 let eventos = [];
-let favoritos = [];
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
 const container = document.getElementById("eventos-container");
 
-fetch("eventos.json")
-  .then(res => res.json())
-  .then(data => {
-    const eventosLocal = JSON.parse(localStorage.getItem("eventosSalvos")) || [];
-    eventos = [...data, ...eventosLocal];
-    renderizarEventos();
-  })
-  .catch(err => {
-    console.error("Erro ao carregar eventos:", err);
-  });
+const eventosLocal = JSON.parse(localStorage.getItem("eventos")) || [];
 
 function redirecionarDetalhes() {
   window.location.href = "../lucas-eduardo/event details.html";
 }
 
+function salvarFavoritos() {
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+}
+
 function renderizarEventos() {
   container.innerHTML = "";
 
-  const eventosFiltrados = eventos;
-
-  eventosFiltrados.forEach(evento => {
+  eventosLocal.forEach((evento) => {
     const card = document.createElement("div");
     card.className = "card";
 
@@ -31,24 +24,29 @@ function renderizarEventos() {
 
     card.innerHTML = `
       <h3>${evento.titulo}</h3>
-      <p>📍 ${evento.local}</p>
+      <p>📍 ${evento.endereco}</p>
       <p>📅 ${evento.data}</p>
-      <p>🎵 ${evento.categoria}</p>
-      <p>Preço R$ ${evento.preco.toFixed(2)}</p>
+      <p>🎵 ${evento.tipo}</p>
+      <p>Preço R$ ${parseFloat(evento.preco).toFixed(2)}</p>
       <button onclick="redirecionarDetalhes()" class="detalhes-btn">Ver Detalhes</button>
-      <button class="favorito-btn">${isFavorito ? "❤️ Desfavoritar" : "🤍 Favoritar"}</button> 
+      <button class="favorito-btn">
+        ${isFavorito ? "❤️ Desfavoritar" : "🤍 Favoritar"}
+      </button>
     `;
 
     const btnFavorito = card.querySelector(".favorito-btn");
     btnFavorito.addEventListener("click", () => {
-      if (favoritos.includes(evento.id)) {
-        favoritos = favoritos.filter(id => id !== evento.id);
+      if (isFavorito) {
+        favoritos = favoritos.filter((id) => id !== evento.id);
       } else {
         favoritos.push(evento.id);
       }
+      salvarFavoritos();
       renderizarEventos();
     });
 
     container.appendChild(card);
   });
 }
+
+renderizarEventos();
