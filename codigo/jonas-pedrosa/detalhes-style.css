@@ -9,12 +9,11 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding-top: 70px;
-  background-color: var(--roxo-escuro-fundo);
-  color: var(--branco);
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #410445;
+  color: #fff;
+  margin: 1.5%;
+  padding: 0;
 }
 
 .navbar {

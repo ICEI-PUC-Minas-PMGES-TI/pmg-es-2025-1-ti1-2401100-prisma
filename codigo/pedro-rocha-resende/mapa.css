@@ -8,9 +8,10 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #410445; /* blueviolet */
-  /* color: #f0f0f0;
-  line-height: 1.6; */
+  background-color: #410445;
+  color: #fff;
+  margin: 3%;
+  padding: 0;
 }
 
 /* SECTION - Barra de navegação */
