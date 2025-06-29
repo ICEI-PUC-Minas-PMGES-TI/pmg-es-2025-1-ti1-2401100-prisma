@@ -1,31 +1,40 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: Divulga Hub
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Argemiro Júlio
+    given-names: Arthur 
+  - family-names: Chaves Viana Leão 
+    given-names: Arthur
+  - family-names: Heleno 
+    given-names: João Vitor
+  - family-names: Tolentino
+    given-names: João Vitor
+  - family-names: Lopes Ferreira Pedrosa
+    given-names: Jonas 
+  - family-names: Almeida dos Santos 
+    given-names: Lucas Eduardo
+  - family-names: de Moura Armani
+    given-names: Mateus
+  - family-names: Rocha Resende
+    given-names: Pedro
+  - family-names: Lobo Freire
+    given-names: William Augusto 
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Faria Barros
+    given-names: Diego Augusto
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Hanne Soares de Andrade
+    given-names: Michele
 keywords:
-  - 
-  - 
-repository-code: 
+-Divulgação
+-Eventos
+-Cultura
+-Música
+-Visibilidade
+repository-code: https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2401100-prisma 
 license: CC-BY-4.0
 version: 1.0.0
 date-released: 2022-07-14
