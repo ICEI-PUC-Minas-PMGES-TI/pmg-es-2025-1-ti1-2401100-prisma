@@ -1,102 +1,183 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detalhes do Evento</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="event details.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Evento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="event details.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #2c0237;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 100px 20px 20px;
-    }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #410445;
+        color: #fff;
+        margin: 3%;
+        padding: 0;
+      }
 
-    .btn:hover { transform: translateY(-2px); }
-    .fade-in { animation: fadeIn 0.5s ease-in; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <!-- NAV -->
-  <nav class="fixed top-0 left-0 right-0 bg-purple-900 shadow-md z-50">
-    <div class="container mx-auto px-4 py-3">
-      <div class="flex justify-between items-center">
-        <div class="flex space-x-4">
-          <a href="index.html" class="text-white px-3 py-2 rounded-md hover:bg-purple-700 transition">
-            <i class="fas fa-calendar-alt mr-2"></i>Eventos
-          </a>
-          <a href="cadastrar-evento.html" class="text-white px-3 py-2 rounded-md hover:bg-purple-700 transition">
-            <i class="fas fa-plus-circle mr-2"></i>Cadastrar Evento
-          </a>
-          <a href="cadastrar-artista.html" class="text-white px-3 py-2 rounded-md hover:bg-purple-700 transition">
-            <i class="fas fa-user-plus mr-2"></i>Cadastrar Artista
-          </a>
-          <a href="perfil.html" class="text-white px-3 py-2 rounded-md hover:bg-purple-700 transition">
-            <i class="fas fa-user mr-2"></i>Meu Perfil
-          </a>
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #410445;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand img {
+        height: 30px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .nav-links a {
+        background-color: #883078;
+        color: white;
+        text-decoration: none;
+        padding: 5px 12px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        border: 1px solid transparent;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links a:hover {
+        background-color: #33334d;
+        border-color: #1a5b7e;
+      }
+
+      .project-name {
+        font-size: 1.4rem;
+        color: #f0f0f0;
+        font-weight: bold;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1700px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 2px solid #883078;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <header class="navbar">
+      <div class="brand">
+        <img
+          src="../pedro-rocha-resende/assets/placeholder.svg"
+          alt="placeholder icon"
+        />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
+        <a
+          href="../pedro-rocha-resende/mapa.html"
+          class="nav-button mapa-eventos"
+          >Mapa de Eventos</a
+        >
+        <a href="../jonas-pedrosa/index.html" class="nav-button comunidade"
+          >Comunidade</a
+        >
+        <a
+          href="../mateus-armani/cad_eventos.html"
+          class="nav-button cadastro-eventos"
+          >Cadastro de Eventos</a
+        >
+      </nav>
+    </header>
+
+    <!-- CONTEÚDO DO EVENTO -->
+    <main
+      class="w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden fade-in"
+    >
+      <!-- Banner -->
+      <div class="relative">
+        <div
+          class="h-48 bg-gradient-to-r from-purple-900 via-[#2c0237] to-purple-800 relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+          ></div>
+          <div class="absolute bottom-4 left-4">
+            <span
+              id="categoriaEvento"
+              class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center"
+            >
+              <i class="fas fa-music mr-1"></i>
+              Carregando...
+            </span>
+          </div>
         </div>
-        <a href="index.html" class="text-white px-3 py-2 rounded-md bg-purple-700 hover:bg-purple-800 transition">
-          <i class="fas fa-arrow-left mr-2"></i>Voltar
-        </a>
       </div>
-    </div>
-  </nav>
 
-  <!-- CONTEÚDO DO EVENTO -->
-  <main class="w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden fade-in">
-    <!-- Banner -->
-    <div class="relative">
-      <div class="h-48 bg-gradient-to-r from-purple-900 via-[#2c0237] to-purple-800 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-        <div class="absolute bottom-4 left-4">
-          <span id="categoriaEvento" class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-            <i class="fas fa-music mr-1"></i>
-            Carregando...
-          </span>
+      <!-- Info do evento -->
+      <div class="px-6 py-4">
+        <h1 id="tituloEvento" class="text-3xl font-bold text-gray-800"></h1>
+        <div class="flex items-center mt-2 text-purple-700">
+          <i class="fas fa-calendar-day mr-2"></i>
+          <span id="precoEvento"></span>
+          <i class="fas fa-clock ml-4 mr-2"></i>
+          <span id="tipoEvento"></span>
+        </div>
+        <div class="flex items-center mt-2 text-purple-700">
+          <i class="fas fa-map-marker-alt mr-2"></i>
+          <span id="localEvento"></span>
+        </div>
+
+        <!-- Descrição -->
+        <div class="mt-6 bg-purple-50 rounded-xl p-4">
+          <h3 class="font-bold text-lg text-gray-800 mb-2"></h3>
+          <p id="artistasEvento" class="text-gray-700"></p>
+        </div>
+
+        <!-- Botão compartilhar -->
+        <div class="mt-6">
+          <button
+            class="btn w-full py-3 px-4 bg-white border border-purple-700 text-purple-700 rounded-lg font-medium hover:bg-purple-50 shadow-md"
+          >
+            <i class="fas fa-share-alt mr-2"></i>Compartilhar
+          </button>
         </div>
       </div>
-    </div>
+    </main>
 
-    <!-- Info do evento -->
-    <div class="px-6 py-4">
-      <h1 id="tituloEvento" class="text-3xl font-bold text-gray-800"></h1>
-      <div class="flex items-center mt-2 text-purple-700">
-        <i class="fas fa-calendar-day mr-2"></i>
-        <span id="precoEvento"></span>
-        <i class="fas fa-clock ml-4 mr-2"></i>
-        <span id="tipoEvento"></span>
-      </div>
-      <div class="flex items-center mt-2 text-purple-700">
-        <i class="fas fa-map-marker-alt mr-2"></i>
-        <span id="localEvento"></span>
-      </div>
-
-      <!-- Descrição -->
-      <div class="mt-6 bg-purple-50 rounded-xl p-4">
-        <h3 class="font-bold text-lg text-gray-800 mb-2"></h3>
-        <p id="artistasEvento" class="text-gray-700"></p>
-      </div>
-
-      <!-- Botão compartilhar -->
-      <div class="mt-6">
-        <button class="btn w-full py-3 px-4 bg-white border border-purple-700 text-purple-700 rounded-lg font-medium hover:bg-purple-50 shadow-md">
-          <i class="fas fa-share-alt mr-2"></i>Compartilhar
-        </button>
-      </div>
-    </div>
-  </main>
-
-  <script src="events.js"></script>
-</body>
+    <script src="events.js"></script>
+  </body>
 </html>

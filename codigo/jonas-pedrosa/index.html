@@ -1,59 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DivulgaHub - Meus Perfis de Artista</title>
-  
-  <link rel="stylesheet" href="detalhes-style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-</head>
-<body>
-  <div class="container" data-aos="fade-up">
-    <header data-aos="fade-down">
-      <h1>DivulgaHub</h1>
-      <button class="back-button" onclick="history.back()">Voltar</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DivulgaHub - Meus Perfis de Artista</title>
+
+    <link rel="stylesheet" href="detalhes-style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <img
+          src="../pedro-rocha-resende/assets/placeholder.svg"
+          alt="placeholder icon"
+        />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../joao-heleno/event-search.html" class="nav-button eventos"
+          >Eventos</a
+        >
+        <a
+          href="../pedro-rocha-resende/mapa.html"
+          class="nav-button mapa-eventos"
+          >Mapa de Eventos</a
+        >
+        <a
+          href="../joao-tolentino/cad_usuarios.html"
+          class="nav-button cad-usuario"
+          >Cadastro de Usuário</a
+        >
+        <a
+          href="../arthur-chaves/cad_promotor.html"
+          class="nav-button cad-promotor"
+          >Cadastro de Promotor</a
+        >
+      </nav>
     </header>
+    <div class="container" data-aos="fade-up">
+      <div id="artists-container"></div>
 
-    <nav class="botoes-middle" data-aos="fade-down">
-      <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-      <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
-      <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
-      <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
-      <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
-      <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-    </nav>
+      <p
+        id="no-artists-message"
+        style="display: none; text-align: center; font-size: 1.2em"
+      >
+        Nenhum artista cadastrado ainda.
+        <a href="cad_artistas.html">Cadastre o primeiro!</a>
+      </p>
+    </div>
 
-    <div id="artists-container"></div>
+    <footer>2025 - DivulgaHub - Todos os direitos reservados</footer>
 
-    <p id="no-artists-message" style="display: none; text-align: center; font-size: 1.2em;">
-      Nenhum artista cadastrado ainda. <a href="cad_artistas.html">Cadastre o primeiro!</a>
-    </p>
-  </div>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true, duration: 600 });
 
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ once: true, duration: 600 });
+      document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("artists-container");
+        const noArtistsMessage = document.getElementById("no-artists-message");
+        const artistas = JSON.parse(localStorage.getItem("artistas")) || [];
 
-    document.addEventListener('DOMContentLoaded', function() {
-      const container = document.getElementById('artists-container');
-      const noArtistsMessage = document.getElementById('no-artists-message');
-      const artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+        container.innerHTML = "";
+        if (artistas.length === 0) {
+          noArtistsMessage.style.display = "block";
+        } else {
+          noArtistsMessage.style.display = "none";
 
-      container.innerHTML = '';
-      if (artistas.length === 0) {
-        noArtistsMessage.style.display = 'block';
-      } else {
-        noArtistsMessage.style.display = 'none';
+          artistas.forEach((artista) => {
+            const artistProfileDiv = document.createElement("div");
+            artistProfileDiv.className = "artist-profile";
+            artistProfileDiv.setAttribute("data-aos", "fade-up");
 
-        artistas.forEach(artista => {
-          const artistProfileDiv = document.createElement('div');
-          artistProfileDiv.className = 'artist-profile';
-          artistProfileDiv.setAttribute('data-aos', 'fade-up');
-
-          artistProfileDiv.innerHTML = `
+            artistProfileDiv.innerHTML = `
             <div class="artist-header">
-              <img src="${artista.foto}" alt="Foto de ${artista.nomeArtistico}" class="artist-avatar">
+              <img src="${artista.foto}" alt="Foto de ${
+              artista.nomeArtistico
+            }" class="artist-avatar">
               <h2 class="artist-name">${artista.nomeArtistico}</h2>
               <p class="artist-genre">| ${artista.genero} |</p>
             </div>
@@ -64,24 +90,44 @@
             <ul class="info-list">
               <li><strong>Nome da pessoa:</strong> ${artista.nomePessoa}</li>
               <li><strong>Ano de Fundação:</strong> ${artista.anoFundacao}</li>
-              <li><strong>Quantidade de Integrantes:</strong> ${artista.qtdIntegrantes}</li>
+              <li><strong>Quantidade de Integrantes:</strong> ${
+                artista.qtdIntegrantes
+              }</li>
               <li><strong>Cidade:</strong> ${artista.cidade}</li>
               <li><strong>Telefone:</strong> ${artista.telefone}</li>
-              <li><strong>Gênero Artístico:</strong> ${artista.generoArtistico}</li>
+              <li><strong>Gênero Artístico:</strong> ${
+                artista.generoArtistico
+              }</li>
             </ul>
 
             <h2 class="section-title">Onde Encontrar o Artista</h2>
             <div class="social-media">
-              ${artista.spotify ? `<a href="${artista.spotify}" target="_blank">Spotify</a>` : ''}
-              ${artista.instagram ? `<a href="${artista.instagram}" target="_blank">Instagram</a>` : ''}
-              ${artista.youtube ? `<a href="${artista.youtube}" target="_blank">YouTube</a>` : ''}
-              ${artista.facebook ? `<a href="${artista.facebook}" target="_blank">Facebook</a>` : ''}
+              ${
+                artista.spotify
+                  ? `<a href="${artista.spotify}" target="_blank">Spotify</a>`
+                  : ""
+              }
+              ${
+                artista.instagram
+                  ? `<a href="${artista.instagram}" target="_blank">Instagram</a>`
+                  : ""
+              }
+              ${
+                artista.youtube
+                  ? `<a href="${artista.youtube}" target="_blank">YouTube</a>`
+                  : ""
+              }
+              ${
+                artista.facebook
+                  ? `<a href="${artista.facebook}" target="_blank">Facebook</a>`
+                  : ""
+              }
             </div>
           `;
-          container.appendChild(artistProfileDiv);
-        });
-      }
-    });
-  </script>
-</body>
+            container.appendChild(artistProfileDiv);
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

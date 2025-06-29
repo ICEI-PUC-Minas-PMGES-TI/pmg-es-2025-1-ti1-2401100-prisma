@@ -1,53 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DivulgaHub - Cadastrar Novo Promotor de Eventos</title>
-        <link rel="stylesheet" href="style.css">
-        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DivulgaHub - Cadastrar Novo Promotor de Eventos</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+  </head>
 
-    <body>
-        <div class="container">
-            <!-- ------------------- Navegação entre paginas e cabeçalho------------------- -->
-            <header>
-                <h1>DivulgaHub</h1>
-                <button class="back-button" onclick="history.back()">Voltar</button>
-            </header>
-            <nav class="botoes-middle" data-aos="fade-up">
-                <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-                <a href="../mateus-armani/cad_eventos.html" class="nav-button cadastrar-evento">Cadastro de Eventos</a>
-                <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cadastrar-usuario">Cadastrar Usuário</a>
-                <a href="../arthur-chaves/cad_promotor.html" class="nav-button cadastrar-promotor">Cadastrar Promotor</a>
-                <a href="../arthur-julio/cadastro-artista.html" class="nav-button comunidade">Cadastrar Artista</a>
-                <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
-            </nav>
-            <!-- ------------------- Formulario de Cadastro Promotor ------------------- -->
-            <h2 class="subtitulo-pagina1" data-aos="fade-right">Cadastrar Novo Promotor</h2>
-            <form class="conj-campos" id="formulario" data-aos="fade-up" novalidate>
-                <input type="text" id="form-name" placeholder="Nome" required>
-                <input type="text" id="form-email" placeholder="Email" required>
-                <input type="text" id="form-tel" placeholder="Telefone" required>
-                <input type="text" id="form-loc" placeholder="Localização" required>
-                <select name="tipoPromotor" class="tipo-promotor" required>
-                    <option value="" disabled selected>Individuo ou Empresa</option>
-                    <option value="individuo">Individuo</option>
-                    <option value="empresa">Empresa</option>
-                  </select>
-                <button type="submit" class="submit-button">Cadastrar</button>
-            </form>
-        
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <img
+          src="../pedro-rocha-resende/assets/placeholder.svg"
+          alt="placeholder icon"
+        />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../joao-heleno/event-search.html" class="nav-button eventos"
+          >Eventos</a
+        >
+        <a
+          href="../mateus-armani/cad_eventos.html"
+          class="nav-button cadastrar-evento"
+          >Cadastro de Eventos</a
+        >
+        <a
+          href="../joao-tolentino/cad_usuarios.html"
+          class="nav-button cadastrar-usuario"
+          >Cadastrar Usuário</a
+        >
+        <a
+          href="../arthur-julio/cadastro-artista.html"
+          class="nav-button comunidade"
+          >Cadastrar Artista</a
+        >
+        <a href="../jonas-pedrosa/index.html" class="nav-button comunidade"
+          >Comunidade</a
+        >
+      </nav>
+    </header>
+    <div class="container">
+      <!-- ------------------- Formulario de Cadastro Promotor ------------------- -->
+      <h2 class="subtitulo-pagina1" data-aos="fade-right">
+        Cadastrar Novo Promotor
+      </h2>
+      <form class="conj-campos" id="formulario" data-aos="fade-up" novalidate>
+        <input type="text" id="form-name" placeholder="Nome" required />
+        <input type="text" id="form-email" placeholder="Email" required />
+        <input type="text" id="form-tel" placeholder="Telefone" required />
+        <input type="text" id="form-loc" placeholder="Localização" required />
+        <select name="tipoPromotor" class="tipo-promotor" required>
+          <option value="" disabled selected>Individuo ou Empresa</option>
+          <option value="individuo">Individuo</option>
+          <option value="empresa">Empresa</option>
+        </select>
+        <button type="submit" class="submit-button">Cadastrar</button>
+      </form>
     </div>
+
+    <footer>2025 - DivulgaHub - Todos os direitos reservados</footer>
+
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <script>
+      AOS.init();
+    </script>
     <script src="script.js"></script>
     <script>
-            validarTel();
-            cadastrarPromotor();
+      validarTel();
+      cadastrarPromotor();
     </script>
-    </body>
-
-    </html>
+  </body>
+</html>

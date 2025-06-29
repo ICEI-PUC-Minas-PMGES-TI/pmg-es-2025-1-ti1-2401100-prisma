@@ -19,7 +19,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #2f6e51;
+  background-color: #410445;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -48,7 +48,7 @@ body {
 }
 
 .nav-links a {
-  background-color: #9378cd;
+  background-color: #883078;
   color: white;
   text-decoration: none;
   padding: 5px 12px;
@@ -265,6 +265,11 @@ body {
 /* ANCHOR - footer */
 footer {
   text-align: center;
-  background-color: #2f6e51;
-  padding: 10px 0px;
+  background-color: #883078;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
 }
