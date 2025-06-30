@@ -146,43 +146,20 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 Artefatos relacionados com a interface e a interacão do usuário na proposta de solução.
 
 ### Wireframes
-
-Estes são os protótipos de telas do sistema.
-
-**✳️✳️✳️ COLOQUE AQUI OS PROTÓTIPOS DE TELAS COM TÍTULO E DESCRIÇÃO ✳️✳️✳️**
-
-##### TELA XPTO ⚠️ EXEMPLO ⚠️
-
-Descrição para a tela XPTO
-
-![Exemplo de wireframe](images/exemplo-wireframe.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
->
-> **Orientações**:
->
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
+![2025-06-29 (2)](https://github.com/user-attachments/assets/f0c97fa5-8458-4dc3-8fdd-08c532f1bfa8)
+![2025-06-29 (10)](https://github.com/user-attachments/assets/2a8e8005-dfe5-47bf-9ec6-7ce4d2272292)
+![2025-06-29 (18)](https://github.com/user-attachments/assets/d0c098d1-7dca-4dcb-a594-0c1b12457b42)
+![2025-06-29 (19)](https://github.com/user-attachments/assets/a55c10fe-0d80-4cd9-ad38-c6b11081ebaf)
+![2025-06-29 (20)](https://github.com/user-attachments/assets/5ec534b7-74ac-4a16-9e6b-856b0f98fd11)
+![2025-06-29 (21)](https://github.com/user-attachments/assets/131830b2-5308-4022-a7a0-90f00cda72d0)
+![2025-06-29 (22)](https://github.com/user-attachments/assets/605715ab-b520-40a7-bb7f-af59b2826026)
+![2025-06-29 (23)](https://github.com/user-attachments/assets/53494cb2-de76-4d0f-8b38-4d77605526f0)
+![2025-06-29 (24)](https://github.com/user-attachments/assets/ef43cd1b-355b-4b7f-815b-1b853a23f4c8)
+![2025-06-29 (25)](https://github.com/user-attachments/assets/1a4b12f9-6a35-49c9-91a2-b47cbbd97bb1)
 
 ### User Flow
+![User Flow](https://github.com/user-attachments/assets/20047ba4-734f-4aaf-a153-45b84dad3471)
 
-**✳️✳️✳️ COLOQUE AQUI O DIAGRAMA DE FLUXO DE TELAS ✳️✳️✳️**
-
-![Exemplo de fluxo de telas](images/exemplo-userflow.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
->
-> **Orientações**:
->
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 User Flow Tools &amp; Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
 
 ### Protótipo Interativo
 
