@@ -18,10 +18,9 @@ server.use(middlewares);
 
 // --- LÓGICA PARA SERVIR OS MÚLTIPLOS SITES ---
 
-// 5. Definir o site PRINCIPAL (/) como o do 'william-lobo'
+// Define o site PRINCIPAL (/) como o do 'william-lobo'
 const williamPath = path.join(__dirname, 'codigo', 'william-lobo');
 server.use('/', express.static(williamPath));
-console.log(`Site principal (/) servido da pasta: ${williamPath}`);
 
 // 6. Servir DINAMICAMENTE todos os outros sites da pasta 'codigo'
 const codigoPath = path.join(__dirname, 'codigo');
