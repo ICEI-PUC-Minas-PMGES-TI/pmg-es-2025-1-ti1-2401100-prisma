@@ -30,77 +30,37 @@ A documentação do projeto é estruturada da seguinte forma:
 
 # Contexto
 
-Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa e público-alvo.
+O DivulgaHub é uma plataforma web desenvolvida para facilitar a divulgação de 
+eventos artísticos voltados a públicos diversos, promovendo o acesso democrático à 
+cultura. A proposta é conectar artistas, público, patrocinadores e influenciadores 
+locais, criando um ecossistema colaborativo e acessível. 
 
 ## Problema
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
->
-> **Orientações**:
->
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+A problematica principal se trata da divulgação eficiente de eventos ser comprometida por barreiras como o acesso restrito a eventos gratuitos e de alta qualidade, a escassez de recursos financeiros para marketing cultural, a baixa visibilidade em redes sociais, as dificuldades em identificar influenciadores locais segmentados e a prevalência de inúmeros eventos que passam despercebidos. 
 
 ## Objetivos
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
->
-> **Orientações**:
->
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+O DivulgaHub tem como objetivo ser uma plataforma digital projetada para centralizar e simplificar o acesso a todos os eventos realizados no Brasil. Com o objetivo de fortalecer a conexão entre organizadores e o público, o site oferece informações atualizadas e abrangentes sobre eventos culturais, esportivos, sociais e corporativos, possibilitando que os usuários descubram facilmente as atrações disponíveis na cidade. Com uma interface intuitiva e de fácil navegação, o DivulgaHub se posiciona como o parceiro ideal para aproveitar ao máximo a programação local, promovendo uma experiência enriquecedora e conectada à vida cultural da região.
 
 ## Justificativa
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
->
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Orientações**:
->
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+A justificativa para o desenvolvimento do DivulgaHub é fundamentada em pesquisas que evidenciam uma concorrência acirrada, a ausência de recursos para divulgação profissional, a ineficácia de canais de comunicação tradicionais e uma segmentação inadequada do público, resultando em muitos eventos que, apesar de alocar a maior parte dos recursos à divulgação, não alcançam o público desejado, além das dificuldades em conquistar patrocínios, o que reforça a importância de uma plataforma centralizada e integrada.
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva quais são as pessoas que usarão a sua aplicação indicando os diferentes perfis. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição textual, ou diagramas de personas, mapa de stakeholders, ou como o grupo achar mais conveniente.
->
-> **Orientações**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+-Frequentadores de Eventos: Buscam filtrar eventos por categoria e localização, com a finalidade de encontrar aquele que mais tem afinidade em sua região. 
+-Organizadores de Eventos: Querem cadastrar e divulgar eventos em sua região sem ter um custo de divulgação elevado. 
+-Artistas Independentes: Desejam promover apresentações ao grande público de forma efetiva e com baixo custo.
 
 # Product Discovery
 
 ## Etapa de Entendimento
-
-**✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
->
-> - **Matriz CSD**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
-> - **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
-> - **Entrevistas qualitativas**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
-> - **Highlights de pesquisa**: um compilado do levantamento realizado por meio das entrevistas.
+ Nessa etapa, trabalhamos com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
+-Matriz CSD: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
+-Mapa de stakeholders: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
+-Entrevistas qualitativas: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
+-Highlights de pesquisa: um compilado do levantamento realizado por meio das entrevistas.
 
 ## Etapa de Definição
 
@@ -127,65 +87,71 @@ Nesse momento, vamos transformar os insights e validações obtidos em soluçõe
 
 Com base na análise das personas foram identificadas as seguintes histórias de usuários:
 
-| EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`      | PARA ...`MOTIVO/VALOR`                 |
-| ------------------- | -------------------------------------- | -------------------------------------- |
-| Usuário do sistema  | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las               |
-| Administrador       | Alterar permissões ⚠️ EXEMPLO ⚠️       | Permitir que possam administrar contas |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
->
-> **Orientações**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+1) Igor Costa (Frequentador de Eventos)
+Eu como: frequentador de eventos,
+Quero: visualizar uma lista de eventos filtrada por categoria e localização,
+Porque/para: encontrar eventos que me interessam de forma rápida e
+prática.
+2) Bruna Martins (Patrocinadora – Empresária do Setor de Bebidas)
+Eu como: patrocinadora,
+Quero: acessar informações sobre o público e alcance dos eventos,
+Porque/para: decidir em quais eventos vale a pena investir e garantir
+visibilidade para minha marca.
+3) Grazi Vitória (Organizador de Eventos)
+Eu como: organizador de eventos,
+Quero: cadastrar e divulgar meus eventos de forma intuitiva na
+plataforma,
+Porque/para: alcançar um público maior e aumentar a visibilidade do meu
+evento.
+4) Davi Mendes (Artista Independente – Cantor e Compositor)
+Eu como: artista independente,
+Quero: divulgar minhas apresentações na plataforma,
+Porque/para: atrair mais público e ser descoberto por organizadores e
+patrocinadores.
+5) Lucas Ferreira (Frequentador de Eventos)
+Eu como: frequentador de eventos,
+Quero: receber notificações sobre eventos próximos que correspondam
+aos meus interesses,
+Porque/para: não perder oportunidades de participar de eventos que gosto.
+6) Camila Souza (Influenciadora Digital)
+Eu como: influenciadora digital,
+Quero: compartilhar eventos diretamente nas minhas redes sociais pela
+plataforma,
+Porque/para: engajar meu público e aumentar minha relevância no nicho
+de eventos.
+7) Renato Almeida (Dono de Casa de Shows)
+Eu como: dono de casa de shows,
+Quero: acompanhar as reservas e lotação dos meus eventos em tempo
+real,
+Porque/para: otimizar a organização e garantir uma experiência melhor
+para o público.
+8) Mariana Lopes (Produtora Cultural)
+Eu como: produtora cultural,
+Quero: analisar dados de público e tendências de eventos anteriores,
+Porque/para: planejar melhor futuros eventos e maximizar a participação
+do público.
 
 ## Proposta de Valor
-
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
-
-##### Proposta para Persona XPTO ⚠️ EXEMPLO ⚠️
-
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
-
+https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2401100-prisma/blob/master/docs/files/MAPA%20DE%20PROPOSTA%20DE%20VALOR.pdf
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
 
 ### Requisitos Funcionais
-
-| ID     | Descrição do Requisito                                | Prioridade |
-| ------ | ----------------------------------------------------- | ---------- |
-| RF-001 | Permitir que o usuário cadastre tarefas ⚠️ EXEMPLO ⚠️ | ALTA       |
-| RF-002 | Emitir um relatório de tarefas no mês ⚠️ EXEMPLO ⚠️   | MÉDIA      |
-
+1.O site deve permitir login e registro de usuario 
+2. O site deve ter uma ferramenta de busca de eventos com base em nome, data, categoria ou localização.
+3.  O site deve permitir que os organizadores cadastrem evento
+4. O site deve exibir a localização do evento em um mapa
+5. O site deve permitir que os participantes deixem comentários e avaliações sobre os eventos
+6. O site deve permitir salvar notícias preferidas
+7. O sistema deve fornecer informações para os organizadores dos eventos, como: número de inscrições, acessos e engajamento. 
+8. O site deve exibir uma página detalhada para cada evento, contendo todas as informações relevantes
+9.  O site deve permitir o envio de notificações aos usuários sobre eventos de interesse.
+10. O site deve oferecer integração com redes sociais para compartilhamento de eventos.
 ### Requisitos não Funcionais
 
-| ID      | Descrição do Requisito                                                          | Prioridade |
-| ------- | ------------------------------------------------------------------------------- | ---------- |
-| RNF-001 | O sistema deve ser responsivo para rodar em um dispositivos móvel ⚠️ EXEMPLO ⚠️ | MÉDIA      |
-| RNF-002 | Deve processar requisições do usuário em no máximo 3s ⚠️ EXEMPLO ⚠️             | BAIXA      |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Os requisitos de um projeto são classificados em dois grupos:
->
-> - [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
->   correspondem a uma funcionalidade que deve estar presente na plataforma (ex: cadastro de usuário).
-> - [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
->   correspondem a uma característica técnica, seja de usabilidade, desempenho, confiabilidade, segurança ou outro (ex: suporte a dispositivos iOS e Android).
->
-> Lembre-se que cada requisito deve corresponder à uma e somente uma característica alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas Histórias de Usuário foram cobertos.
->
-> **Orientações**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+ 1.  O site deve ser responsivo, para que os usuarios possam o acessar de diversos tipos de dispositivo
+  2.  O site deve ser facil de usar para os usuarios e organizadores de evento 
 
 ## Projeto de Interface
 
@@ -241,48 +207,40 @@ Descrição para a tela XPTO
 > Um protótipo interativo apresenta o projeto de interfaces e permite ao usuário navegar pelas funcionalidades como se estivesse lidando com o software pronto. Utilize as mesmas ferramentas de construção de wireframes para montagem do seu protótipo interativo. Inclua o link para o protótipo interativo do projeto.
 
 # Metodologia
+A metodologia de trabalho do DivulgaHub foi estruturada em um processo ágil, dividido em sprints, com atribuições claras e o uso de ferramentas colaborativas para garantir a eficiência e a qualidade do desenvolvimento. O processo foi organizado em etapas específicas, onde cada membro da equipe assumiu responsabilidades alinhadas às suas competências, promovendo uma divisão de tarefas que otimiza o progresso do projeto.  
 
-Detalhes sobre a organização do grupo e o ferramental empregado.
+As atribuições foram distribuídas da seguinte forma:  
+
+João Heleno é responsável pela Pesquisa de Eventos, coletando dados e insights sobre o cenário local;  
+
+João Tolentino cuida do Cadastro de Usuário, desenvolvendo a funcionalidade de registro;  
+
+Arthur Julio lidera o Cadastro de Artista, focando na inclusão de perfis de artistas;  
+
+William gerencia a Exibição de Eventos, assegurando a visualização dos eventos na interface;  
+
+Lucas Eduardo desenvolve os Detalhes de Eventos, criando páginas interativas para informações detalhadas;  
+
+Matheus Armani implementa o Cadastro de Eventos, permitindo a criação de novos eventos;  
+
+Pedro Rocha trabalha no Mapa de Eventos, integrando uma visualização geográfica;  
+
+Arthur Chaves gerencia o Cadastro de Promotor, facilitando a inscrição de patrocinadores; 
+
+Jonas Pedrosa é responsável pelos Detalhes dos Artistas, detalhando os perfis de artistas na plataforma
 
 ## Ferramentas
 
-Relação de ferramentas empregadas pelo grupo durante o projeto.
-
-| Ambiente                    | Plataforma | Link de acesso                                |
-| --------------------------- | ---------- | --------------------------------------------- |
-| Processo de Design Thinking | Miro       | https://miro.com/XXXXXXX ⚠️ EXEMPLO ⚠️        |
-| Repositório de código       | GitHub     | https://github.com/XXXXXXX ⚠️ EXEMPLO ⚠️      |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️ |
-| Protótipo Interativo        | MarvelApp  | https://marvelapp.com/XXXXXXX ⚠️ EXEMPLO ⚠️   |
-|                             |            |                                               |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Liste as ferramentas empregadas no desenvolvimento do projeto, justificando a escolha delas, sempre que possível. Inclua itens como: (1) Editor de código, (2) )ferramentas de comunicação, (3) )ferramentas de diagramação, (4) )plataformas de hospedagem, entre outras.
+Para suportar esse fluxo de trabalho, a equipe utilizou ferramentas como:
+ Trello para gerenciar tarefas e acompanhar o progresso das sprints;
+ Figma para o design de wireframes e protótipos;
+ Git para controle de versão e colaboração no código, assegurando uma metodologia integrada e adaptável às necessidades do projeto
 
 ## Gerenciamento do Projeto
-
-Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
-
-![Exemplo de Kanban](images/exemplo-kanban.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesta parte do documento, você deve apresentar o processo de trabalho baseado nas metodologias ágeis, a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
->
-> **Orientações**:
->
-> - [Sobre Projects - GitHub Docs](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
-> - [Gestão de projetos com GitHub | balta.io](https://balta.io/blog/gestao-de-projetos-com-github)
-> - [(460) GitHub Projects - YouTube](https://www.youtube.com/playlist?list=PLiO7XHcmTsldZR93nkTFmmWbCEVF_8F5H)
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
-
+https://cdn.discordapp.com/attachments/1357321344102170774/1389034742913175732/image.png?ex=686326e9&is=6861d569&hm=ca6abb24c4bf77e4c61ce6c23817bde5141dfc2ce0038c25b385ca820654f358&
 # Solução Implementada
 
-Esta seção apresenta todos os detalhes da solução criada no projeto.
+A solução implementada do DivulgaHub reflete o progresso alcançado até o momento, destacando as funcionalidades de software desenvolvidas para atender às necessidades dos usuários e aos objetivos do projeto; Entre as principais entregas, destaca-se a funcionalidade de Exibição de Eventos, liderada por William, que permite aos usuários visualizar uma lista de eventos culturais, esportivos, sociais e corporativos de Belo Horizonte e região, com filtros por gênero e localização, garantindo uma experiência inicial acessível. Lucas Eduardo contribuiu com os Detalhes de Eventos, implementando páginas interativas que exibem informações específicas de cada evento, como título, local, data, gênero, preço e artistas, integrando um sistema de redirecionamento baseado em ID. João Tolentino desenvolveu o Cadastro de Usuário, oferecendo uma interface intuitiva para registro de novos usuários, enquanto Matheus Armani implementou o Cadastro de Eventos, possibilitando que organizadores insiram novos eventos de forma prática. Arthur Julio trabalhou no Cadastro de Artista, criando uma funcionalidade para artistas independentes cadastrarem seus perfis, e Jonas Pedrosa avançou nos Detalhes dos Artistas, detalhando informações como biografia e portfólio. Pedro Rocha iniciou o Mapa de Eventos, integrando uma visualização geográfica preliminar para localização dos eventos, e Arthur Chaves desenvolveu o Cadastro de Promotor, facilitando a inscrição de patrocinadores com dados básicos. A pesquisa de eventos, conduzida por João Heleno, forneceu a base de dados inicial, que foi consolidada em um arquivo JSON acessível via fetch, com suporte a favoritos e filtros dinâmicos. Essas funcionalidades, ainda em desenvolvimento, são testadas continuamente com foco em usabilidade e responsividade, utilizando Live Server no Visual Studio Code para validação, e estão alinhadas com os wireframes do Figma, garantindo uma base sólida para as próximas fases do projeto. 
 
 ## Vídeo do Projeto
 
