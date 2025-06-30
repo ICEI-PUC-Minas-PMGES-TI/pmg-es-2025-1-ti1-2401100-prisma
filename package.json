@@ -7,11 +7,10 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "Rommel Vieira Carneiro",
+  "author": "William Lobo",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "json-server": "^0.17.3",
-    "lab-jsonserver": "file:"
+    "json-server": "^0.17.3"
   }
 }

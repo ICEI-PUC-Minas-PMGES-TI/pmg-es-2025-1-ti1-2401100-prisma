@@ -1,28 +1,39 @@
 // Trabalho Interdisciplinar 1 - Aplicações Web
-//
-// Esse módulo implementa uma API RESTful baseada no JSONServer
-// O servidor JSONServer fica hospedado na seguinte URL
-// https://jsonserver.rommelpuc.repl.co/contatos
-//
-// Para montar um servidor para o seu projeto, acesse o projeto 
-// do JSONServer no Replit, faça o FORK do projeto e altere o 
-// arquivo db.json para incluir os dados do seu projeto.
-//
-// URL Projeto JSONServer: https://replit.com/@rommelpuc/JSONServer
-//
-// Autor: Rommel Vieira Carneiro
-// Data: 03/10/2023
+// Autor: Rommel Vieira Carneiro, adaptado por William Lobo
+// Data: 30/06/2025
 
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer.router('./db/db.json')
-  
-// Para permitir que os dados sejam alterados, altere a linha abaixo
-// colocando o atributo readOnly como false.
-const middlewares = jsonServer.defaults({ noCors: true })
-server.use(middlewares)
-server.use(router)
+// 1. Importar todas as bibliotecas necessárias
+const jsonServer = require('json-server');
+const express = require('express'); // Precisamos do express para servir arquivos estáticos
+const path = require('path');
 
-server.listen(3000, () => {
-  console.log(`JSON Server is running em http://localhost:3000`)
-})
+// 2. Criar a aplicação. jsonServer.create() retorna um servidor express.
+const server = jsonServer.create();
+
+// 3. Apontar para o arquivo de banco de dados da API
+// Usar path.join é mais seguro para criar caminhos de arquivos
+const router = jsonServer.router(path.join(__dirname, 'db', 'db.json'));
+
+// 4. Configurar os middlewares padrão
+// A opção noCors: true desabilita o CORS, o que pode ser necessário em alguns ambientes.
+const middlewares = jsonServer.defaults({ noCors: true });
+
+// 5. Adicionar a "mágica" para servir os arquivos do seu site
+// Define o caminho para a pasta que contém seu 'index.html'
+const staticPath = path.join(__dirname, 'codigo', 'william-lobo');
+// Pede ao servidor para usar essa pasta para servir arquivos estáticos (seu site)
+server.use(express.static(staticPath));
+
+// 6. Usar os middlewares e o roteador da API
+server.use(middlewares);
+// É uma boa prática colocar a API sob um prefixo como /api
+// para não ter conflito com as páginas do seu site.
+server.use('/api', router); // Acessar a API via /api/contatos
+
+// 7. Iniciar o servidor
+const port = process.env.PORT || 3000;
+server.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Acesse seu site em http://localhost:${port}`);
+  console.log(`Acesse sua API em http://localhost:${port}/api/contatos`);
+});
