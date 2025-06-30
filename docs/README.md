@@ -235,18 +235,11 @@ Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
 
 ![2025-06-29 (18)](https://github.com/user-attachments/assets/4175180e-8c05-47f3-aa40-813c0bbebff4)
 
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
-
 ## Estruturas de Dados
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos ⚠️ EXEMPLO ⚠️
+##### Estrutura de Dados
 
 Contatos da aplicação
 
