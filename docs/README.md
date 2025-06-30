@@ -227,14 +227,14 @@ Esta seção apresenta as funcionalidades da solução.Info
 
 Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
 
-- **Estrutura de dados:** [Contatos](#ti_ed_contatos)
+- **Estrutura de dados:** Cadastro
 - **Instruções de acesso:**
   - Abra o site e efetue o login
   - Acesse o menu principal e escolha a opção Cadastros
-  - Em seguida, escolha a opção Contatos
 - **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![2025-06-29 (18)](https://github.com/user-attachments/assets/4175180e-8c05-47f3-aa40-813c0bbebff4)
+
 
 > ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
 >
