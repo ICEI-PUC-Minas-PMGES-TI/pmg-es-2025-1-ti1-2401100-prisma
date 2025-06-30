@@ -1,39 +1,57 @@
-// Trabalho Interdisciplinar 1 - Aplicações Web
-// Autor: Rommel Vieira Carneiro, adaptado por William Lobo
-// Data: 30/06/2025
+// --- CONFIGURAÇÃO DO SERVIDOR MULTI-SITE E API ---
 
-// 1. Importar todas as bibliotecas necessárias
+// 1. Importar as bibliotecas necessárias
 const jsonServer = require('json-server');
-const express = require('express'); // Precisamos do express para servir arquivos estáticos
+const express = require('express');
 const path = require('path');
+const fs = require('fs'); // 'fs' (File System) para ler os diretórios
 
-// 2. Criar a aplicação. jsonServer.create() retorna um servidor express.
-const server = jsonServer.create();
+// 2. Criar a aplicação Express
+const server = express();
 
 // 3. Apontar para o arquivo de banco de dados da API
-// Usar path.join é mais seguro para criar caminhos de arquivos
 const router = jsonServer.router(path.join(__dirname, 'db', 'db.json'));
 
-// 4. Configurar os middlewares padrão
-// A opção noCors: true desabilita o CORS, o que pode ser necessário em alguns ambientes.
+// 4. Configurar os middlewares padrão do JSON Server
 const middlewares = jsonServer.defaults({ noCors: true });
-
-// 5. Adicionar a "mágica" para servir os arquivos do seu site
-// Define o caminho para a pasta que contém seu 'index.html'
-const staticPath = path.join(__dirname, 'codigo', 'william-lobo');
-// Pede ao servidor para usar essa pasta para servir arquivos estáticos (seu site)
-server.use(express.static(staticPath));
-
-// 6. Usar os middlewares e o roteador da API
 server.use(middlewares);
-// É uma boa prática colocar a API sob um prefixo como /api
-// para não ter conflito com as páginas do seu site.
-server.use('/api', router); // Acessar a API via /api/contatos
 
-// 7. Iniciar o servidor
+// --- LÓGICA PARA SERVIR OS MÚLTIPLOS SITES ---
+
+// 5. Definir o site PRINCIPAL (/) como o do 'william-lobo'
+const williamPath = path.join(__dirname, 'codigo', 'william-lobo');
+server.use('/', express.static(williamPath));
+console.log(`Site principal (/) servido da pasta: ${williamPath}`);
+
+// 6. Servir DINAMICAMENTE todos os outros sites da pasta 'codigo'
+const codigoPath = path.join(__dirname, 'codigo');
+// Lê todos os nomes de pastas dentro de 'codigo'
+const studentFolders = fs.readdirSync(codigoPath).filter(file => 
+    fs.statSync(path.join(codigoPath, file)).isDirectory()
+);
+
+console.log('Detectando e servindo os seguintes sites:');
+studentFolders.forEach(folder => {
+  // Cria uma rota para cada pasta. Ex: /arthur-chaves
+  const routePath = `/${folder}`;
+  // Define o caminho completo para a pasta do aluno
+  const folderPath = path.join(codigoPath, folder);
+  
+  // Configura o Express para servir os arquivos da pasta do aluno nessa rota
+  server.use(routePath, express.static(folderPath));
+  console.log(`- Rota ${routePath} servida da pasta: ${folderPath}`);
+});
+
+
+// --- CONFIGURAÇÃO FINAL DA API E INICIALIZAÇÃO ---
+
+// 7. Configurar a rota da API (deve vir depois das rotas estáticas)
+server.use('/api', router);
+
+// 8. Iniciar o servidor
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
-  console.log(`Acesse seu site em http://localhost:${port}`);
-  console.log(`Acesse sua API em http://localhost:${port}/api/contatos`);
+  console.log(`\nServidor rodando em http://localhost:${port}`);
+  console.log('Use as rotas acima para acessar cada site individual.');
+  console.log(`A API está disponível em /api`);
 });
