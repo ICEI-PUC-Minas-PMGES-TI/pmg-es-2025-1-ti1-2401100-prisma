@@ -4,6 +4,52 @@ body {
   background-color: #2c0237;
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #410445;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand img {
+  height: 30px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  background-color: #883078;
+  color: white;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a:hover {
+  background-color: #33334d;
+  border-color: #1a5b7e;
+}
+
+.project-name {
+  font-size: 1.4rem;
+  color: #f0f0f0;
+  font-weight: bold;
+}
+
 .profile-container {
   max-width: 800px;
   margin: 2rem auto;
@@ -33,7 +79,7 @@ body {
   border-radius: 50%;
   background-color: #e0e0e0;
   overflow: hidden;
-  background-image: url('https://via.placeholder.com/120'); /* Placeholder para foto */
+  background-image: url("https://via.placeholder.com/120"); /* Placeholder para foto */
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
@@ -117,44 +163,44 @@ body {
 }
 
 .profile-details-edit {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
 }
 
 .profile-details-edit label {
-    font-weight: bold;
-    color: #555;
-    font-size: 0.9rem;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.9rem;
 }
 
 .profile-details-edit input,
 .profile-details-edit select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 .profile-details-edit input:disabled {
-    background-color: #e9ecef;
-    cursor: not-allowed;
+  background-color: #e9ecef;
+  cursor: not-allowed;
 }
 
 .cancel-button {
-    background-color: #6c757d;
-    color: white;
+  background-color: #6c757d;
+  color: white;
 }
 .cancel-button:hover {
-     background-color: #5a6268;
+  background-color: #5a6268;
 }
 
 .save-button {
-    background-color: #28a745;
-    color: white;
+  background-color: #28a745;
+  color: white;
 }
 .save-button:hover {
-    background-color: #218838;
+  background-color: #218838;
 }

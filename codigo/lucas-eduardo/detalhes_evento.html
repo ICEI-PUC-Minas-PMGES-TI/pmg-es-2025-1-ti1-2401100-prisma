@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Evento</title>
+    <link rel="stylesheet" href="detalhes_evento.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detalhes do Evento</title>
-  <link rel="stylesheet" href="detalhes_evento.css" />
-</head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <img
+          src="../pedro-rocha-resende/assets/placeholder.svg"
+          alt="placeholder icon"
+        />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
+        <a
+          href="../joao-heleno/event-search.html"
+          class="nav-button mapa-eventos"
+          >Pesquisa de Eventos</a
+        >
+        <a
+          href="../pedro-rocha-resende/mapa.html"
+          class="nav-button mapa-eventos"
+          >Mapa de Eventos</a
+        >
+        <a
+          href="../mateus-armani/cad_eventos.html"
+          class="nav-button cadastro-eventos"
+          >Cadastro de Eventos</a
+        >
+        <a href="../william-lobo/index.html" class="nav-button cadastro-eventos"
+          >Eventos</a
+        >
+      </nav>
+    </header>
+    <hr class="linha-divisoria" />
 
-<body>
-  <header>
-    <h1 class="logo">DivulgaHub</h1>
-    <a href="index.html" class="nav-button voltar-button">Voltar</a>
-  </header>
-  <hr class="linha-divisoria" />
+    <main id="detalhes-container" style="padding: 40px">
+      <h2 id="titulo" style="text-align: center"></h2>
+      <p id="descricao"></p>
+      <p id="data"></p>
+      <p id="local"></p>
+      <p id="artista"></p>
+      <p id="tipo"></p>
+      <p id="promotor"></p>
+      <p id="preco"></p>
+      <div id="imagens"></div>
+    </main>
 
-  <main id="detalhes-container" style="padding: 40px;">
-    <h2 id="titulo"></h2>
-    <p id="descricao"></p>
-    <p id="data"></p>
-    <p id="local"></p>
-    <p id="preco"></p>
-    <div id="imagens"></div>
-  </main>
-
-  <script src="detalhes_evento.js"></script>
-</body>
-
+    <script src="detalhes_evento.js"></script>
+  </body>
 </html>
