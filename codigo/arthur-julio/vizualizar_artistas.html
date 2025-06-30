@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DivulgaHub - Artistas Cadastrados</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="visualizar_artistas.css" /> <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <header data-aos="fade-down">
+            <h1>DivulgaHub</h1>
+            <button class="back-button" onclick="history.back()">Voltar</button>
+            <nav class="botoes-middle" data-aos="fade-up">
+                <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
+                <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
+                <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a>
+                <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a>
+                <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
+                <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
+            </nav>
+        </header>
+
+        <h2 class="subtitulo-pagina1" data-aos="fade-right">Artistas Cadastrados</h2>
+
+        <div id="artistas-cards-container">
+            </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Inicializa a biblioteca AOS para animações
+
+        // Função para carregar e exibir todos os artistas do localStorage em cards
+        function carregarArtistasEmCards() {
+            const artistas = JSON.parse(localStorage.getItem('artistas')) || [];
+            const cardsContainer = document.getElementById('artistas-cards-container');
+            cardsContainer.innerHTML = ''; // Limpa o container antes de adicionar os cards
+
+            if (artistas.length === 0) {
+                cardsContainer.innerHTML = '<p class="no-artists-message">Nenhum artista cadastrado ainda para visualização.</p>';
+                return;
+            }
+
+            artistas.forEach(artista => {
+                const card = document.createElement('div');
+                card.classList.add('artist-card');
+                card.setAttribute('data-aos', 'fade-up'); // Adiciona animação AOS aos cards
+
+                // Formata os links das redes sociais, se existirem
+                const spotifyLink = artista.spotify ? `<a href="${artista.spotify}" target="_blank" rel="noopener noreferrer">Spotify</a>` : '';
+                const instagramLink = artista.instagram ? `<a href="${artista.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>` : '';
+                const youtubeLink = artista.youtube ? `<a href="${artista.youtube}" target="_blank" rel="noopener noreferrer">YouTube</a>` : '';
+                const facebookLink = artista.facebook ? `<a href="${artista.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>` : '';
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        ${artista.foto ? `<img src="${artista.foto}" alt="${artista.nomeArtistico}" class="artist-photo">` : '<div class="no-photo">Sem Foto</div>'}
+                        <h3>${artista.nomeArtistico}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Nome Completo:</strong> ${artista.nomePessoa}</p>
+                        <p><strong>Gênero Musical:</strong> ${artista.generoMusical}</p>
+                        <p><strong>Cidade:</strong> ${artista.cidade}</p>
+                        <p><strong>Tipo de Espetáculo:</strong> ${artista.tipoEspetaculo}</p>
+                        <p><strong>Ano de Fundação:</strong> ${artista.anoFundacao}</p>
+                        <p><strong>Integrantes:</strong> ${artista.qtdIntegrantes}</p>
+                        <p><strong>Descrição:</strong> ${artista.descricao}</p>
+                        <p><strong>Contato:</strong> ${artista.telefone}</p>
+                        <div class="social-links">
+                            ${spotifyLink}
+                            ${instagramLink}
+                            ${youtubeLink}
+                            ${facebookLink}
+                        </div>
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+        // Carrega os artistas em cards quando a página é carregada
+        document.addEventListener('DOMContentLoaded', carregarArtistasEmCards);
+    </script>
+</body>
+</html>
