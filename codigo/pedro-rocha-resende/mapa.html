@@ -1,98 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Mapa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.js"></script>
-    <link rel="stylesheet" href="mapa.css">
-</head>
+    <link rel="stylesheet" href="mapa.css" />
+  </head>
 
-<body>
+  <body>
     <header class="navbar">
-        <div class="brand">
-            <img src="assets/placeholder.svg" alt="placeholder icon">
-            <span class="project-name">DivulgaHub</span>
-        </div>
-        <nav class="nav-links">
-            <a href="../joao-heleno/event-search.html" class="nav-button eventos">Eventos</a>
-            <a href="../pedro-rocha-resende/mapa.html" class="nav-button mapa-eventos">Mapa de Eventos</a>
-            <!-- <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a> -->
-            <!-- Retirados porque o usuário já estaria logado -->
-            <!-- <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a> -->
-            <a href="../jonas-pedrosa/index.html" class="nav-button comunidade">Comunidade</a>
-            <a href="meu-perfil.html" class="nav-button meu-perfil">Meu Perfil</a>
-        </nav>
+      <div class="brand">
+        <img src="assets/placeholder.svg" alt="placeholder icon" />
+        <span class="project-name">DivulgaHub</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../joao-heleno/event-search.html" class="nav-button eventos"
+          >Eventos</a
+        >
+        <!-- <a href="../joao-tolentino/cad_usuarios.html" class="nav-button cad-usuario">Cadastro de Usuário</a> -->
+        <!-- Retirados porque o usuário já estaria logado -->
+        <!-- <a href="../arthur-chaves/cad_promotor.html" class="nav-button cad-promotor">Cadastro de Promotor</a> -->
+        <a href="../jonas-pedrosa/index.html" class="nav-button comunidade"
+          >Artistas</a
+        >
+        <a href="../joao-tolentino/meuperfil.html" class="nav-button comunidade"
+          >Meu Perfil</a
+        >
+      </nav>
     </header>
 
     <main class="content">
+      <!-- Mapa -->
+      <section class="map-container">
+        <div id="map"></div>
+        <!-- Botão filtrar -->
+        <div class="filter-button-wrapper">
+          <button id="filter-button" aria-label="Filter events">
+            <img
+              src="assets/filter_button.svg"
+              alt="Símbolo para o botão para filtragem"
+            />
+          </button>
+          <div id="filter-message">
+            Faça uma filtragem de eventos e veja os resultados no mapa!
+          </div>
+        </div>
 
-        <!-- Mapa -->
-        <section class="map-container">
-            <div id="map"></div>
-            <!-- Botão filtrar -->
-            <div class="filter-button-wrapper">
-                <button id="filter-button" aria-label="Filter events">
-                    <img src="assets/filter_button.svg" alt="Símbolo para o botão para filtragem">
-                </button>
-                <div id="filter-message">Faça uma filtragem de eventos e veja os resultados no mapa!</div>
+        <!-- Popup de filtragem -->
+        <div id="filter-popup" class="filter-popup hidden">
+          <div class="popup-content">
+            <h2>Filtrar Eventos</h2>
+
+            <label for="filter-price">Preço máximo (R$):</label>
+            <input
+              type="number"
+              id="filter-price"
+              name="price"
+              min="0"
+              placeholder="Ex: 50"
+            />
+
+            <label for="filter-type">Tipo:</label>
+            <select id="filter-type" name="type">
+              <option value="">Todos</option>
+              <option value="musica">Música</option>
+              <option value="literario">Literário</option>
+              <option value="esportivo">Esportivo</option>
+            </select>
+
+            <label for="filter-category">Categoria:</label>
+            <select id="filter-category" name="category">
+              <option value="">Todas</option>
+              <option value="show">Show</option>
+              <option value="palestra">Palestra</option>
+              <option value="oficina">Oficina</option>
+            </select>
+
+            <label for="filter-date">Até a data:</label>
+            <input type="date" id="filter-date" name="date" />
+
+            <div>
+              <label for="filter-distance">Proximidade:</label>
+              <input
+                type="range"
+                id="filter-distance"
+                name="distance"
+                min="1"
+                max="100"
+                value="10"
+              />
+              <span id="distance-value">10 km</span>
             </div>
 
-            <!-- Popup de filtragem -->
-            <div id="filter-popup" class="filter-popup hidden">
-                <div class="popup-content">
-                    <h2>Filtrar Eventos</h2>
+            <button id="apply-filter">Aplicar</button>
+          </div>
+        </div>
+      </section>
 
-                    <label for="filter-price">Preço máximo (R$):</label>
-                    <input type="number" id="filter-price" name="price" min="0" placeholder="Ex: 50" />
-
-                    <label for="filter-type">Tipo:</label>
-                    <select id="filter-type" name="type">
-                        <option value="">Todos</option>
-                        <option value="musica">Música</option>
-                        <option value="literario">Literário</option>
-                        <option value="esportivo">Esportivo</option>
-                    </select>
-
-                    <label for="filter-category">Categoria:</label>
-                    <select id="filter-category" name="category">
-                        <option value="">Todas</option>
-                        <option value="show">Show</option>
-                        <option value="palestra">Palestra</option>
-                        <option value="oficina">Oficina</option>
-                    </select>
-
-                    <label for="filter-date">Até a data:</label>
-                    <input type="date" id="filter-date" name="date" />
-
-                    <div>
-                        <label for="filter-distance">Proximidade:</label>
-                        <input type="range" id="filter-distance" name="distance" min="1" max="100" value="10" />
-                        <span id="distance-value">10 km</span>
-            </div>
-
-                    <button id="apply-filter">Aplicar</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detalhes do evento clicado -->
-        <!-- <h1 id="titulo-secao-resultados">Detalhes do evento …</h1>
+      <!-- Detalhes do evento clicado -->
+      <!-- <h1 id="titulo-secao-resultados">Detalhes do evento …</h1>
         <section class="selected-event-details">
 
         </section> -->
-
     </main>
 
-    <footer>
-        2025 - DivulgaHub - Todos os direitos reservados
-    </footer>
+    <footer>2025 - DivulgaHub - Todos os direitos reservados</footer>
 
     <script src="mapa.js"></script>
-</body>
-
+  </body>
 </html>
 <!-- <img style="align-self: center; width: 50%; height: auto;" src="assets/image.png" alt="testage temp image"> -->
 <!-- <h1>Encontre eventos perto de você!</h1>

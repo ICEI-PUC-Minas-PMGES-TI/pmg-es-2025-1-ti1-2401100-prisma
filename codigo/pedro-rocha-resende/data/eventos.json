@@ -1,6 +1,6 @@
 [
   {
-    "id": 1001,
+    "id": 1,
     "tipo": "musica",
     "categoria": "samba",
     "titulo": "Samba sob as Estrelas",
@@ -17,7 +17,7 @@
     "idsArtistas": [1, 2]
   },
   {
-    "id": 1002,
+    "id": 2,
     "tipo": "esportivo",
     "categoria": "futebol",
     "titulo": "Semifinal 1 da copa MG Stars",
@@ -34,7 +34,7 @@
     "idsArtistas": [3]
   },
   {
-    "id": 1003,
+    "id": 3,
     "tipo": "Literário",
     "categoria": "oficina",
     "titulo": "13ª feira do livro do MG Shopping",
