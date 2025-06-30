@@ -6,18 +6,35 @@ function carregarDetalhes() {
   const todosEventos = JSON.parse(localStorage.getItem("eventos")) || [];
   const evento = todosEventos.find((ev) => ev.id == idEvento);
 
+  const dataFormatada = new Date(evento.data).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
   if (evento) {
-    document.getElementById("titulo").textContent = evento.titulo;
-    document.getElementById("descricao").textContent = evento.descricao;
-    document.getElementById("data").textContent = `Data: ${new Date(
-      evento.data
-    ).toLocaleString()}`;
+    document.getElementById("titulo").innerHTML = evento.titulo;
+    document.getElementById(
+      "descricao"
+    ).innerHTML = `<strong>Descrição:</strong> ${evento.descricao}`;
+    document.getElementById(
+      "data"
+    ).innerHTML = `<strong>Data:</strong> ${dataFormatada.toLocaleString()}`;
     document.getElementById(
       "local"
-    ).textContent = `Local: ${evento.endereco}, ${evento.cidade} - ${evento.estado}`;
+    ).innerHTML = `<strong>Local:</strong> ${evento.endereco}, ${evento.cidade} - ${evento.estado}`;
     document.getElementById(
       "preco"
-    ).textContent = `Preço: R$ ${evento.preco.toFixed(2)}`;
+    ).innerHTML = `<strong>Preço:</strong> R$ ${evento.preco.toFixed(2)}`;
+    document.getElementById(
+      "artista"
+    ).innerHTML = `<strong>Artista(s):</strong> ${evento.artistas.join(", ")}`;
+    document.getElementById(
+      "tipo"
+    ).innerHTML = `<strong>Tipo:</strong> ${evento.tipo.join(", ")}`;
+    document.getElementById(
+      "promotor"
+    ).innerHTML = `<strong>Promotor:</strong> ${evento.promotores.join(", ")}`;
 
     const imagensDiv = document.getElementById("imagens");
     evento.imagens.forEach((img) => {
