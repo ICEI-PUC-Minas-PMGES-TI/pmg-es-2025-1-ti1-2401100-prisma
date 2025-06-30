@@ -3,7 +3,7 @@ const idEvento = params.get("id");
 const container = document.getElementById("detalhes-container");
 
 function carregarDetalhes() {
-  const todosEventos = JSON.parse(localStorage.getItem("eventosSalvos")) || [];
+  const todosEventos = JSON.parse(localStorage.getItem("eventos")) || [];
   const evento = todosEventos.find((ev) => ev.id == idEvento);
 
   if (evento) {
@@ -14,7 +14,7 @@ function carregarDetalhes() {
     ).toLocaleString()}`;
     document.getElementById(
       "local"
-    ).textContent = `Local: ${evento.local.endereco}, ${evento.local.cidade} - ${evento.local.estado}`;
+    ).textContent = `Local: ${evento.endereco}, ${evento.cidade} - ${evento.estado}`;
     document.getElementById(
       "preco"
     ).textContent = `Preço: R$ ${evento.preco.toFixed(2)}`;

@@ -5,8 +5,8 @@ const container = document.getElementById("eventos-container");
 
 const eventosLocal = JSON.parse(localStorage.getItem("eventos")) || [];
 
-function redirecionarDetalhes() {
-  window.location.href = "../lucas-eduardo/event details.html";
+function redirecionarDetalhes(id) {
+  window.location.href = `../lucas-eduardo/detalhes_evento.html?id=${id}`;
 }
 
 function salvarFavoritos() {
@@ -28,11 +28,21 @@ function renderizarEventos() {
       <p>📅 ${evento.data}</p>
       <p>🎵 ${evento.tipo}</p>
       <p>Preço R$ ${parseFloat(evento.preco).toFixed(2)}</p>
-      <button onclick="redirecionarDetalhes()" class="detalhes-btn">Ver Detalhes</button>
+      <!-- ↓↓↓  envia o ID correto ↓↓↓ -->
+      <button onclick="redirecionarDetalhes('${evento.id}')" class="detalhes-btn">
+        Ver Detalhes
+      </button>
       <button class="favorito-btn">
         ${isFavorito ? "❤️ Desfavoritar" : "🤍 Favoritar"}
       </button>
-    `;
+`;
+
+    const btnDetalhes = document.createElement("button");
+    btnDetalhes.className = "detalhes-btn";
+    btnDetalhes.textContent = "Ver Detalhes";
+    btnDetalhes.addEventListener("click", () =>
+      redirecionarDetalhes(evento.id)
+    );
 
     const btnFavorito = card.querySelector(".favorito-btn");
     btnFavorito.addEventListener("click", () => {
