@@ -3,6 +3,7 @@
 Informações básicas do projeto.
 
 - **Projeto:** DivulgaHub
+- Endereço web do projeto: [DivulgaHub](https://icei-puc-minas-pmges-ti.github.io/pmg-es-2025-1-ti1-2401100-prisma/codigo/joao-tolentino/login.html)
 - **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2401100-prisma
 - **Membros da equipe:**
 
